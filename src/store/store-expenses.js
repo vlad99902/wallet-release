@@ -9,7 +9,7 @@ const state = {
       name: 'Beer',
       description: 'something here',
       date: '2019/05/12',
-      cost: '122',
+      cost: '12222222',
       category: 1
     },
     'ID2': {

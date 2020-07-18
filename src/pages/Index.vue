@@ -90,7 +90,7 @@
           <span>${{expense.cost}}</span>
         </div>
 
-        <div class="purchase-more">
+        <div class="purchase-more row">
           <span>More</span>
           <img src="../assets/more.svg">
         </div>
@@ -252,7 +252,7 @@ export default {
 
   .bar {
   margin-top: 15px;
-}
+  } 
 
 }
 
@@ -299,17 +299,21 @@ export default {
 
 .purchase {
   display: grid;
-  grid-template-columns: 10% 70% 20%;
-  justify-items: center;
-  align-items: center;
+  grid-template-columns: 10% 60% 30%;
+  
   grid-gap: .1rem;
 
   margin: 0.6rem 2rem;
-  //padding: 0.65rem;
-  padding: 1rem;
+  padding: 3vw;
   border-radius: 0.7rem;
   background-color: $for-white;
   box-shadow: 0 0.2rem 1.2rem -0.2rem rgba(0,0,0,.1);
+}
+
+@media screen and (min-width: 600px) {
+  .purchase {
+    padding: 18px;
+  }
 }
 
 //tag in recent purchase
@@ -370,7 +374,7 @@ export default {
 
   img {
     vertical-align:middle;
-    padding-left: .1rem;
+    //padding-left: .1rem;
     width: .58rem
   }
 }
