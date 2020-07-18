@@ -26,6 +26,15 @@ const state = {
       cost: '120',
       category: 3
     }
+  },
+  analytics: {
+    overallBudget: '',
+    availableBudget: '',
+    spentDay: '',
+    dailyLimit: '',
+    spentWeek: '',
+    percentage: '',
+    progress: ''
   }
 }
 
@@ -55,7 +64,7 @@ const actions = {
       expense: expense
     }
     commit('addExpense', payload)
-  }
+  },
 }
 
 const getters = {

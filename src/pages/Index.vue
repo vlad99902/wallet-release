@@ -28,6 +28,7 @@
         :expense="expense"
         :id="key" />
     </div>
+    
   </q-page>
 </template>
 
