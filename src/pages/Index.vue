@@ -87,6 +87,7 @@
 
         <div class="purchase-more">
           <span>More</span>
+          <img src="../assets/more.svg">
         </div>
       </div>
 
@@ -99,7 +100,7 @@
         </div>
 
         <div class="purchase-name">
-          <span>Buy milk when you drink a lot of beer and check the awesome work of flexboxes</span>
+          <span>Buy milk when you drink a lot of beer and check the awesome work of flexboxes </span>
         </div>
 
         <div class = "purchase-sum"> 
@@ -108,6 +109,7 @@
 
         <div class="purchase-more">
           <span>More</span>
+          <img src="../assets/more.svg">
         </div>
       </div>
     </div>
@@ -346,14 +348,24 @@ export default {
 .purchase-more {
   grid-row: 2/3;
   grid-column: 3/4;
+  
 
   justify-self: right;
   align-self: end;
   padding-right: 1rem;
+  text-align: center;
 
   color: $secondary;
   font-size: 0.6rem;
   font-weight: 700;
+
+  img {
+    vertical-align:middle;
+    padding-left: .1rem;
+    width: .58rem
+  }
 }
+
+
 
 </style>
