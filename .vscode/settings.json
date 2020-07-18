@@ -1,4 +1,5 @@
 {
   
-  "vetur.experimental.templateInterpolationService": true
+  "vetur.experimental.templateInterpolationService": true,
+  "git.ignoreLimitWarning": true
 }
