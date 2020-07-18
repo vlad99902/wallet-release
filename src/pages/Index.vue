@@ -1,7 +1,7 @@
 <template>
   <q-page>
-    <div class="heading">Overview</div>
-    <div class="date">Sunday, 28 September</div>
+
+    <heading />
 
     <cards :progress="progress" />
 
@@ -22,54 +22,11 @@
 
 <!-- all of purchases -->
     <div class="purchase-container">
-
-<!-- purchase 1 -->
-
-      <div
-        class="purchase"
+      <expenses
         v-for="(expense, key) in expenses"
         :key="key"
-        :task="expense"
-        :id="key">
-        <div class="purchase-tag">
-          <img src="../../statics/tag1.png" alt="">
-        </div>
-
-        <div class="purchase-name">
-          <span>{{expense.name}}</span>
-        </div>
-
-        <div class = "purchase-sum"> 
-          <span>${{expense.cost}}</span>
-        </div>
-
-        <div class="purchase-more row">
-          <span>More</span>
-          <img src="../assets/more.svg">
-        </div>
-      </div>
-
-<!-- purchase 2 -->
-
-      <!-- <div class="purchase">
-
-        <div class="purchase-tag">
-          <img src="../../statics/tag1.png" alt="">
-        </div>
-
-        <div class="purchase-name">
-          <span>Buy milk when you drink a lot of beer and check the awesome work of flexboxes </span>
-        </div>
-
-        <div class = "purchase-sum"> 
-          <span>$500</span>
-        </div>
-
-        <div class="purchase-more">
-          <span>More</span>
-          <img src="../assets/more.svg">
-        </div>
-      </div> -->
+        :expense="expense"
+        :id="key" />
     </div>
   </q-page>
 </template>
@@ -89,6 +46,8 @@ export default {
   },
   components: {
     'cards' : require('components/Cards.vue').default,
+    'heading' : require('components/Heading.vue').default,
+    'expenses' : require('components/Expenses.vue').default,
   }
 }
 </script>
