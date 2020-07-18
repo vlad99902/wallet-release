@@ -72,17 +72,22 @@
 
 <!-- purchase 1 -->
 
-      <div class="purchase">
+      <div
+        class="purchase"
+        v-for="(expense, key) in expenses"
+        :key="key"
+        :task="expense"
+        :id="key">
         <div class="purchase-tag">
           <img src="../../statics/tag1.png" alt="">
         </div>
 
         <div class="purchase-name">
-          <span>Buy milk</span>
+          <span>{{expense.name}}</span>
         </div>
 
         <div class = "purchase-sum"> 
-          <span>$500</span>
+          <span>${{expense.cost}}</span>
         </div>
 
         <div class="purchase-more">
@@ -93,7 +98,7 @@
 
 <!-- purchase 2 -->
 
-      <div class="purchase">
+      <!-- <div class="purchase">
 
         <div class="purchase-tag">
           <img src="../../statics/tag1.png" alt="">
@@ -111,19 +116,23 @@
           <span>More</span>
           <img src="../assets/more.svg">
         </div>
-      </div>
+      </div> -->
     </div>
-
   </q-page>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
   name: 'PageIndex',
   data() {
      return {
         progress: 0.4 //progress of progress bar
      }
+  },
+  computed: {
+    ...mapGetters('expenses', ['expenses']) //getter for all expenses from store-expenses
   }
 }
 </script>
