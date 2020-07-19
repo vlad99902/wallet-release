@@ -6,12 +6,9 @@
     <cards :progress="progress" />
 
     <!-- vlad -->
-
     <div class="recent">
       Recent
     </div>
-
-    
 
 <!-- all of purchases -->
     <div class="purchase-container">

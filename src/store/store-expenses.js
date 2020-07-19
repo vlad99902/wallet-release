@@ -26,7 +26,7 @@ const state = {
     //   cost: '120',
     //   category: 3
     // }
-    '2019/05/12' : {
+    '2019/09/12' : {
       total: '1222',
       purchases: {
         'ID1': {
@@ -37,7 +37,7 @@ const state = {
         }
       }
     },
-    '2019/05/13': {
+    '2019/09/13': {
       total: '121',
       purchases: {
         'ID2': {
@@ -48,7 +48,7 @@ const state = {
         }
       }
     },
-    '2019/05/14': {
+    '2019/09/14': {
       total: '120',
       purchases: {
         'ID3': {

@@ -1,27 +1,9 @@
 <template>
-  <!-- <div class="purchase">
-        <div class="purchase-tag">
-          <img src="../../statics/tag1.png" alt="">
-        </div>
-
-        <div class="purchase-name">
-          <span>{{expense.name}}</span>
-        </div>
-
-        <div class = "purchase-sum"> 
-          <span>${{expense.cost}}</span>
-        </div>
-
-        <div class="purchase-more row">
-          <span>More</span>
-          <img src="../assets/more.svg">
-        </div>
-      </div> -->
   <div>
     <div class="date-container">
 
       <div class="month">
-        {{ id }}
+        {{ id | niceDate }}
       </div>
 
       <div class="total">
@@ -40,26 +22,32 @@
       </div>
 
       <div class="purchase-name">
-        <span>{{expense.name}}</span>
+        <span>{{ expense.name }}</span>
       </div>
 
       <div class = "purchase-sum"> 
-        <span>${{expense.cost}}</span>
+        <span>${{ expense.cost }}</span>
       </div>
 
       <div class="purchase-more row">
         <span>More</span>
         <img src="../assets/more.svg">
       </div>
+      
     </div>
-
   </div>
 </template>
 
 <script>
-export default {
-  props: ['months', 'id']
+import { date } from 'quasar'
 
+export default {
+  props: ['months', 'id'],
+  filters: {
+    niceDate(value) {
+      return date.formatDate(value, 'MMM, D')
+    }
+  }
 }
 </script>
 
