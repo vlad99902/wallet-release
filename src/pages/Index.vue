@@ -11,24 +11,17 @@
       Recent
     </div>
 
-    <div class="date-container">
-      <div class="month">
-      SEPT, 29
-      </div>
-      <div class="total">
-        TOTAL: $12.43
-      </div>
-    </div>
+    
 
 <!-- all of purchases -->
     <div class="purchase-container">
       <expenses
-        v-for="(expense, key) in expenses"
+        v-for="(months, key) in expenses"
         :key="key"
-        :expense="expense"
+        :months="months"
         :id="key" />
     </div>
-    
+
   </q-page>
 </template>
 

@@ -5,26 +5,59 @@ import { uid, Notify } from 'quasar'
 
 const state = {
   expenses: {
-    'ID1': {
-      name: 'Beer',
-      description: 'something here',
-      date: '2019/05/12',
-      cost: '12222222',
-      category: 1
+    // 'ID1': {
+    //   name: 'Beer',
+    //   description: 'something here',
+    //   date: '2019/05/12',
+    //   cost: '12222222',
+    //   category: 1
+    // },
+    // 'ID2': {
+    //   name: 'Milk',
+    //   description: 'something here',
+    //   date: '2019/05/12',
+    //   cost: '121',
+    //   category: 2
+    // },
+    // 'ID3': {
+    //   name: 'McDonald and Burger King',
+    //   description: 'something here',
+    //   date: '2019/05/12',
+    //   cost: '120',
+    //   category: 3
+    // }
+    '2019/05/12' : {
+      total: '1222',
+      purchases: {
+        'ID1': {
+          name: 'Beer',
+          description: 'something here',
+          cost: '12222222',
+          category: 1
+        }
+      }
     },
-    'ID2': {
-      name: 'Milk',
-      description: 'something here',
-      date: '2019/05/12',
-      cost: '121',
-      category: 2
+    '2019/05/13': {
+      total: '121',
+      purchases: {
+        'ID2': {
+          name: 'Milk',
+          description: 'something here',
+          cost: '121',
+          category: 2
+        }
+      }
     },
-    'ID3': {
-      name: 'McDonald and Burger King',
-      description: 'something here',
-      date: '2019/05/12',
-      cost: '120',
-      category: 3
+    '2019/05/14': {
+      total: '120',
+      purchases: {
+        'ID3': {
+          name: 'McDonald and Burger King',
+          description: 'something here',
+          cost: '120',
+          category: 3
+        }
+      }
     }
   },
   analytics: {
