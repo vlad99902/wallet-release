@@ -27,6 +27,7 @@
     <q-tabs
         v-model="tab"
         class="text-black bottom-nav-bar"
+        active-color="white"
       >
         <q-tab name="mails" icon="home" label=" " />
         <q-tab name="alarms" icon="alarm" label=" " />
@@ -114,10 +115,20 @@ export default {
 
   .bottom-nav-bar {
     background: $for-white;
-    border-radius: 30px 30px 0px 0px;
+  }
+
+  .dark .bottom-nav-bar {
+    background: $for-white-dark-bar;
   }
 
   .q-footer {
     background: $for-white;
+  }
+  .dark .q-footer {
+    background: $for-white-dark-bar;
+  }
+
+  .q-tab__icon {
+    color: $secondary;
   }
 </style>

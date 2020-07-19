@@ -105,6 +105,7 @@ export default {
   margin-right: 55px;
 }
 
+
 .avaliable-money {
   font-weight: 300;
 }
@@ -214,6 +215,10 @@ export default {
   border-radius: 0.7rem;
   background-color: $for-white;
   box-shadow: 0 0.2rem 1.2rem -0.2rem rgba(0,0,0,.1);
+}
+
+.dark .purchase {
+  background-color: $for-white-dark;
 }
 
 @media screen and (min-width: 600px) {

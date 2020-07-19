@@ -1,6 +1,6 @@
 <template>
-  <div id="q-app" class="">
-    <router-view />
+  <div id="q-app" class="main-app" :class="showNightMode ? 'dark' : ''">
+    <router-view  />
   </div>
 </template>
 
@@ -17,20 +17,15 @@ export default {
 
 <style lang="scss">
 
-  .night  {
-  padding: 0;
+.main-app {
   padding-top: 2rem;
-  box-sizing: border-box-dark;
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
+  color: $primary;
+  background: $for-background;
+}
 
-  font-family: 'Lato';
-  font-weight: 300;
-  font-size: 16px;
-
+.dark {
   color: $primary-dark;
   background: $for-background-dark;
 }
-
 </style>
+
