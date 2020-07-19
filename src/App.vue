@@ -1,5 +1,5 @@
 <template>
-  <div id="q-app" class="main-app" :class="showNightMode ? 'dark' : ''">
+  <div id="q-app" class="main-app" :class="showDarkMode ? 'dark' : ''">
     <router-view  />
   </div>
 </template>
@@ -9,7 +9,7 @@ export default {
   name: 'App',
   data() {
      return {
-        showNightMode: true
+        showDarkMode: true
      }
   }
 }
