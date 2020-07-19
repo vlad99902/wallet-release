@@ -5,15 +5,16 @@
 
     <cards :progress="progress" />
 
-    <!-- vlad -->
 
     <div class="recent">
       Recent
     </div>
 
+    <!-- date of purchases -->
+
     <div class="date-container">
       <div class="month">
-      SEPT, 29
+        SEPT, 29
       </div>
       <div class="total">
         TOTAL: $12.43
@@ -22,6 +23,15 @@
 
 <!-- all of purchases -->
     <div class="purchase-container">
+
+      <!-- <div class="date-container">
+        <div class="month">
+          SEPT, 29
+        </div>
+        <div class="total">
+          TOTAL: $12.43
+        </div>
+      </div> -->
       <expenses
         v-for="(expense, key) in expenses"
         :key="key"
@@ -38,9 +48,9 @@ import { mapGetters } from "vuex"
 export default {
   name: 'PageIndex',
   data() {
-     return {
-        progress: 0.4 //progress of progress bar
-     }
+    return {
+      progress: 0.8 //progress of progress bar
+    }
   },
   computed: {
     ...mapGetters('expenses', ['expenses']) //getter for all expenses from store-expenses
@@ -62,7 +72,7 @@ export default {
   padding-left: 2rem;
 }
 
-//toda's date
+//today's date
 .date {
   font-size: 1.4rem;
   padding-left: 2rem;

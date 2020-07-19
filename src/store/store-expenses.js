@@ -20,7 +20,7 @@ const state = {
       category: 2
     },
     'ID3': {
-      name: 'McDonald and Burger King',
+      name: 'McDonald and Burger King wadawdawd',
       description: 'something here',
       date: '2019/05/12',
       cost: '120',
