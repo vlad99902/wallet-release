@@ -1,6 +1,7 @@
 // app global css in SCSS form
 
 /* lato-100 - latin */
+// custom font installation
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -108,3 +109,4 @@ body {
   color: $primary;
   background: $for-background;
 }
+
