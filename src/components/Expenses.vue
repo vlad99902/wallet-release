@@ -22,18 +22,18 @@
       </div>
 
       <div class="purchase-name">
-        <span>{{ expense.name }}</span>
+        {{ expense.name }}
       </div>
 
       <div class = "purchase-sum"> 
-        <span>${{ expense.cost }}</span>
+        ${{ expense.cost }}
       </div>
 
       <div class="purchase-more row">
-        <span>More</span>
+        More
         <img src="../assets/more.svg">
       </div>
-      
+
     </div>
   </div>
 </template>
