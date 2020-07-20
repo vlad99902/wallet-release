@@ -1,6 +1,8 @@
 <template>
   <div class="cards">
       <div class="card-1">
+        
+        <!-- checking for dark mode -->
         <img src="../../statics/card1-dark.png" v-if="settings.showDarkMode">
         <img src="../../statics/card1.png" v-else> 
         <div class="card-content">

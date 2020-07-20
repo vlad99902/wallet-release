@@ -42,16 +42,19 @@ export default {
 
 <style lang="scss">
 
+//basic header
 .heading {
   font-size: 3.375rem;
   font-weight: 700;
   padding-left: 2rem;
 }
 
+//basic margin
 .line {
   margin-left: 2rem;
 }
 
+//just copied from somewhere
 .form-switch {
   display: inline-block;
   cursor: pointer;
@@ -65,7 +68,6 @@ export default {
   width: 46px;
   height: 26px;
   background-color: #e6e6e6;
-  //background-color: $for-white-dark;
   border-radius: 23px;
   vertical-align: text-bottom;
   transition: all 0.3s linear;

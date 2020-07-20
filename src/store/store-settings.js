@@ -1,8 +1,3 @@
-import Vue from 'vue'
-import { uid, Notify } from 'quasar'
-// import { firebaseDb, firebaseAuth } from "boot/firebase"
-// import { showErrorMessage } from "src/functions/function-show-error-message"
-
 const state = {
   settings: {
     showDarkMode: false
