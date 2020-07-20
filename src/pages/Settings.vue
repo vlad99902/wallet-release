@@ -9,6 +9,14 @@
       <input type="checkbox" v-model="showDarkMode">
       <i></i>
     </label>
+    Dark Mode
+  </div>
+  <div class="line">
+    <label class="form-switch">
+      <input type="checkbox" v-model="budget">
+      <i></i>
+    </label>
+    Budget
   </div>
 
 </q-page>
@@ -20,7 +28,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
      return {
-
+       
      }
   },
   computed: {
@@ -32,10 +40,18 @@ export default {
       set(value) {
         this.setShowDarkMode(value)
       }
-    }
+    },
+    budget: {
+      get() {
+        return this.settings.budget
+      },
+      set(value) {
+        this.setBudget(value)
+      }
+    },
   },
   methods: {
-    ...mapActions('settings', ['setShowDarkMode']),
+    ...mapActions('settings', ['setShowDarkMode', 'setBudget']),
   }
 }
 </script>

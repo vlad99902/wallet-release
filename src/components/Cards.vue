@@ -1,6 +1,6 @@
 <template>
   <div class="cards">
-      <div class="card-1" v-if="budget">
+      <div class="card-1" v-if="settings.budget">
         <!-- checking for dark mode -->
         <img src="../../statics/card1-dark.png" v-if="settings.showDarkMode">
         <img src="../../statics/card1.png" v-else> 
@@ -57,7 +57,7 @@
       </div>
 
       <!-- third card -->
-      <div class="card-3" v-if="!budget">
+      <div class="card-3" v-if="!settings.budget">
         <img src="../../statics/card3-dark.png" v-if="settings.showDarkMode">
         <img src="../../statics/card3.png" v-else>
       </div>
@@ -74,7 +74,7 @@ export default {
   props: ['progress'],
   data() {
      return {
-       budget: false
+       
      }
   },
   computed: {
