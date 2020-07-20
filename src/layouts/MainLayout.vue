@@ -53,9 +53,9 @@ import { mapActions } from "vuex";
 export default {
   name: 'MainLayout',
   data() {
-     return {
-        showAddExpense: false
-     }
+    return {
+      showAddExpense: false
+    }
   },
 
   components: {
