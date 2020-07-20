@@ -5,18 +5,21 @@
   </div>
 
   <div class="line">
+    Dark Mode
+    <q-space></q-space>
     <label class="form-switch">
       <input type="checkbox" v-model="showDarkMode">
       <i></i>
     </label>
-    Dark Mode
+    
   </div>
   <div class="line">
+    Budget
+    <q-space></q-space>
     <label class="form-switch">
       <input type="checkbox" v-model="budget">
       <i></i>
     </label>
-    Budget
   </div>
 
 </q-page>
@@ -67,7 +70,11 @@ export default {
 
 //basic margin
 .line {
+  display: flex;
   margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  font-weight: 400;
 }
 
 //just copied from somewhere

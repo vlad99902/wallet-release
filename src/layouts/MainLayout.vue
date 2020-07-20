@@ -115,16 +115,10 @@ export default {
 
   .bottom-nav-bar {
     background: $for-white;
+    transition: background .5s ease-in-out;
   }
 
   .dark .bottom-nav-bar {
-    background: $for-white-dark-bar;
-  }
-
-  .q-footer {
-    background: $for-white;
-  }
-  .dark .q-footer {
     background: $for-white-dark-bar;
   }
 
