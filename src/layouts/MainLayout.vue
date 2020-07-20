@@ -31,7 +31,7 @@
       >
         <q-route-tab name="home" icon="home" label=" " to="/" />
         <q-tab name="recent" icon="alarm" label=" " />
-        <q-tab name="add" icon="add" label=" " />
+        <q-tab name="add" icon="add" label=" " @click="setShowAddExpense()" />
         <q-tab name="analitycs" icon="movie" label=" " />
         <q-route-tab name="settings" icon="settings" label=" " to="/settings" />
       </q-tabs>
@@ -40,17 +40,29 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    
+
   </q-layout>
 </template>
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+import { mapActions } from "vuex";
 
 export default {
   name: 'MainLayout',
+  data() {
+     return {
+        showAddExpense: false
+     }
+  },
 
   components: {
     EssentialLink
+  },
+  methods: {
+    ...mapActions('settings', ['setShowAddExpense'])
   },
 
   data () {
