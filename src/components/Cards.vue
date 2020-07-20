@@ -1,7 +1,6 @@
 <template>
   <div class="cards">
-      <div class="card-1">
-        
+      <div class="card-1" v-if="budget">
         <!-- checking for dark mode -->
         <img src="../../statics/card1-dark.png" v-if="settings.showDarkMode">
         <img src="../../statics/card1.png" v-else> 
@@ -34,22 +33,37 @@
         </div>
       </div>
 
-      <!-- second card -->
+      <div v-else class="create-gap"></div>
+
       <div class="card-2">
+        <!-- checking for dark mode -->
         <img src="../../statics/card2-dark.png" v-if="settings.showDarkMode">
-        <img src="../../statics/card2.png" v-else>
+        <img src="../../statics/card2.png" v-else> 
         <div class="card-content">
+
           <span>
-            Spent this week <br>
+            Spent this week   <br>
           </span>
+
           <span class="avaliable-money">
             $564.4
           </span>
-          <p class="week-analitycs">
-            You’re spending 7% less than on previous week
-          </p>
+
+          <div class="week-analitycs row">
+            You’re spending 7% less than on previous  week
+          </div>
+
         </div>
       </div>
+
+      <!-- third card -->
+      <div class="card-3" v-if="!budget">
+        <img src="../../statics/card3-dark.png" v-if="settings.showDarkMode">
+        <img src="../../statics/card3.png" v-else>
+      </div>
+
+      <div v-else class="create-gap-2"></div>
+
     </div>
 </template>
 
@@ -60,7 +74,7 @@ export default {
   props: ['progress'],
   data() {
      return {
-        showDarkMode: true
+       budget: false
      }
   },
   computed: {
@@ -70,5 +84,12 @@ export default {
 </script>
 
 <style>
+
+.create-gap {
+  margin-left: 1rem;
+}
+.create-gap-2 {
+  padding-right: 2rem;
+}
 
 </style>

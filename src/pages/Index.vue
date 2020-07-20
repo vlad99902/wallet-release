@@ -79,6 +79,9 @@ export default {
   position: relative;
   margin-left: 1rem;
 }
+.card-3 {
+  position: relative;
+}
 
 .card-1 img {
   width: 80vw;
@@ -89,7 +92,14 @@ export default {
 .card-2 img {
   width: 80vw;
   max-width: 300px;
+  //margin-right: 2rem;
+}
+
+.card-3 img {
+  width: 80vw;
+  max-width: 300px;
   margin-right: 2rem;
+  margin-left: 1rem;
 }
 
 //container inside of cards
@@ -102,7 +112,7 @@ export default {
   position: absolute;
   top: 0%;
   padding-top: 7vw;
-  margin-right: 55px;
+  //margin-right: 55px;
 }
 
 
@@ -135,6 +145,9 @@ export default {
   font-size: 3.2vw;
   line-height: 4vw;
   margin-top: 2vw;
+
+  width: 63vw;
+  max-width: 233px;
 }
 
 //fixing how cards look for displays more than 372px width
