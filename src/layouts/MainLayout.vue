@@ -29,11 +29,11 @@
         class="text-black bottom-nav-bar"
         active-color="white"
       >
-        <q-tab name="mails" icon="home" label=" " />
-        <q-tab name="alarms" icon="alarm" label=" " />
-        <q-tab name="movies" icon="add" label=" " />
-        <q-tab name="movies" icon="movie" label=" " />
-        <q-tab name="movies" icon="face" label=" " />
+        <q-route-tab name="home" icon="home" label=" " to="/" />
+        <q-tab name="recent" icon="alarm" label=" " />
+        <q-tab name="add" icon="add" label=" " />
+        <q-tab name="analitycs" icon="movie" label=" " />
+        <q-route-tab name="settings" icon="settings" label=" " to="/settings" />
       </q-tabs>
     </q-footer>
 

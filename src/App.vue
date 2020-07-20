@@ -1,16 +1,21 @@
 <template>
-  <div id="q-app" class="main-app" :class="showDarkMode ? 'dark' : ''">
+  <div id="q-app" class="main-app" :class="settings.showDarkMode ? 'dark' : ''">
     <router-view  />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: 'App',
   data() {
      return {
-        showDarkMode: true
+
      }
+  },
+  computed: {
+    ...mapGetters('settings', ['settings']),
   }
 }
 </script>
