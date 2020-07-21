@@ -14,7 +14,7 @@
 
             <div class="input-fiels-container">
               <input
-                v-model="expanseToSubmit.purchases.name"
+                v-model="expanseToSubmit.name"
                 :rules="[val => !!val || 'Field is required']"
                 ref="name"
                 autofocus
@@ -24,26 +24,26 @@
               />
 
               <input
-                
+                v-model="expanseToSubmit.date"
                 type="text"
                 placeholder="Date"
                 
                 class="input-field" />
 
               <input
-                v-model="expanseToSubmit.purchases.category"
+                v-model="expanseToSubmit.category"
                 type="text"
                 placeholder="Start writing tag"
                 class="input-field" />
 
               <input
-                v-model="expanseToSubmit.purchases.cost"
+                v-model="expanseToSubmit.cost"
                 type="text"
                 placeholder="$$$"
                 class="input-field" />
 
               <input
-                v-model="expanseToSubmit.purchases.description"
+                v-model="expanseToSubmit.description"
                 type="text"
                 placeholder="Description"
                 class="input-field" />
@@ -72,17 +72,14 @@ export default {
   data() {
     //object to submit
     return {
-      expanseToSubmit: {
-        total: "200",
-        purchases: {
-          "": {
-            name: "",
-            description: "",
-            cost: "",
-            category: ""
-          }
-        }
+      expanseToSubmit:  {
+          name: "",
+          description: "",
+          cost: "",
+          category: "",
+          date: ""
       }
+      
     };
   },
   computed: {
