@@ -5,8 +5,8 @@
 
     <nav-bar :showAddExpense.sync="showAddExpense" :class="showAddExpense ? 'blur-overlay' : ''" />
 
-    <q-dialog v-model="showAddExpense" >
-      <add-expense @close="showAddExpense = false" />
+    <q-dialog v-model="showAddExpense"  >
+      <add-expense @close="showAddExpense = false" :class="settings.showDarkMode ? 'dark' : ''" />
     </q-dialog>
   </div>
 </template>
@@ -59,6 +59,7 @@ export default {
 .q-card {
   background: $for-background-dark;
   opacity: 0.85;
+  
   //opacity: 1;
   color: $for-white;
   border-radius: 20px !important;
@@ -69,12 +70,13 @@ export default {
   padding-bottom: 1.6rem;
 }
 
-.q-dialog__backdrop {
-  //opacity: .1;
-}
+
+
 
 .blur-overlay {
+  
   filter: blur(5px);
+  transition: filter 0.3s ease-in-out;
 }
 
 

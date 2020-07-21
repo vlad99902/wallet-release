@@ -165,4 +165,8 @@ export default {
   border: none;
 }
 
+.dark .q-card {
+  opacity: 1;
+}
+
 </style>
