@@ -1,6 +1,7 @@
 <template>
   <div class="main-nav-bar">
       <!-- home button -->
+      {{ title }}
       <div
         class="home-button"
         :class="tab == '/' ? 'active-button-home' : ''"
@@ -65,17 +66,20 @@ export default {
     handleHomeButton() {
       if (this.$router.currentRoute.path != '/') {
         this.$router.replace('/')
-        this.tab = '/'
       }
     },
     handleSettingsButton() {
       if (this.$router.currentRoute.path != '/settings') {
         this.$router.replace('/settings')
-        this.tab = '/settings'
       }
     },
     handleAddButton() {
       this.$emit('update:showAddExpense', true)
+    }
+  },
+  computed: {
+    title() {
+      this.tab = this.$route.fullPath
     }
   }
   //add local storage for tab

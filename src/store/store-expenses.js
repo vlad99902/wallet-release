@@ -4,6 +4,41 @@ import { uid, Notify } from 'quasar'
 // import { showErrorMessage } from "src/functions/function-show-error-message"
 
 const state = {
+  // expenses: {
+  //   '2019/09/12' : {
+  //     total: '1222',
+  //     purchases: {
+  //       'ID1': {
+  //         name: 'Beer',
+  //         description: 'something here',
+  //         cost: '12222222',
+  //         category: 1
+  //       }
+  //     }
+  //   },
+  //   '2019/09/13': {
+  //     total: '121',
+  //     purchases: {
+  //       'ID2': {
+  //         name: 'Milk',
+  //         description: 'something here',
+  //         cost: '121',
+  //         category: 2
+  //       }
+  //     }
+  //   },
+  //   '2019/09/14': {
+  //     total: '120',
+  //     purchases: {
+  //       'ID3': {
+  //         name: 'McDonald and Burger King',
+  //         description: 'something here',
+  //         cost: '120',
+  //         category: 3
+  //       }
+  //     }
+  //   }
+  // },
   expenses: {
     '2019/09/12' : {
       total: '1222',
