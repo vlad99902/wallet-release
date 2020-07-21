@@ -51,7 +51,6 @@
           >
           ADD
         </button>
-        <pre>{{expenseToSubmit}}</pre>
       </q-card-section>
     </form>
   </q-card>
@@ -109,7 +108,8 @@ export default {
 .input-fiels-container {
   margin-top: 2.6rem;
   margin-bottom: 1.6rem;
-  width: 76vw;
+  //width: 76vw;
+  width: 100%;
 
   padding: 0rem 1rem 0rem 1rem;
 }

@@ -3,7 +3,7 @@
   <div id="q-app" class="main-app" :class="settings.showDarkMode ? 'dark' : ''">
     <router-view :class="showAddExpense ? 'blur-overlay' : ''" />
 
-    <nav-bar :showAddExpense.sync="showAddExpense"  />
+    <nav-bar :showAddExpense.sync="showAddExpense" :class="showAddExpense ? 'blur-overlay' : ''" />
 
     <q-dialog v-model="showAddExpense" >
       <add-expense @close="showAddExpense = false" />
@@ -59,19 +59,25 @@ export default {
 .q-card {
   background: $for-background-dark;
   opacity: 0.85;
+  //opacity: 1;
   color: $for-white;
   border-radius: 20px !important;
+  width: 100%;
+  //height: 80%;
 
   padding-top: 1.6rem;
   padding-bottom: 1.6rem;
 }
 
 .q-dialog__backdrop {
+  //opacity: .1;
 }
 
 .blur-overlay {
   filter: blur(5px);
 }
+
+
 
 //////////////////////
 //inside dialog window
