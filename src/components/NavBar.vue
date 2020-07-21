@@ -65,14 +65,12 @@ export default {
   methods: {
     handleHomeButton() {
       if (this.$router.currentRoute.path != '/') {
-        setTimeout(() => this.$router.replace('/'), 100)
-        //this.$router.replace('/')
+        this.$router.replace('/')
       }
     },
     handleSettingsButton() {
       if (this.$router.currentRoute.path != '/settings') {
-        setTimeout(() => this.$router.replace('/settings'), 100)
-        //this.$router.replace('/settings')
+        this.$router.replace('/settings')
       }
     },
     handleAddButton() {
