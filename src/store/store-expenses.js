@@ -5,27 +5,6 @@ import { uid, Notify } from 'quasar'
 
 const state = {
   expenses: {
-    // 'ID1': {
-    //   name: 'Beer',
-    //   description: 'something here',
-    //   date: '2019/05/12',
-    //   cost: '12222222',
-    //   category: 1
-    // },
-    // 'ID2': {
-    //   name: 'Milk',
-    //   description: 'something here',
-    //   date: '2019/05/12',
-    //   cost: '121',
-    //   category: 2
-    // },
-    // 'ID3': {
-    //   name: 'McDonald and Burger King',
-    //   description: 'something here',
-    //   date: '2019/05/12',
-    //   cost: '120',
-    //   category: 3
-    // }
     '2019/09/12' : {
       total: '1222',
       purchases: {
@@ -79,7 +58,14 @@ const mutations = {
     Vue.delete(state.expenses, id)
   },
   addExpense(state, payload) {
-    Vue.set(state.expenses, payload.id, payload.expense)
+    if (state.expenses[payload.expense.date]) {
+      Vue.set(state.expenses[payload.expense.date].purchases, payload.id, payload.expense)
+    }
+    else {
+      let newPayload = { total: '0', purchases: {}}
+      Vue.set(state.expenses, payload.expense.date, newPayload)
+      Vue.set(state.expenses[payload.expense.date].purchases, payload.id, payload.expense)
+    }
   }
 }
 
@@ -97,6 +83,7 @@ const actions = {
       expense: expense
     }
     commit('addExpense', payload)
+    
   },
 }
 

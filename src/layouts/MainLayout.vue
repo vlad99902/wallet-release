@@ -23,7 +23,7 @@
       </q-list>
     </q-drawer>
 
-    <q-footer>
+    <!-- <q-footer>
     <q-tabs
         v-model="tab"
         class="text-black bottom-nav-bar"
@@ -35,7 +35,7 @@
         <q-tab name="analitycs" icon="movie" label=" " />
         <q-route-tab name="settings" icon="settings" label=" " to="/settings" />
       </q-tabs>
-    </q-footer>
+    </q-footer> -->
 
     <q-page-container>
       <router-view />

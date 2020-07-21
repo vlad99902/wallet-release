@@ -215,6 +215,7 @@ export default {
 
 .purchase-container {
   max-width: 600px;
+  padding-bottom: 6rem;
 }
 
 .purchase {

@@ -55,7 +55,8 @@ export default {
   },
   methods: {
     ...mapActions('settings', ['setShowDarkMode', 'setBudget']),
-  }
+  },
+  
 }
 </script>
 
