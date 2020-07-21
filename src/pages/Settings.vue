@@ -1,5 +1,5 @@
-<template>
-<q-page>
+<template >
+<q-page >
   <div class="heading">
     Settings
   </div>
