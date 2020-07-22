@@ -47,14 +47,16 @@ export default {
 
 //main heading of the page
 .heading {
-  font-size: 3.375rem;
+  //font-size: 3.375rem;
+  font-size: 3rem;
   font-weight: 700;
   padding-left: 2rem;
 }
 
 //toda's date
 .date {
-  font-size: 1.4rem;
+  //font-size: 1.4rem;
+  font-size: 1.2rem;
   padding-left: 2rem;
   font-weight: 300;
 }
@@ -106,7 +108,7 @@ export default {
 .card-content {
   line-height: 10vw;
   color: $for-white;
-  font-size: 9vw;
+  font-size: 8vw;
   font-weight: 700;
   padding-left: 8vw;
   position: absolute;
@@ -115,7 +117,6 @@ export default {
   //margin-right: 55px;
 }
 
-
 .avaliable-money {
   font-weight: 300;
 }
@@ -123,10 +124,6 @@ export default {
 //styling progress bar
 .q-linear-progress {
   border-radius: 9px;
-}
-
-.q-linear-progress__model--determinate {
-  border-radius: 18px;
 }
 
 .bar {

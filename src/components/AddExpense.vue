@@ -35,7 +35,7 @@
             class="input-field" />
 
           <input
-            v-model="expenseToSubmit.cost"
+            v-model.number="expenseToSubmit.cost"
             @blur="$v.expenseToSubmit.cost.$touch"
             :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
             type="number"
@@ -137,6 +137,8 @@ export default {
   margin-bottom: 1.6rem;
   //width: 76vw;
   width: 100%;
+  box-sizing: border-box;
+
 
   padding: 0rem 1rem 0rem 1rem;
 }
@@ -145,10 +147,11 @@ export default {
 .input-field {
   background: rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-  border-width: 2px;
+  border-width: 1px;
   border-color: rgba(0, 0, 0, 0);
 
   width: 100%;
+  
 
   margin-bottom: 1rem;
   padding: 0.6rem 0.875rem;
@@ -164,10 +167,13 @@ export default {
 
 //focus text field CHANGE THIS FRADIENT
 .input-field:focus {
-  border-color: $for-white !important;
+  //border-color: $for-white !important;
+  border: 1px solid $for-white;
   border-radius: 12px;
-  outline: none;
+  outline: none !important;
 }
+
+
 
 //buttons
 .buttons {
@@ -193,7 +199,8 @@ export default {
 }
 
 .invalid {
-  border-color: $field-invalid-border !important;
+  //border-color: $field-invalid-border !important;
+  border:1px solid $field-invalid-border;
   
 }
 
