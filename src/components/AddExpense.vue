@@ -58,6 +58,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { date } from 'quasar'
 
 export default {
   props: ['showAddExpense'],
@@ -68,22 +69,27 @@ export default {
           description: "",
           cost: "",
           category: "",
-          date: ""
+          date: "",
+          time: "1100"
       }  
     }
   },
   methods: {
     ...mapActions('expenses', ['addExpense']),
     submitForm() {
-      this.$emit('close')
       this.submitExpense()
       this.$emit('close')
     },
     submitExpense() {
-      this.$emit('close')
+      //for sorting expenses within a date, sorting by time in format Hmmss (for example 09:54:32 IS 95432)
+      this.expenseToSubmit.time = date.formatDate(Date.now(), 'Hmmss')
       this.addExpense(this.expenseToSubmit)
-      this.$emit('close')
     }
+  },
+  mounted() {
+    let timeStamp = Date.now()
+    let formattedString = date.formatDate(Date.now(), 'Hmmss')
+    console.log('formattedString: ', formattedString)
   }
 }
 </script>

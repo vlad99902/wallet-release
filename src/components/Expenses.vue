@@ -14,7 +14,7 @@
 
     <div
       class="purchase"
-      v-for="(expense, key) in months.purchases"
+      v-for="(expense, key) in orderedExpenses"
       :key="key">
 
       <div class="purchase-tag">
@@ -42,10 +42,36 @@
 import { date } from 'quasar'
 
 export default {
+  data() {
+    return {
+    }
+  },
   props: ['months', 'id'],
   filters: {
     niceDate(value) {
       return date.formatDate(value, 'MMM, D')
+    }
+  }, 
+  computed: {
+    orderedExpenses: function () {
+
+      let expensesSorted = {},
+        keysOrdered = Object.keys(this.months.purchases)
+
+      keysOrdered.sort((a,b) => {
+        let taskAProp = parseInt(this.months.purchases[a].time), 
+      taskBProp = parseInt(this.months.purchases[b].time)
+
+        if (taskAProp > taskBProp) return -1
+        else if (taskAProp < taskBProp) return 1
+        else return 0
+      })
+
+      keysOrdered.forEach ((key) => {
+        expensesSorted[key] = this.months.purchases[key]
+      })
+
+      return expensesSorted
     }
   }
 }

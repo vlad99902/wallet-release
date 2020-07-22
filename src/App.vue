@@ -1,8 +1,9 @@
 <template>
   <!-- applying dark mode here -->
   <div id="q-app" class="main-app" :class="settings.showDarkMode ? 'dark' : ''">
-    <router-view :class="showAddExpense ? 'blur-overlay' : ''" />
 
+    <router-view :class="showAddExpense ? 'blur-overlay' : ''" />
+    
     <nav-bar :showAddExpense.sync="showAddExpense" :class="showAddExpense ? 'blur-overlay' : ''" />
 
     <q-dialog v-model="showAddExpense"  >
