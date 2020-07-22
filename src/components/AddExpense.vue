@@ -22,9 +22,10 @@
 
           <input
             v-model="expenseToSubmit.date"
-            type="text"
+            @blur="$v.expenseToSubmit.date.$touch"
+            :class="{'invalid' : $v.expenseToSubmit.date.$error}"
+            type="date"
             placeholder="Date"
-            
             class="input-field" />
 
           <input
@@ -37,7 +38,8 @@
             v-model="expenseToSubmit.cost"
             @blur="$v.expenseToSubmit.cost.$touch"
             :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
-            type="text"
+            type="number"
+            step="0.1"
             placeholder="$$$"
             class="input-field" />
 
@@ -56,7 +58,8 @@
           type="submit" 
           :disabled = "$v.expenseToSubmit.name.$invalid 
           || $v.expenseToSubmit.cost.$invalid 
-          || $v.expenseToSubmit.description.$invalid"
+          || $v.expenseToSubmit.description.$invalid
+          || $v.expenseToSubmit.date.$invalid"
           >
           ADD
         </button>
@@ -69,7 +72,7 @@
 <script>
 import { mapActions } from "vuex";
 import { date } from 'quasar'
-import { required, maxLength} from 'vuelidate/lib/validators'
+import { required, maxLength } from 'vuelidate/lib/validators'
 
 export default {
   props: ['showAddExpense'],
@@ -80,9 +83,9 @@ export default {
           description: "",
           cost: "",
           category: "",
-          date: "",
+          date: new Date().toISOString().substr(0, 10),
           count: ""
-      }  
+      }
     }
   },
 
@@ -93,6 +96,7 @@ export default {
     expenseToSubmit: {
       name: {required, maxLength: maxLength(22)},
       cost: {required},
+      date: {required},
       description: {maxLength: maxLength(35)}
     }
 
@@ -189,7 +193,8 @@ export default {
 }
 
 .invalid {
-  border-color: red !important
+  border-color: $field-invalid-border !important;
+  
 }
 
 .dark .q-card {
