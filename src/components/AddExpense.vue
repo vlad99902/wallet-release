@@ -34,6 +34,7 @@
             placeholder="Start writing tag"
             class="input-field" />
 
+          
           <input
             v-model.number="expenseToSubmit.cost"
             @blur="$v.expenseToSubmit.cost.$touch"
@@ -109,13 +110,17 @@ export default {
     },
     submitExpense() {
       this.addExpense(this.expenseToSubmit)
-    }
+    },
+    
   }
   
 }
 </script>
 
 <style lang="scss">
+
+
+
 
 //add and split
 .header {
