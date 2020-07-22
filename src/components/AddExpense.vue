@@ -72,15 +72,28 @@
             placeholder="$$$"
             class="input-field" />
 
+          <!-- input description -->
+          <!-- <input
+            v-model="expenseToSubmit.description"
+            @blur="$v.expenseToSubmit.description.$touch"
+            :class="{'invalid' : $v.expenseToSubmit.description.$error}"
+            type="text"
+            
+            placeholder="Description"
+            class="input-field" /> -->
 
-      <!-- input description -->
-          <input
+            <!-- maybe it's our choise in 2 lines input description -->
+          <textarea
             v-model="expenseToSubmit.description"
             @blur="$v.expenseToSubmit.description.$touch"
             :class="{'invalid' : $v.expenseToSubmit.description.$error}"
             type="text"
             placeholder="Description"
-            class="input-field" />
+            class="input-field"
+            rows="2"
+            >
+      
+            </textarea>
         </div>
 
         
@@ -94,6 +107,8 @@
           >
           ADD
         </button>
+        
+        
 
       </q-card-section>
     </form>
@@ -210,13 +225,14 @@ export default {
   border-color: rgba(0, 0, 0, 0);
 
   width: 100%;
-  
 
   margin-bottom: 1rem;
   padding: 0.6rem 0.875rem;
 
   font-weight: 500;
   color: $for-white;
+
+  resize: none;
 
   &::placeholder {
     color: $secondary;
