@@ -70,7 +70,7 @@ export default {
           cost: "",
           category: "",
           date: "",
-          time: "1100"
+          count: ""
       }  
     }
   },
@@ -81,16 +81,10 @@ export default {
       this.$emit('close')
     },
     submitExpense() {
-      //for sorting expenses within a date, sorting by time in format Hmmss (for example 09:54:32 IS 95432)
-      this.expenseToSubmit.time = date.formatDate(Date.now(), 'Hmmss')
       this.addExpense(this.expenseToSubmit)
     }
   },
-  mounted() {
-    let timeStamp = Date.now()
-    let formattedString = date.formatDate(Date.now(), 'Hmmss')
-    console.log('formattedString: ', formattedString)
-  }
+  
 }
 </script>
 
