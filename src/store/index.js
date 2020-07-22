@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Vuelidate from 'vuelidate'
+
 
 // import example from './module-example'
 import expenses from './store-expenses'
 import settings from './store-settings'
 
 Vue.use(Vuex)
+Vue.use(Vuelidate)
 
 /*
  * If not building with SSR mode, you can

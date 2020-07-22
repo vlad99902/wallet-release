@@ -1,17 +1,19 @@
 <template>
   <q-card>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="submitForm" novalidate>
       <q-card-section>
         <div class="header">
           <div class="header-element">Add</div>
           <div class="header-element">Split</div>
         </div>
-
+        
         <div class="input-fiels-container">
+
           <input
             v-model="expenseToSubmit.name"
-            :rules="[val => !!val || 'Field is required']"
-            ref="name"
+            @blur="$v.expenseToSubmit.name.$touch"
+            :class="{'invalid' : $v.expenseToSubmit.name.$error}"
+            ref="name" 
             autofocus
             type="text"
             placeholder="Name"
@@ -33,12 +35,16 @@
 
           <input
             v-model="expenseToSubmit.cost"
+            @blur="$v.expenseToSubmit.cost.$touch"
+            :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
             type="text"
             placeholder="$$$"
             class="input-field" />
 
           <input
             v-model="expenseToSubmit.description"
+            @blur="$v.expenseToSubmit.description.$touch"
+            :class="{'invalid' : $v.expenseToSubmit.description.$error}"
             type="text"
             placeholder="Description"
             class="input-field" />
@@ -48,9 +54,13 @@
         <button
           class="button-add"
           type="submit" 
+          :disabled = "$v.expenseToSubmit.name.$invalid 
+          || $v.expenseToSubmit.cost.$invalid 
+          || $v.expenseToSubmit.description.$invalid"
           >
           ADD
         </button>
+
       </q-card-section>
     </form>
   </q-card>
@@ -59,6 +69,7 @@
 <script>
 import { mapActions } from "vuex";
 import { date } from 'quasar'
+import { required, maxLength} from 'vuelidate/lib/validators'
 
 export default {
   props: ['showAddExpense'],
@@ -74,6 +85,18 @@ export default {
       }  
     }
   },
+
+  //validations parameters
+  //must be imported
+
+  validations: {
+    expenseToSubmit: {
+      name: {required, maxLength: maxLength(22)},
+      cost: {required},
+      description: {maxLength: maxLength(35)}
+    }
+
+  },
   methods: {
     ...mapActions('expenses', ['addExpense']),
     submitForm() {
@@ -83,7 +106,7 @@ export default {
     submitExpense() {
       this.addExpense(this.expenseToSubmit)
     }
-  },
+  }
   
 }
 </script>
@@ -163,6 +186,10 @@ export default {
   text-align: center;
 
   border: none;
+}
+
+.invalid {
+  border-color: red !important
 }
 
 .dark .q-card {
