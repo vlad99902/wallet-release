@@ -72,17 +72,9 @@
             placeholder="Start writing tag"
             class="input-field" />
 
-          <!-- input description -->
-          <!-- <input
-            v-model="expenseToSubmit.description"
-            @blur="$v.expenseToSubmit.description.$touch"
-            :class="{'invalid' : $v.expenseToSubmit.description.$error}"
-            type="text"
-            
-            placeholder="Description"
-            class="input-field" /> -->
-
-            <!-- maybe it's our choise in 2 lines input description -->
+          
+          
+      <!-- input description --> 
           <textarea
             v-model="expenseToSubmit.description"
             @blur="$v.expenseToSubmit.description.$touch"
@@ -153,7 +145,7 @@ export default {
       name: {required, maxLength: maxLength(25)},
       cost: {required, minValue: minValue(0)},
       date: {required},
-      description: {maxLength: maxLength(49)}
+      description: {maxLength: maxLength(99)}
     }
 
   },
@@ -199,7 +191,7 @@ export default {
   color: $for-white;
   font-weight: 600;
   //font-size: 1.2rem;
-  font-size: 3vh;
+  font-size: 2.4vh;
 }
 
 //add split elements
@@ -232,11 +224,14 @@ export default {
   border-color: rgba(0, 0, 0, 0);
 
   width: 100%;
-  height: 6.2vh;
 
-  font-size: 2.2vh;
+  height: 5.5vh;
 
-  margin-bottom: 1rem;
+  font-size: 1.95vh;
+
+  //margin-bottom: 1rem;
+  margin-bottom: 2vh;
+
   padding: 0.6rem 0.875rem;
 
   font-weight: 500;
@@ -258,7 +253,9 @@ export default {
 
   width: 100%;
 
-  font-size: 2.2vh;
+
+  font-size: 1.95vh;
+ // font-size: 2.2vh;
 
   margin-bottom: 1rem;
   padding: 0.6rem 0.875rem;
@@ -318,8 +315,9 @@ export default {
   border-radius: 12px;
   width: 7.25rem;
 
-  margin: 0rem 1rem 0rem 1rem;
-  padding: 0.6rem 0.875rem;
+  margin: -.8vh 1rem 0rem 1rem;
+ // padding: 0.6rem 0.875rem;
+  padding: 1.2vh 0.875rem;
 
   font-weight: 600;
   text-transform: uppercase;
@@ -336,16 +334,16 @@ export default {
 
   color: $for-white;
 
-  height: 4.5vh;
+  //height: 4.5vh;
 
-  //padding: 0.3rem 0.875rem;
-  padding: 0.4rem 0.875rem 1.4rem 0.875rem;
+  padding: 0.3rem 0.875rem;
+ // padding: 0.4rem 0.875rem 1.4rem 0.875rem;
 
   margin-right: 1rem;
   margin-bottom: 1rem;
 
   //font-size: 0.86rem;
-  font-size: 2vh;
+  font-size: 1.8vh;
   font-weight: 500;
   text-align: center;
 
