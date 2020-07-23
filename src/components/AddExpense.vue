@@ -53,23 +53,22 @@
             Yesterday
           </button>
 
+      <!-- input cost -->
+          <money
+            v-model.number="expenseToSubmit.cost"
+            v-bind="money"
+            @blur="$v.expenseToSubmit.cost.$touch"
+            :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
+            
+            placeholder="$$$"
+            class="input-field" >
+          </money>
 
       <!-- input category -->
           <input
             v-model="expenseToSubmit.category"
             type="text"
             placeholder="Start writing tag"
-            class="input-field" />
-
-          
-      <!-- input cost -->
-          <input
-            v-model.number="expenseToSubmit.cost"
-            @blur="$v.expenseToSubmit.cost.$touch"
-            :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
-            type="number"
-            step="0.1"
-            placeholder="$$$"
             class="input-field" />
 
           <!-- input description -->
@@ -118,7 +117,10 @@
 <script>
 import { mapActions } from "vuex";
 import { date } from 'quasar'
+//validatin fields
 import { required, maxLength } from 'vuelidate/lib/validators'
+//cost autofromat
+import { Money } from 'v-money'
 
 export default {
   props: ['showAddExpense'],
@@ -131,7 +133,15 @@ export default {
           category: "",
           date: new Date().toISOString().substr(0, 10),
           count: ""
-      }
+      },
+      //money input format edit here
+      money: {
+          decimal: '.',
+          thousands: ' ',
+          prefix: '$',
+          precision: 2,
+          masked: false
+        }
     }
   },
 

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 //validation
 import Vuelidate from 'vuelidate'
+//cost auto format
+import money from 'v-money'
 
 
 // import example from './module-example'
@@ -10,6 +12,7 @@ import settings from './store-settings'
 
 Vue.use(Vuex)
 Vue.use(Vuelidate)
+Vue.use(money, {precision: 4})
 
 /*
  * If not building with SSR mode, you can
