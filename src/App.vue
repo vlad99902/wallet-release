@@ -65,10 +65,11 @@ export default {
   color: $for-white;
   border-radius: 20px !important;
   width: 100%;
-  height: 70%;
+  height: 80%;
+  
 
-  padding-top: 1.6rem;
-  padding-bottom: 1.6rem;
+  padding-top: 1.6vh;
+  padding-bottom: 1.6vh;
 }
 
 

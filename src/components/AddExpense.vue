@@ -68,8 +68,6 @@
       <!-- input category -->
           <input
             v-model="expenseToSubmit.category"
-            @keypress="$event.key === '-' ? $event.preventDefault() : false"
-            @focus="expenseToSubmit.category = 1"
             type="text"
             placeholder="Start writing tag"
             class="input-field" />
@@ -91,7 +89,7 @@
             :class="{'invalid' : $v.expenseToSubmit.description.$error}"
             type="text"
             placeholder="Description"
-            class="input-field"
+            class="input-field-desc"
             rows="2"
             autogrow
             >
@@ -200,7 +198,8 @@ export default {
   text-align: center;
   color: $for-white;
   font-weight: 600;
-  font-size: 1.2rem;
+  //font-size: 1.2rem;
+  font-size: 3vh;
 }
 
 //add split elements
@@ -211,8 +210,8 @@ export default {
 }
 
 .input-fiels-container {
-  margin-top: 2.6rem;
-  margin-bottom: 1.6rem;
+  margin-top: 3vh;
+  margin-bottom: 1rem;
   //width: 76vw;
   width: 100%;
   box-sizing: border-box;
@@ -233,6 +232,33 @@ export default {
   border-color: rgba(0, 0, 0, 0);
 
   width: 100%;
+  height: 6.2vh;
+
+  font-size: 2.2vh;
+
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.875rem;
+
+  font-weight: 500;
+  color: $for-white;
+
+  resize: none;
+
+  &::placeholder {
+    color: $secondary;
+    font-weight: 500;
+  }
+}
+
+.input-field-desc {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0);
+
+  width: 100%;
+
+  font-size: 2.2vh;
 
   margin-bottom: 1rem;
   padding: 0.6rem 0.875rem;
@@ -250,6 +276,11 @@ export default {
 
 //focus
 .input-field:focus {
+  border: 1px solid $for-white;
+  border-radius: 12px;
+  outline: none !important;
+}
+.input-field-desc:focus {
   border: 1px solid $for-white;
   border-radius: 12px;
   outline: none !important;
@@ -305,12 +336,16 @@ export default {
 
   color: $for-white;
 
-  padding: 0.3rem 0.875rem;
+  height: 4.5vh;
+
+  //padding: 0.3rem 0.875rem;
+  padding: 0.4rem 0.875rem 1.4rem 0.875rem;
 
   margin-right: 1rem;
   margin-bottom: 1rem;
 
-  font-size: 0.86rem;
+  //font-size: 0.86rem;
+  font-size: 2vh;
   font-weight: 500;
   text-align: center;
 
@@ -324,6 +359,8 @@ export default {
 .button-current-date-selected {
   background-color: $for-background;
   color: $dark;
+
+
   outline: none !important;
   border: none;
 }
