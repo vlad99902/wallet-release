@@ -12,6 +12,8 @@
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "quasar": "^1.0.0",
+    "v-money": "^0.8.1",
+    "v-money-no-negative": "^0.8.3",
     "vuelidate": "^0.7.5"
   },
   "devDependencies": {

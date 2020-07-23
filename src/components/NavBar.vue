@@ -67,10 +67,24 @@ export default {
       if (this.$router.currentRoute.path != '/') {
         this.$router.replace('/')
       }
+      else {
+        window.scroll({
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth'
+        });
+      }
     },
     handleSettingsButton() {
       if (this.$router.currentRoute.path != '/settings') {
         this.$router.replace('/settings')
+      }
+      else {
+        window.scroll({
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth'
+        });
       }
     },
     handleAddButton() {
@@ -92,7 +106,7 @@ export default {
   display: flex;
   justify-content: space-around;
   background: $for-white;
-  transition: background .5s ease-in-out;
+  transition: .5s ease-in-out;
   height: 4rem;
   position: fixed;
   left: 0;
@@ -102,7 +116,6 @@ export default {
 
 .dark .main-nav-bar {
   background: $for-white-dark-bar;
-  
 }
 
 svg {

@@ -9,6 +9,8 @@
         
         <div class="input-fiels-container">
 
+
+      <!-- input name -->
           <input
             v-model="expenseToSubmit.name"
             @blur="$v.expenseToSubmit.name.$touch"
@@ -20,6 +22,9 @@
             class="input-field"
           />
 
+
+
+      <!-- input date -->
           <input
             v-model="expenseToSubmit.date"
             @blur="$v.expenseToSubmit.date.$touch"
@@ -28,31 +33,70 @@
             placeholder="Date"
             class="input-field" />
 
+
+      <!-- buttons to set today or yesterdat date -->
+          <button
+            class="button-set-date"
+            type="button"
+            v-on:click="expenseToSubmit.date = new Date().toISOString().substr(0, 10)"
+            :class="{'button-current-date-selected' : expenseToSubmit.date == new Date().toISOString().substr(0, 10)}"
+            >
+            Today
+          </button>
+
+          <button
+            class="button-set-date"
+            type="button"
+            v-on:click="setYesterdayDate()"
+            :class="{'button-current-date-selected' : currentDateIsYesterday() == true}"
+            >
+            Yesterday
+          </button>
+
+      <!-- input cost -->
+          <money
+            v-model.number="expenseToSubmit.cost"
+            @keypress="$event.key === '-' ? $event.preventDefault() : false"
+            v-bind="money"
+            @blur="$v.expenseToSubmit.cost.$touch"
+            :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
+            
+            placeholder="$$$"
+            class="input-field" >
+          </money>
+
+      <!-- input category -->
           <input
             v-model="expenseToSubmit.category"
+            @keypress="$event.key === '-' ? $event.preventDefault() : false"
+            @focus="expenseToSubmit.category = 1"
             type="text"
             placeholder="Start writing tag"
             class="input-field" />
 
-          
-          <input
-            v-model.number="expenseToSubmit.cost"
-            @blur="$v.expenseToSubmit.cost.$touch"
-            :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
-            type="number"
-            step="0.1"
-            placeholder="$$$"
-            class="input-field" />
-
-          <input
+          <!-- input description -->
+          <!-- <input
             v-model="expenseToSubmit.description"
             @blur="$v.expenseToSubmit.description.$touch"
             :class="{'invalid' : $v.expenseToSubmit.description.$error}"
             type="text"
-            autogrow
+            
             placeholder="Description"
-            class="input-field" />
+            class="input-field" /> -->
 
+            <!-- maybe it's our choise in 2 lines input description -->
+          <textarea
+            v-model="expenseToSubmit.description"
+            @blur="$v.expenseToSubmit.description.$touch"
+            :class="{'invalid' : $v.expenseToSubmit.description.$error}"
+            type="text"
+            placeholder="Description"
+            class="input-field"
+            rows="2"
+            autogrow
+            >
+      
+            </textarea>
         </div>
 
         
@@ -75,7 +119,10 @@
 <script>
 import { mapActions } from "vuex";
 import { date } from 'quasar'
-import { required, maxLength } from 'vuelidate/lib/validators'
+//validatin fields
+import { required, maxLength, minValue } from 'vuelidate/lib/validators'
+//cost autofromat
+import { Money } from 'v-money'
 
 export default {
   props: ['showAddExpense'],
@@ -88,19 +135,27 @@ export default {
           category: "",
           date: new Date().toISOString().substr(0, 10),
           count: ""
-      }
+      },
+      //money input format edit here
+      money: {
+          decimal: '.',
+          thousands: ' ',
+          prefix: '$',
+          precision: 2,
+          masked: false
+        }
     }
   },
 
   //validations parameters
-  //must be imported
+  //must be imported in umport section
 
   validations: {
     expenseToSubmit: {
-      name: {required, maxLength: maxLength(22)},
-      cost: {required},
+      name: {required, maxLength: maxLength(25)},
+      cost: {required, minValue: minValue(0)},
       date: {required},
-      description: {maxLength: maxLength(35)}
+      description: {maxLength: maxLength(49)}
     }
 
   },
@@ -112,17 +167,33 @@ export default {
     },
     submitExpense() {
       this.addExpense(this.expenseToSubmit)
+    }, 
+
+    //setting yesterday date to date field
+    setYesterdayDate: function() {
+      let date = new Date();
+      date.setDate(date.getDate() - 1)
+      this.expenseToSubmit.date = date.toISOString().substr(0, 10)
     },
-    
-  }
-  
+
+    //check is cerrent date yesterday date?
+    currentDateIsYesterday: function() {
+      let date = new Date();
+      date.setDate(date.getDate() - 1)
+      if (this.expenseToSubmit.date == date.toISOString().substr(0, 10)){
+        return true;
+      }
+    },
+
+  },
 }
 </script>
 
 <style lang="scss">
 
-
-
+///////////////////////////
+//CONTAINERS AND OTHER
+///////////////////////////
 
 //add and split
 .header {
@@ -150,6 +221,10 @@ export default {
   padding: 0rem 1rem 0rem 1rem;
 }
 
+///////////////////////////
+//TEXT FIELDS
+///////////////////////////
+
 //input field style
 .input-field {
   background: rgba(0, 0, 0, 0.25);
@@ -158,7 +233,6 @@ export default {
   border-color: rgba(0, 0, 0, 0);
 
   width: 100%;
-  
 
   margin-bottom: 1rem;
   padding: 0.6rem 0.875rem;
@@ -166,27 +240,44 @@ export default {
   font-weight: 500;
   color: $for-white;
 
+  resize: none;
+
   &::placeholder {
     color: $secondary;
     font-weight: 500;
   }
 }
 
-
-//focus text field CHANGE THIS FRADIENT
+//focus
 .input-field:focus {
-  //border-color: $for-white !important;
   border: 1px solid $for-white;
   border-radius: 12px;
   outline: none !important;
 }
 
-
-
-//buttons
-.buttons {
+.invalid {
+  border:1px solid $field-invalid-border;
   
 }
+
+::-webkit-calendar-picker-indicator {
+    // color: white;
+    // opacity: 1;
+    // display: block;
+    // background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    // width: 20px;
+    // height: 20px;
+    border-width: thin;
+    display: none;
+}
+
+
+
+///////////////////////////
+//BUTTONS
+///////////////////////////
+
+//buttons
 
 //button-add-style
 .button-add {
@@ -204,16 +295,37 @@ export default {
   text-align: center;
 
   border: none;
+  outline: none !important;
 }
 
-.invalid {
-  //border-color: $field-invalid-border !important;
-  border:1px solid $field-invalid-border;
-  
+//button-set-date-style
+.button-set-date {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  color: $for-white;
+
+  padding: 0.3rem 0.875rem;
+
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-align: center;
+
+  display: inline-block;
+
+  border: none;
+  outline: none !important;
 }
 
-.dark .q-card {
-  opacity: 1;
+//button-current-date-selected
+.button-current-date-selected {
+  background-color: $for-background;
+  color: $dark;
+  outline: none !important;
+  border: none;
 }
 
 </style>

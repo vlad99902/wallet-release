@@ -46,14 +46,14 @@ export default {
   padding-top: 2rem;
   color: $primary;
   background: $for-background;
-  transition: background 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 //with dark mode
 .dark {
   color: $primary-dark;
   background: $for-background-dark;
-  transition: color 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 //styling add window

@@ -7,7 +7,7 @@
       </div>
 
       <div class="total">
-        TOTAL: ${{ months.total }}
+        TOTAL: ${{ months.total | niceTotal }}
       </div>
 
     </div>
@@ -50,6 +50,9 @@ export default {
   filters: {
     niceDate(value) {
       return date.formatDate(value, 'MMM, D')
+    },
+    niceTotal(value) {
+      return Math.round(parseFloat(value)*100)/100
     }
   }, 
   computed: {

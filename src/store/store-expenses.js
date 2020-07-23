@@ -5,7 +5,7 @@ import { uid, Notify } from 'quasar'
 
 const state = {
   expenses: {
-    '2019/09/12' : {
+    '2019-09-12' : {
       total: '1222',
       counter: '1',
       purchases: {
@@ -18,7 +18,7 @@ const state = {
         }
       }
     },
-    '2019/09/14': {
+    '2019-09-14': {
       total: '120',
       counter: '2',
       purchases: {
@@ -38,7 +38,7 @@ const state = {
         }
       }
     },
-    '2019/09/13': {
+    '2019-09-13': {
       total: '121',
       counter: '1',
       purchases: {
