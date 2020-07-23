@@ -49,8 +49,10 @@
             @blur="$v.expenseToSubmit.description.$touch"
             :class="{'invalid' : $v.expenseToSubmit.description.$error}"
             type="text"
+            autogrow
             placeholder="Description"
             class="input-field" />
+
         </div>
 
         
@@ -169,6 +171,7 @@ export default {
     font-weight: 500;
   }
 }
+
 
 //focus text field CHANGE THIS FRADIENT
 .input-field:focus {
