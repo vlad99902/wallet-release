@@ -5,54 +5,126 @@ import { uid, Notify } from 'quasar'
 
 const state = {
   expenses: {
-    '2019-09-12' : {
-      total: '1222',
-      counter: '1',
+    '2020-07-20' : {
+      total: '351',
+      counter: '3',
       purchases: {
         'ID1': {
-          name: 'Beer',
-          description: 'something here',
-          cost: '12222222',
-          category: 1,
-          date: '2019-09-12',
+          name: 'Cigarettes',
+          description: '',
+          cost: '145',
+          category: 'Bad Habits',
           count: '1'
-        }
-      }
-    },
-    '2019-09-14': {
-      total: '120',
-      counter: '2',
-      purchases: {
-        'ID3': {
-          name: 'McDonald and Burger King',
-          description: 'something here',
-          cost: '120',
-          category: 3,
-          date: '2019-09-14',
+        },
+        'ID2': {
+          name: 'Rolls',
+          description: '',
+          cost: '150',
+          category: 'Eating Out',
           count: '2'
         },
-        'ID4': {
-          name: 'McDonald and Burger King2',
-          description: 'something here',
-          cost: '120',
-          category: 3,
-          date: '2019-09-14',
-          count: '1'
-        }
+        'ID3': {
+          name: 'Bus',
+          description: '',
+          cost: '56',
+          category: 'Transport',
+          count: '3'
+        },
       }
     },
-    '2019-09-13': {
-      total: '121',
-      counter: '1',
+    '2020-07-21': {
+      total: '159',
+      counter: '3',
       purchases: {
-        'ID2': {
+        'ID4': {
           name: 'Milk',
-          description: 'something here',
-          cost: '121',
-          category: 2,
-          date: '2019-09-13',
+          description: '',
+          cost: '43',
+          category: 'Foodstuff',
           count: '1'
-        }
+        },
+        'ID5': {
+          name: 'Bus',
+          description: '',
+          cost: '28',
+          category: 'Transport',
+          count: '2'
+        },
+        'ID6': {
+          name: 'Beer',
+          description: '',
+          cost: '85',
+          category: 'Alcohol',
+          count: '3'
+        },
+      }
+    },
+    '2020-07-22': {
+      total: '231',
+      counter: '2',
+      purchases: {
+        'ID7': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'Transport',
+          count: '1'
+        },
+        'ID8': {
+          name: 'Rolls',
+          description: '',
+          cost: '175',
+          category: 'Eating Out',
+          count: '2'
+        },
+      }
+    },
+    '2020-07-23': {
+      total: '467',
+      counter: '6',
+      purchases: {
+        'ID9': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'Transport',
+          count: '1'
+        },
+        'ID10': {
+          name: 'Meds',
+          description: '',
+          cost: '26',
+          category: 'Meds',
+          count: '2'
+        },
+        'ID11': {
+          name: 'McDonalds Cheeseburger',
+          description: '',
+          cost: '50',
+          category: 'Eating Out',
+          count: '3'
+        },
+        'ID12': {
+          name: 'Beer x2',
+          description: '',
+          cost: '140',
+          category: 'Bad Habits',
+          count: '4'
+        },
+        'ID13': {
+          name: 'Cigarettes',
+          description: '',
+          cost: '145',
+          category: 'Bad Habits',
+          count: '5'
+        },
+        'ID14': {
+          name: 'Gas',
+          description: '',
+          cost: '50',
+          category: 'Transport',
+          count: '6'
+        },
       }
     },
   },
@@ -85,6 +157,7 @@ const mutations = {
     }
     else {
       let newPayload = { total: payload.expense.cost, counter: '1', purchases: {}}
+      payload.expense.count = '1'
       Vue.set(state.expenses, payload.expense.date, newPayload)
       Vue.set(state.expenses[payload.expense.date].purchases, payload.id, payload.expense)
     }

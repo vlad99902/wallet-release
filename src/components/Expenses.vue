@@ -2,8 +2,12 @@
   <div>
     <div class="date-container">
 
-      <div class="month">
-        {{ id | niceDate }}
+      <div class="month" v-if="date === this.id">
+        Today
+      </div>
+
+      <div class="month" v-else>
+        {{ id | niceDate }} 
       </div>
 
       <div class="total">
@@ -12,41 +16,13 @@
 
     </div>
 
-    <div
-      class="purchase"
+    <one-expense
       v-for="(expense, key) in orderedExpenses"
-      :key="key">
+      :key="key"
+      :id="key"
+      :expense="expense">
+    </one-expense>
 
-      <div class="purchase-tag">
-        <img src="../../statics/tag1.png" alt="">
-      </div>
-
-      <div class="purchase-name">
-        {{ expense.name }}
-      </div>
-
-      <div class = "purchase-sum"> 
-        ${{ expense.cost }}
-      </div>
-
-      <div 
-        class="purchase-more row"
-        @click.stop="showExpenseMore = true">
-        More
-        <img src="../assets/more.svg">
-      </div>
-      
-      <!-- more on clicl dialog -->
-
-      <q-dialog v-model="showExpenseMore">
-        <expense-more
-          @close="showExpenseMore = false"
-          :expense = "expense"
-          :id = "key"
-          />
-      </q-dialog>
-
-    </div>
   </div>
 </template>
 
@@ -56,13 +32,13 @@ import { date } from 'quasar'
 export default {
   data() {
     return {
-      showExpenseMore: false
+      date: date.formatDate(Date.now(), 'YYYY-MM-DD')
     }
   },
   props: ['months', 'id'],
   filters: {
     niceDate(value) {
-      return date.formatDate(value, 'MMM, D')
+      return date.formatDate(value, 'ddd, MMMM D')
     },
     niceTotal(value) {
       return Math.round(parseFloat(value)*100)/100
@@ -70,7 +46,6 @@ export default {
   }, 
   computed: {
     orderedExpenses: function () {
-
       let expensesSorted = {},
         keysOrdered = Object.keys(this.months.purchases)
 
@@ -91,7 +66,7 @@ export default {
     }
   },
   components: {
-    'expense-more': require('components/modals/ExpenseMore.vue').default
+    'one-expense': require('components/OneExpense.vue').default,
   }
 }
 </script>

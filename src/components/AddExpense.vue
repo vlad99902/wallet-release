@@ -9,7 +9,6 @@
         
         <div class="input-fiels-container">
 
-
       <!-- input name -->
           <input
             v-model="expenseToSubmit.name"
@@ -22,24 +21,21 @@
             class="input-field"
           />
 
-
-
       <!-- input date -->
           <input
-            v-model="expenseToSubmit.date"
-            @blur="$v.expenseToSubmit.date.$touch"
-            :class="{'invalid' : $v.expenseToSubmit.date.$error}"
+            v-model="date"
+            @blur="$v.date.$touch"
+            :class="{'invalid' : $v.date.$error}"
             type="date"
             placeholder="Date"
             class="input-field" />
-
 
       <!-- buttons to set today or yesterdat date -->
           <button
             class="button-set-date"
             type="button"
-            v-on:click="expenseToSubmit.date = new Date().toISOString().substr(0, 10)"
-            :class="{'button-current-date-selected' : expenseToSubmit.date == new Date().toISOString().substr(0, 10)}"
+            v-on:click="setTodayDate()"
+            :class="{'button-current-date-selected' : activeButton === 'today'}"
             >
             Today
           </button>
@@ -48,7 +44,7 @@
             class="button-set-date"
             type="button"
             v-on:click="setYesterdayDate()"
-            :class="{'button-current-date-selected' : currentDateIsYesterday() == true}"
+            :class="{'button-current-date-selected' : activeButton === 'yesterday'}"
             >
             Yesterday
           </button>
@@ -70,8 +66,6 @@
             placeholder="Start writing tag"
             class="input-field" />
 
-          
-          
       <!-- input description --> 
           <textarea
             v-model="expenseToSubmit.description"
@@ -82,20 +76,16 @@
             class="input-field-desc"
             rows="2"
             autogrow
-            >
-      
-            </textarea>
+            ></textarea>
         </div>
 
-        
         <button
           class="button-add"
           type="submit" 
           :disabled = "$v.expenseToSubmit.name.$invalid 
           || $v.expenseToSubmit.cost.$invalid 
           || $v.expenseToSubmit.description.$invalid
-          || $v.expenseToSubmit.date.$invalid"
-          >
+          || $v.date.$invalid">
           ADD
         </button>
 
@@ -119,9 +109,10 @@ export default {
           description: "",
           cost: 0,
           category: "",
-          date: new Date().toISOString().substr(0, 10),
           count: ""
-      }
+      },
+      date: date.formatDate(Date.now(), 'YYYY-MM-DD'),
+      activeButton: 'today'
     }
   },
 
@@ -132,9 +123,9 @@ export default {
     expenseToSubmit: {
       name: {required, maxLength: maxLength(25)},
       cost: {required, minValue: minValue(0)},
-      date: {required},
       description: {maxLength: maxLength(99)}
-    }
+    },
+    date: {required}
 
   },
   methods: {
@@ -144,37 +135,28 @@ export default {
       this.$emit('close')
     },
     submitExpense() {
+      console.log('method fired, date: ', this.date);
+      this.expenseToSubmit.date = this.date
       this.addExpense(this.expenseToSubmit)
     }, 
 
     //setting yesterday date to date field
     setYesterdayDate: function() {
-      // let dateNew = new Date ();
-      // //take timezone of UTC
-      // let curretnTimeZone = dateNew.getTimezoneOffset()/60;
-      // date.setUTCHours(curretnTimeZone*-1);
-
-      let date = new Date();
-      date.setDate(date.getDate() - 1)
+      let timeStamp = Date.now()
+      let newDate = date.subtractFromDate(timeStamp, { hours: 24 })
       
-      this.expenseToSubmit.date = date.toISOString().substr(0, 10)
+      this.date = date.formatDate(newDate, 'YYYY-MM-DD')
+      this.activeButton = 'yesterday'
     },
 
-    //check is cerrent date yesterday date?
-    currentDateIsYesterday: function() {
-      // let dateNew = new Date ();
-      // //take timezone of UTC
-      // let curretnTimeZone = dateNew.getTimezoneOffset()/60;
-      // date.setUTCHours(curretnTimeZone);
-
-      let date = new Date();
-      date.setDate(date.getDate() - 1)
-      if (this.expenseToSubmit.date == date.toISOString().substr(0, 10)){
-        return true;
-      }
+    setTodayDate() {
+      let timeStamp = Date.now()
+      
+      this.date = date.formatDate(timeStamp, 'YYYY-MM-DD')
+      this.activeButton = 'today'
     }
 
-  },
+  }
 }
 </script>
 
@@ -285,18 +267,14 @@ export default {
 
 .invalid {
   border:1px solid $field-invalid-border;
-  
 }
 
 ::-webkit-calendar-picker-indicator {
-    // color: white;
-    // opacity: 1;
-    // display: block;
-    // background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
-    // width: 20px;
-    // height: 20px;
+    background: url('../assets/calendar.svg') no-repeat;
+    width: 15px;
+    height: 15px;
     border-width: thin;
-    display: none;
+    margin-top: auto;
 }
 
 
