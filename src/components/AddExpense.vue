@@ -54,16 +54,14 @@
           </button>
 
       <!-- input cost -->
-          <money
-            v-model.number="expenseToSubmit.cost"
-            @keypress="$event.key === '-' ? $event.preventDefault() : false"
-            v-bind="money"
+          <currency-input
+            currency="USD"
+            locale="en-US"
+            v-model="expenseToSubmit.cost"
             @blur="$v.expenseToSubmit.cost.$touch"
             :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
-            
             placeholder="$$$"
-            class="input-field" >
-          </money>
+            class="input-field" />
 
       <!-- input category -->
           <input
@@ -111,8 +109,6 @@ import { mapActions } from "vuex";
 import { date } from 'quasar'
 //validatin fields
 import { required, maxLength, minValue } from 'vuelidate/lib/validators'
-//cost autofromat
-import { Money } from 'v-money'
 
 export default {
   props: ['showAddExpense'],
@@ -121,19 +117,11 @@ export default {
       expenseToSubmit:  {
           name: "",
           description: "",
-          cost: "",
+          cost: 0,
           category: "",
           date: new Date().toISOString().substr(0, 10),
           count: ""
-      },
-      //money input format edit here
-      money: {
-          decimal: '.',
-          thousands: ' ',
-          prefix: '$',
-          precision: 2,
-          masked: false
-        }
+      }
     }
   },
 
@@ -161,19 +149,35 @@ export default {
 
     //setting yesterday date to date field
     setYesterdayDate: function() {
+      // let dateNew = new Date ();
+      // //take timezone of UTC
+      // let curretnTimeZone = dateNew.getTimezoneOffset()/60;
+      // date.setUTCHours(curretnTimeZone*-1);
+
       let date = new Date();
       date.setDate(date.getDate() - 1)
+      
       this.expenseToSubmit.date = date.toISOString().substr(0, 10)
     },
 
     //check is cerrent date yesterday date?
     currentDateIsYesterday: function() {
+      // let dateNew = new Date ();
+      // //take timezone of UTC
+      // let curretnTimeZone = dateNew.getTimezoneOffset()/60;
+      // date.setUTCHours(curretnTimeZone);
+
       let date = new Date();
       date.setDate(date.getDate() - 1)
       if (this.expenseToSubmit.date == date.toISOString().substr(0, 10)){
         return true;
       }
     },
+
+    //autoformat cost component
+   // components: { CurrencyInput }
+
+    
 
   },
 }
@@ -184,6 +188,7 @@ export default {
 ///////////////////////////
 //CONTAINERS AND OTHER
 ///////////////////////////
+
 
 //add and split
 .header {

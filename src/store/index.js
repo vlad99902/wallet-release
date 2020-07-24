@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 //validation
 import Vuelidate from 'vuelidate'
 //cost auto format
-import money from 'v-money'
+import VueCurrencyInput from 'vue-currency-input'
 
 
 // import example from './module-example'
@@ -12,7 +12,7 @@ import settings from './store-settings'
 
 Vue.use(Vuex)
 Vue.use(Vuelidate)
-Vue.use(money, {precision: 4})
+Vue.use(VueCurrencyInput)
 
 /*
  * If not building with SSR mode, you can
