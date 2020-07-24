@@ -2,16 +2,13 @@
   <q-card>
     <form @submit.prevent="submitForm" novalidate>
       <q-card-section>
-        <!-- for test -->
-        <p>
-          name: {{moreExpense.name}}
-        </p>
-        <p>
-          expense: {{moreExpense}}
-        </p>
-        <p>
-          
-        </p>
+        <div class="container">
+          <div class="header">
+            <p>
+              {{expense.name}}
+            </p>
+          </div>
+        </div>
       </q-card-section>
     </form>
   </q-card>
@@ -21,7 +18,7 @@
 import { mapActions } from "vuex";
 
 export default {
-  props: ['expense','id'],
+  props: ['expense','id','date'],
   data() {
     return {
       moreExpense: {
@@ -51,6 +48,8 @@ export default {
 //CONTAINERS AND OTHER
 ///////////////////////////
 
-
+.container{
+  padding: 1rem;
+}
 
 </style>

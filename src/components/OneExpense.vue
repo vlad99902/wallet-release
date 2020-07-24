@@ -24,7 +24,8 @@
         <expense-more
           @close="showExpenseMore = false"
           :expense = "expense"
-          :id = "id"/>
+          :id = "id"
+          :date = "date"/>
       </q-dialog>
 
     </div>
@@ -32,7 +33,7 @@
 
 <script>
 export default {
-  props: ['expense', 'id'],
+  props: ['expense', 'id','date'],
   data() {
     return {
       showExpenseMore: false,

@@ -20,6 +20,7 @@
       v-for="(expense, key) in orderedExpenses"
       :key="key"
       :id="key"
+      :date = "id"
       :expense="expense">
     </one-expense>
 
