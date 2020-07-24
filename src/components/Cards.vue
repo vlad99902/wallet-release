@@ -46,7 +46,7 @@
           </span>
 
           <span class="avaliable-money">
-            $564.4
+            ${{ spentThisWeek }}
           </span>
 
           <div class="week-analitycs row">
@@ -69,16 +69,43 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { date } from 'quasar'
 
 export default {
   props: ['progress'],
   data() {
-     return {
-       
-     }
+    return {
+      spentThisWeek: 0  
+    }
   },
   computed: {
-    ...mapGetters('settings', ['settings'])
+    ...mapGetters('settings', ['settings']),
+    ...mapGetters('expenses', ['expenses']),
+    
+  },
+  mounted() {
+    for (let months in this.expenses) {
+      console.log(months + ' ' + this.expenses[months].total)
+    }
+
+    let timeStamp = Date.now()
+    let dayNumber = date.formatDate(timeStamp, 'd')
+    console.log('dayNumber: ', dayNumber)
+
+    let daysToCount = []
+    //let spentThisWeek = 0
+
+    for (let i = 0; i < dayNumber; i++) {
+      daysToCount.push(date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD'))
+      this.spentThisWeek = this.spentThisWeek + parseFloat(this.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
+    }
+
+    console.log('daysToCount: ', daysToCount)
+    console.log('spentThisWeek: ', this.spentThisWeek)
+
+    
+
+    
   }
 }
 </script>
