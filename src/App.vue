@@ -65,14 +65,12 @@ export default {
   color: $for-white;
   border-radius: 20px !important;
   width: 100%;
-  height: 80%;
+  max-height: 80%;
   
 
   padding-top: 1.6vh;
   padding-bottom: 1.6vh;
 }
-
-
 
 
 .blur-overlay {

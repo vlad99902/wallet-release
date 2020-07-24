@@ -14,6 +14,7 @@ const state = {
           description: 'something here',
           cost: '12222222',
           category: 1,
+          date: '2019-09-12',
           count: '1'
         }
       }
@@ -27,6 +28,7 @@ const state = {
           description: 'something here',
           cost: '120',
           category: 3,
+          date: '2019-09-14',
           count: '2'
         },
         'ID4': {
@@ -34,6 +36,7 @@ const state = {
           description: 'something here',
           cost: '120',
           category: 3,
+          date: '2019-09-14',
           count: '1'
         }
       }
@@ -47,6 +50,7 @@ const state = {
           description: 'something here',
           cost: '121',
           category: 2,
+          date: '2019-09-13',
           count: '1'
         }
       }

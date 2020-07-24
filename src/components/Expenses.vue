@@ -29,10 +29,22 @@
         ${{ expense.cost }}
       </div>
 
-      <div class="purchase-more row">
+      <div 
+        class="purchase-more row"
+        @click.stop="showExpenseMore = true">
         More
         <img src="../assets/more.svg">
       </div>
+      
+      <!-- more on clicl dialog -->
+
+      <q-dialog v-model="showExpenseMore">
+        <expense-more
+          @close="showExpenseMore = false"
+          :expense = "expense"
+          :id = "key"
+          />
+      </q-dialog>
 
     </div>
   </div>
@@ -44,6 +56,7 @@ import { date } from 'quasar'
 export default {
   data() {
     return {
+      showExpenseMore: false
     }
   },
   props: ['months', 'id'],
@@ -76,6 +89,9 @@ export default {
 
       return expensesSorted
     }
+  },
+  components: {
+    'expense-more': require('components/modals/ExpenseMore.vue').default
   }
 }
 </script>

@@ -172,12 +172,7 @@ export default {
       if (this.expenseToSubmit.date == date.toISOString().substr(0, 10)){
         return true;
       }
-    },
-
-    //autoformat cost component
-   // components: { CurrencyInput }
-
-    
+    }
 
   },
 }

@@ -28,9 +28,9 @@ import { mapGetters } from "vuex"
 export default {
   name: 'PageIndex',
   data() {
-     return {
-        progress: 0.4 //progress of progress bar
-     }
+    return {
+      progress: 0.4 //progress of progress bar
+    }
   },
   computed: {
     ...mapGetters('expenses', ['expenses']) //getter for all expenses from store-expenses
