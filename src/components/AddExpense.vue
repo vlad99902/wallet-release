@@ -137,7 +137,6 @@ export default {
       this.$emit('close')
     },
     submitExpense() {
-      console.log('method fired, date: ', this.date);
       this.expenseToSubmit.date = this.date
       this.addExpense(this.expenseToSubmit)
     }, 
@@ -154,7 +153,6 @@ export default {
     },
 
     checkdate() {
-      console.log('fired: ')
       if (this.date === this.todayDate || this.date === this.yesterdayDate)
         return true
       else 
