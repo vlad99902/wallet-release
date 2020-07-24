@@ -84,28 +84,16 @@ export default {
     
   },
   mounted() {
-    for (let months in this.expenses) {
-      console.log(months + ' ' + this.expenses[months].total)
-    }
-
     let timeStamp = Date.now()
+    //figuring out how much days already past from the start of the week
     let dayNumber = date.formatDate(timeStamp, 'd')
-    console.log('dayNumber: ', dayNumber)
 
-    let daysToCount = []
-    //let spentThisWeek = 0
-
+    //countin all expenses withun that amount of days
     for (let i = 0; i < dayNumber; i++) {
-      daysToCount.push(date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD'))
       this.spentThisWeek = this.spentThisWeek + parseFloat(this.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
     }
 
-    console.log('daysToCount: ', daysToCount)
-    console.log('spentThisWeek: ', this.spentThisWeek)
-
-    
-
-    
+    //need to make offset and analytics and move it into the store
   }
 }
 </script>
