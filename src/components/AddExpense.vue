@@ -35,7 +35,7 @@
             class="button-set-date"
             type="button"
             v-on:click="setTodayDate()"
-            :class="{'button-current-date-selected' : activeButton === 'today'}"
+            :class="{'button-current-date-selected' : activeButton === 'today' && this.checkdate() }"
             >
             Today
           </button>
@@ -44,7 +44,7 @@
             class="button-set-date"
             type="button"
             v-on:click="setYesterdayDate()"
-            :class="{'button-current-date-selected' : activeButton === 'yesterday'}"
+            :class="{'button-current-date-selected' : activeButton === 'yesterday' && this.checkdate() }"
             >
             Yesterday
           </button>
@@ -112,7 +112,9 @@ export default {
           count: ""
       },
       date: date.formatDate(Date.now(), 'YYYY-MM-DD'),
-      activeButton: 'today'
+      activeButton: 'today',
+      yesterdayDate: date.formatDate(date.subtractFromDate(Date.now(), { hours: 24 }), 'YYYY-MM-DD'),
+      todayDate: date.formatDate(Date.now(), 'YYYY-MM-DD')
     }
   },
 
@@ -142,19 +144,22 @@ export default {
 
     //setting yesterday date to date field
     setYesterdayDate: function() {
-      let timeStamp = Date.now()
-      let newDate = date.subtractFromDate(timeStamp, { hours: 24 })
-      
-      this.date = date.formatDate(newDate, 'YYYY-MM-DD')
+      this.date = this.yesterdayDate
       this.activeButton = 'yesterday'
     },
 
     setTodayDate() {
-      let timeStamp = Date.now()
-      
-      this.date = date.formatDate(timeStamp, 'YYYY-MM-DD')
+      this.date = this.todayDate
       this.activeButton = 'today'
-    }
+    },
+
+    checkdate() {
+      console.log('fired: ')
+      if (this.date === this.todayDate || this.date === this.yesterdayDate)
+        return true
+      else 
+        return false
+    },
 
   }
 }

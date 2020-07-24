@@ -127,6 +127,26 @@ const state = {
         },
       }
     },
+    '2020-07-24': {
+      total: '117',
+      counter: '2',
+      purchases: {
+        'ID15': {
+          name: 'Bus x3',
+          description: '',
+          cost: '84',
+          category: 'Transport',
+          count: '1'
+        },
+        'ID16': {
+          name: 'Vologosha',
+          description: '',
+          cost: '33',
+          category: 'Foodstuff',
+          count: '2'
+        },
+      }
+    },
   },
   analytics: {
     overallBudget: '',
@@ -147,19 +167,21 @@ const mutations = {
     Vue.delete(state.expenses, id)
   },
   addExpense(state, payload) {
-    if (state.expenses[payload.expense.date]) {
-      let newTotal =  parseFloat(state.expenses[payload.expense.date].total) + parseFloat(payload.expense.cost)
-      let newCounter = parseInt(state.expenses[payload.expense.date].counter) + parseInt('1')
+    let date = payload.expense.date
+    delete payload.expense.date
+    if (state.expenses[date]) {
+      let newTotal =  parseFloat(state.expenses[date].total) + parseFloat(payload.expense.cost)
+      let newCounter = parseInt(state.expenses[date].counter) + parseInt('1')
       payload.expense.count = newCounter
-      Vue.set(state.expenses[payload.expense.date].purchases, payload.id, payload.expense)
-      Vue.set(state.expenses[payload.expense.date], 'total', newTotal)
-      Vue.set(state.expenses[payload.expense.date], 'counter', newCounter)
+      Vue.set(state.expenses[date].purchases, payload.id, payload.expense)
+      Vue.set(state.expenses[date], 'total', newTotal)
+      Vue.set(state.expenses[date], 'counter', newCounter)
     }
     else {
       let newPayload = { total: payload.expense.cost, counter: '1', purchases: {}}
       payload.expense.count = '1'
-      Vue.set(state.expenses, payload.expense.date, newPayload)
-      Vue.set(state.expenses[payload.expense.date].purchases, payload.id, payload.expense)
+      Vue.set(state.expenses, date, newPayload)
+      Vue.set(state.expenses[date].purchases, payload.id, payload.expense)
     }
   }
 }
