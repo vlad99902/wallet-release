@@ -90,7 +90,7 @@ export default {
 
     //countin all expenses withun that amount of days
     for (let i = 0; i < dayNumber; i++) {
-      //mistake here in my google chrome
+      //mistake here in my google chrome VLAD
      // this.spentThisWeek = this.spentThisWeek + parseFloat(this.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
     }
 

@@ -3,35 +3,55 @@
     <form @submit.prevent="submitForm" novalidate>
       <q-card-section>
         <div class="container">
+
+
+        <!-- header -->
           <div class="header-container">
 
+        <!-- expense name -->
             <div class="header-name">
               {{expense.name}}
             </div>
 
+
+        <!-- tag img -->
             <div class="header-tag">
-              tag
+              <!-- tag width="60%" height="80%"-->
+              <img src="../../../statics/tagFull1.png" alt="" width="100%">
             </div>
 
+
+        <!-- expense cost -->
             <div class="header-cost">
               ${{expense.cost}}
             </div>
 
+
+        <!-- expense date -->
             <div class="header-date">
               {{date}}
             </div>
 
           </div>
 
+
           <div class="description">
             {{expense.description}}
           </div>
 
+
           <div class="buttons-container">
-            <button class="button-delete">
+
+
+            <!-- delete button -->
+            <button 
+              class="button-delete"
+              @click.stop="promtToDeleteExpense()">
               delete
             </button>
 
+
+            <!-- edit button -->
             <button class="button-edit">
               edit
             </button>
@@ -52,17 +72,22 @@ export default {
   data() {
     return {
       moreExpense: {
+      },
+      dataToDelete: {
+        date: "",
+        id: ""
       }
     }
   },
   methods: {
-    ...mapActions('expenses', ['addExpense']),
-    submitForm() {
-      this.submitExpense()
-      this.$emit('close')
-    },
-    submitExpense() {
-      this.addExpense(this.expenseToSubmit)
+    ...mapActions('expenses', ['deleteExpense']),
+    promtToDeleteExpense() {
+      
+      //save data about expense to delete in object to push it
+      this.dataToDelete.date = this.date;
+      this.dataToDelete.id = this.id;
+
+      this.deleteExpense(this.dataToDelete)
     }
     
   },
@@ -94,6 +119,18 @@ export default {
   margin-bottom: 0.8rem;
 }
 
+.buttons-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  grid-template-columns: 50% 50%;
+}
+
+///////////////////////////
+//HEADER ELEMENTS
+///////////////////////////
+
 .header-name {
   font-weight: 600;
 
@@ -101,18 +138,17 @@ export default {
   grid-column: 1 / 3;
 
   justify-self: start;
-  align-self: start;
+  align-self: center;
 
   margin-bottom: 0.2rem;
 }
 
 .header-tag {
-  grid-column: 2 / 4;
+  grid-column: 3 / 4;
   grid-row: 1 / 2;
 
   justify-self: end;
-  align-self: start;
-  
+  align-self: center;
 }
 
 .header-cost {
@@ -141,13 +177,9 @@ export default {
   margin-bottom: 1.2rem;
 }
 
-.buttons-container {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-
-  grid-template-columns: 50% 50%;
-}
+///////////////////////////
+//BUTTONS
+///////////////////////////
 
 .button-edit {
   grid-column: 2 / 3;

@@ -163,8 +163,25 @@ const mutations = {
   updateExpense(state, payload) {
     Object.assign(state.expenses[payload.id], payload.updates)
   },
-  deleteExpense(state, id) {
-    Vue.delete(state.expenses, id)
+  deleteExpense(state, payload) {
+    if (state.expenses[payload.date]){
+
+      //set new total
+      let newTotal =  parseFloat(state.expenses[payload.date].total) - parseFloat(state.expenses[payload.date].purchases[payload.id].cost)
+      Vue.set(state.expenses[payload.date], 'total', newTotal)
+
+      //set counter--
+      let newCounter = parseInt(state.expenses[payload.date].counter) - parseInt('1')
+      Vue.set(state.expenses[payload.date], 'counter', newCounter)
+    }
+
+    //delete this expense
+    Vue.delete(state.expenses[payload.date].purchases, payload.id)
+
+    //if no more expenses in this date
+    if (state.expenses[payload.date].counter == parseInt('0')) {
+      Vue.delete(state.expenses, payload.date)
+    }
   },
   addExpense(state, payload) {
     let date = payload.expense.date
@@ -190,8 +207,8 @@ const actions = {
   updateExpense({ commit }, payload) {
     commit('updateExpense', payload)
   },
-  deleteExpense({ commit }, id) {
-    commit('deleteExpense', id)
+  deleteExpense({ commit }, payload) {
+    commit('deleteExpense', payload)
   },
   addExpense({ commit }, expense) {
     let expenseId = uid()
