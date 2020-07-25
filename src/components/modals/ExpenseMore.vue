@@ -27,13 +27,16 @@
             {{expense.description}}
           </div>
 
-          <button>
-            delete
-          </button>
+          <div class="buttons-container">
+            <button class="button-delete">
+              delete
+            </button>
 
-          <button>
-            edit
-          </button>
+            <button class="button-edit">
+              edit
+            </button>
+          </div>
+          
         </div>
         
       </q-card-section>
@@ -136,6 +139,56 @@ export default {
 
 .description {
   margin-bottom: 1.2rem;
+}
+
+.buttons-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  grid-template-columns: 50% 50%;
+}
+
+.button-edit {
+  grid-column: 2 / 3;
+  justify-self: end;
+
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+
+  background-color: $add-button;
+  color: $for-white;
+
+  border-radius: 12px;
+  //width: 7.25rem;
+  width: 30vw;
+
+  padding: 1.1vh 0.875rem;
+
+  border: none;
+  outline: none !important;
+}
+
+.button-delete {
+  grid-column: 1 / 2;
+  justify-self: start;
+
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+
+  background: none;
+  color: $for-white;
+
+  border-radius: 12px;
+  //width: 7.25rem;
+  width: 30vw;
+
+  padding: 1.1vh 0.875rem;
+
+  border: 1px solid $for-white;
+  outline: none !important;
 }
 
 
