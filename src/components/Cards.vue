@@ -75,7 +75,6 @@ export default {
   props: ['progress'],
   data() {
     return {
-      //spentThisWeek: 0  
     }
   },
   computed: {
@@ -87,15 +86,6 @@ export default {
     ...mapActions('expenses', ['calcSpentThisWeek'])
   },
   mounted() {
-    // let timeStamp = Date.now()
-    // //figuring out how much days already past from the start of the week
-    // let dayNumber = date.formatDate(timeStamp, 'd')
-    // //countin all expenses withun that amount of days
-    // for (let i = 0; i < dayNumber; i++) {
-    //   if (typeof this.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')] != "undefined") {
-    //     this.spentThisWeek = this.spentThisWeek + parseFloat(this.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
-    //   }
-    // }
     this.calcSpentThisWeek()
     //need to make offset and analytics and move it into the store
   }
