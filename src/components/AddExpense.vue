@@ -132,6 +132,7 @@ export default {
   },
   methods: {
     ...mapActions('expenses', ['addExpense']),
+    ...mapActions('settings', ['setShowBlur']),
     submitForm() {
       this.submitExpense()
       this.$emit('close')
@@ -159,6 +160,12 @@ export default {
         return false
     },
 
+  },
+  mounted() {
+    this.setShowBlur()
+  },
+  destroyed() {
+    this.setShowBlur()
   }
 }
 </script>

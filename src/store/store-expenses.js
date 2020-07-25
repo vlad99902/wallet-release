@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { uid, Notify } from 'quasar'
+import { uid, Notify, date } from 'quasar'
 // import { firebaseDb, firebaseAuth } from "boot/firebase"
 // import { showErrorMessage } from "src/functions/function-show-error-message"
 
@@ -153,7 +153,7 @@ const state = {
     availableBudget: '',
     spentDay: '',
     dailyLimit: '',
-    spentWeek: '',
+    spentThisWeek: 0,
     percentage: '',
     progress: ''
   }
@@ -186,6 +186,7 @@ const mutations = {
   addExpense(state, payload) {
     let date = payload.expense.date
     delete payload.expense.date
+    //if already exists this date
     if (state.expenses[date]) {
       let newTotal =  parseFloat(state.expenses[date].total) + parseFloat(payload.expense.cost)
       let newCounter = parseInt(state.expenses[date].counter) + parseInt('1')
@@ -200,6 +201,9 @@ const mutations = {
       Vue.set(state.expenses, date, newPayload)
       Vue.set(state.expenses[date].purchases, payload.id, payload.expense)
     }
+  },
+  calcSpentThisWeek(state, newSpentThisWeek) {
+    Vue.set(state.analytics, 'spentThisWeek', newSpentThisWeek)
   }
 }
 
@@ -207,18 +211,33 @@ const actions = {
   updateExpense({ commit }, payload) {
     commit('updateExpense', payload)
   },
-  deleteExpense({ commit }, payload) {
+  deleteExpense({ commit, dispatch }, payload) {
     commit('deleteExpense', payload)
+    dispatch('calcSpentThisWeek')
   },
-  addExpense({ commit }, expense) {
+  addExpense({ commit, dispatch }, expense) {
     let expenseId = uid()
     let payload = {
       id: expenseId,
       expense: expense
     }
     commit('addExpense', payload)
+    dispatch('calcSpentThisWeek')
     
   },
+  calcSpentThisWeek({ commit }) {
+    let timeStamp = Date.now()
+    //figuring out how much days already past from the start of the week
+    let dayNumber = date.formatDate(timeStamp, 'd')
+    //counting all expenses within that amount of days
+    let newSpentThisWeek = 0
+    for (let i = 0; i < dayNumber; i++) {
+      if (typeof state.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')] != "undefined") {
+        newSpentThisWeek = newSpentThisWeek + parseFloat(state.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
+      }
+      }
+      commit('calcSpentThisWeek', newSpentThisWeek)
+  }
 }
 
 const getters = {
@@ -244,6 +263,9 @@ const getters = {
     let expensesSorted = getters.expensesSorted
     return expensesSorted
     //return state.expenses
+  },
+  spentThisWeek: (state) => {
+    return state.analytics.spentThisWeek
   }
 }
 

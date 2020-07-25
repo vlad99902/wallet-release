@@ -2,12 +2,17 @@
   <!-- applying dark mode here -->
   <div id="q-app" class="main-app" :class="settings.showDarkMode ? 'dark' : ''">
 
-    <router-view :class="showAddExpense ? 'blur-overlay' : ''" />
+    <!-- <router-view :class="showAddExpense ? 'blur-overlay' : ''" /> -->
+    <router-view
+      :class="settings.showBlur ? 'blur-overlay' : ''"
+       />
     
-    <nav-bar :showAddExpense.sync="showAddExpense" :class="showAddExpense ? 'blur-overlay' : ''" />
+    <nav-bar :showAddExpense.sync="showAddExpense" :class="settings.showBlur ? 'blur-overlay' : ''" />
 
     <q-dialog v-model="showAddExpense"  >
-      <add-expense @close="showAddExpense = false" :class="settings.showDarkMode ? 'dark' : ''" />
+      <add-expense
+        @close="closeAddExpense"
+        :class="settings.showDarkMode ? 'dark' : ''" />
     </q-dialog>
   </div>
 </template>
@@ -20,13 +25,6 @@ export default {
   data() {
     return {
       showAddExpense: false,
-      expenseToSubmit:  {
-          name: "",
-          description: "",
-          cost: "",
-          category: "",
-          date: ""
-      }  
     };
   },
   components: {
@@ -36,7 +34,11 @@ export default {
   computed: {
     ...mapGetters('settings', ['settings'])
   },
-  
+  methods: {
+    closeAddExpense() {
+      this.showAddExpense = false
+    },
+  },
 };
 </script>
 
@@ -76,7 +78,7 @@ export default {
 .blur-overlay {
   
   filter: blur(5px);
-  transition: filter 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 

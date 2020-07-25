@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <form @submit.prevent="submitForm" novalidate>
+    <div>
       <q-card-section>
         <div class="container">
 
@@ -60,7 +60,7 @@
         </div>
         
       </q-card-section>
-    </form>
+    </div>
   </q-card>
 </template>
 
@@ -81,6 +81,7 @@ export default {
   },
   methods: {
     ...mapActions('expenses', ['deleteExpense']),
+    ...mapActions('settings', ['setShowBlur']),
     promtToDeleteExpense() {
       
       //save data about expense to delete in object to push it
@@ -91,8 +92,12 @@ export default {
     }
     
   },
-  mounted () {
+  mounted (){
     this.moreExpense = Object.assign({}, this.expense)
+    this.setShowBlur()
+  },
+  destroyed() {
+    this.setShowBlur()
   }
 }
 </script>

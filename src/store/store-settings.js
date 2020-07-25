@@ -2,7 +2,7 @@ const state = {
   settings: {
     showDarkMode: false,
     budget: false,
-    showAddExpense: false,
+    showBlur: false
   }
 }
 
@@ -13,8 +13,8 @@ const mutations = {
   setBudget(state, value) {
     state.settings.budget = value
   },
-  setShowAddExpense(state) {
-    state.settings.showAddExpense = !state.settings.showAddExpense
+  setShowBlur(state) {
+    state.settings.showBlur = !state.settings.showBlur
   },
 }
 
@@ -25,8 +25,8 @@ const actions = {
   setBudget({ commit }, value) {
     commit('setBudget', value)
   },
-  setShowAddExpense({ commit }) {
-    commit('setShowAddExpense')
+  setShowBlur({ commit }) {
+    commit('setShowBlur')
   },
 }
 

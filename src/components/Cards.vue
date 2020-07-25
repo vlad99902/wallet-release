@@ -68,32 +68,35 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { date } from 'quasar'
 
 export default {
   props: ['progress'],
   data() {
     return {
-      spentThisWeek: 0  
+      //spentThisWeek: 0  
     }
   },
   computed: {
     ...mapGetters('settings', ['settings']),
-    ...mapGetters('expenses', ['expenses']),
+    ...mapGetters('expenses', ['expenses', 'spentThisWeek']),
     
   },
+  methods: {
+    ...mapActions('expenses', ['calcSpentThisWeek'])
+  },
   mounted() {
-    let timeStamp = Date.now()
-    //figuring out how much days already past from the start of the week
-    let dayNumber = date.formatDate(timeStamp, 'd')
-
-    //countin all expenses withun that amount of days
-    for (let i = 0; i < dayNumber; i++) {
-      //mistake here in my google chrome VLAD
-     // this.spentThisWeek = this.spentThisWeek + parseFloat(this.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
-    }
-
+    // let timeStamp = Date.now()
+    // //figuring out how much days already past from the start of the week
+    // let dayNumber = date.formatDate(timeStamp, 'd')
+    // //countin all expenses withun that amount of days
+    // for (let i = 0; i < dayNumber; i++) {
+    //   if (typeof this.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')] != "undefined") {
+    //     this.spentThisWeek = this.spentThisWeek + parseFloat(this.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
+    //   }
+    // }
+    this.calcSpentThisWeek()
     //need to make offset and analytics and move it into the store
   }
 }

@@ -39,6 +39,9 @@ export default {
     'cards' : require('components/Cards.vue').default,
     'heading' : require('components/Heading.vue').default,
     'expenses' : require('components/Expenses.vue').default,
+  },
+  mounted() {
+    this.$emit('showBlur')
   }
 }
 </script>
