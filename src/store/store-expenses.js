@@ -231,7 +231,8 @@ const state = {
     spentLastWeek: 0,
     percentage: '',
     progress: ''
-  }
+  },
+  todayExpenses: true
 }
 
 const mutations = {
@@ -283,6 +284,10 @@ const mutations = {
   calcSpentLastWeek(state, newSpentLastWeek) {
     Vue.set(state.analytics, 'spentLastWeek', newSpentLastWeek)
   },
+
+  setTodayExpenses(state, value) {
+    Vue.set(state, 'todayExpenses', value)
+  }
 }
 
 const actions = {
@@ -292,6 +297,7 @@ const actions = {
   deleteExpense({ commit, dispatch }, payload) {
     commit('deleteExpense', payload)
     dispatch('calcSpentThisWeek')
+    dispatch('checkTodayExpenses')
   },
   addExpense({ commit, dispatch }, expense) {
     let expenseId = uid()
@@ -301,6 +307,7 @@ const actions = {
     }
     commit('addExpense', payload)
     dispatch('calcSpentThisWeek')
+    dispatch('checkTodayExpenses')
     
   },
   calcSpentThisWeek({ commit }) {
@@ -326,6 +333,18 @@ const actions = {
     commit('calcSpentThisWeek', newSpentThisWeek)
     newSpentLastWeek -= newSpentThisWeek
     commit('calcSpentLastWeek', newSpentLastWeek)
+  },
+
+  checkTodayExpenses ({ commit }) {
+    let timeStamp = Date.now()
+    timeStamp = date.formatDate(timeStamp, 'YYYY-MM-DD')
+
+    if (typeof state.expenses[timeStamp] != "undefined") {
+      commit('setTodayExpenses', true)
+    }
+    else {
+      commit('setTodayExpenses', false)
+    }
   }
 }
 
@@ -358,6 +377,9 @@ const getters = {
   },
   spentLastWeek: (state) => {
     return state.analytics.spentLastWeek
+  },
+  todayExpenses: (state) => {
+    return state.todayExpenses
   }
 }
 

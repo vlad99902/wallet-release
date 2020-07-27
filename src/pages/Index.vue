@@ -12,6 +12,12 @@
 
 <!-- all of purchases -->
     <div class="purchase-container">
+
+      <div class="img-no-expenses" v-if="!todayExpenses">
+        No expenses today! <br> Press “+” button to add new ones!
+        <img src="../assets/no-expenses-today.svg">
+      </div>
+
       <expenses
         v-for="(months, key) in expenses"
         :key="key"
@@ -23,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 
 export default {
   name: 'PageIndex',
@@ -33,15 +39,18 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('expenses', ['expenses']) //getter for all expenses from store-expenses
+    ...mapGetters('expenses', ['expenses', 'todayExpenses']) //getter for all expenses from store-expenses
   },
   components: {
     'cards' : require('components/Cards.vue').default,
     'heading' : require('components/Heading.vue').default,
     'expenses' : require('components/Expenses.vue').default,
   },
+  methods: {
+    ...mapActions('expenses', ['checkTodayExpenses'])
+  },
   mounted() {
-    this.$emit('showBlur')
+    this.checkTodayExpenses()
   }
 }
 </script>
@@ -304,6 +313,22 @@ export default {
     //padding-left: .1rem;
     width: .58rem
   }
+}
+
+.img-no-expenses {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: right;
+  font-size: .75rem;
+
+  img {
+    margin-left: 1rem;
+  }
+
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 
