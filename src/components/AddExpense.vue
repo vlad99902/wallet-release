@@ -59,12 +59,25 @@
             placeholder="$$$"
             class="input-field" />
 
-      <!-- input category -->
+      <!-- input category
           <input
             v-model="expenseToSubmit.category"
             type="text"
             placeholder="Start writing tag"
-            class="input-field" />
+            class="input-field" /> -->
+
+      <!-- input category test -->
+      <div class="tag-container">
+
+        <div
+          v-for="category in categories"
+          :key = "category.id"
+          class="tag-object">
+            <div class="tag-object-round"></div>
+            {{category.name}}
+        </div>
+      
+      </div>
 
       <!-- input description --> 
           <textarea
@@ -118,12 +131,24 @@ export default {
       categories: {
         'ID1': {
           colorCode: 'color-name',
-          name: 'some name'
+          name: 'Food'
         },
         'ID2': {
           colorCode: 'color-name2',
-          name: 'some name2'
+          name: 'Alcohol'
         },
+        'ID3': {
+          colorCode: 'color-name3',
+          name: 'Bad Habits'
+        },
+        'ID4': {
+          colorCode: 'color-name4',
+          name: 'Lifestyle'
+        },
+        'ID5': {
+          colorCode: 'color-name5',
+          name: 'Home'
+        }
       }
     }
   },
@@ -181,6 +206,63 @@ export default {
 </script>
 
 <style lang="scss">
+
+////////////////
+//TAGS
+////////////////
+
+.tag-container {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0);
+
+  width: 100%;
+
+  height: 5.5vh;
+
+  font-size: 1.95vh;
+
+  //margin-bottom: 1rem;
+  margin-bottom: 2vh;
+
+  padding: 0.6rem 0.875rem;
+
+  font-weight: 500;
+  color: $for-white;
+
+  resize: none;
+
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.tag-object {
+  background-color: $add-button;
+
+  padding: 0.2rem 0.6rem 0.1rem 0.6rem;
+  border-radius: 12px;
+
+  margin-right: 0.8rem;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  display: inline-block;
+
+  //height: 23px;
+}
+
+.tag-object-round {
+  border-radius: 50%;
+  background: #fff;
+
+  width: 0.8rem;
+  height: 0.8rem;
+
+  display: inline-block;
+  
+}
 
 ///////////////////////////
 //CONTAINERS AND OTHER
