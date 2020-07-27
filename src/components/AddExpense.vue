@@ -114,7 +114,17 @@ export default {
       date: date.formatDate(Date.now(), 'YYYY-MM-DD'),
       activeButton: 'today',
       yesterdayDate: date.formatDate(date.subtractFromDate(Date.now(), { hours: 24 }), 'YYYY-MM-DD'),
-      todayDate: date.formatDate(Date.now(), 'YYYY-MM-DD')
+      todayDate: date.formatDate(Date.now(), 'YYYY-MM-DD'),
+      categories: {
+        'ID1': {
+          colorCode: 'color-name',
+          name: 'some name'
+        },
+        'ID2': {
+          colorCode: 'color-name2',
+          name: 'some name2'
+        },
+      }
     }
   },
 
