@@ -10,7 +10,10 @@
       </div>
       
       <!-- recent button -->
-      <div class="recent-button">
+      <div
+        class="recent-button"
+        :class="tab == '/recent' ? 'active-button' : ''"
+        @click="handleRecentButton">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2C6.489 2 2 6.489 2 12C2 17.511 6.489 22 12 22C17.511 22 22 17.511 22 12C22 6.489 17.511 2 12 2ZM12 4C16.4301 4 20 7.56988 20 12C20 16.4301 16.4301 20 12 20C7.56988 20 4 16.4301 4 12C4 7.56988 7.56988 4 12 4ZM11 6V12.4141L15.293 16.707L16.707 15.293L13 11.5859V6H11Z" fill="#A6A5AA"/>
           </svg>
@@ -36,7 +39,10 @@
       </div>
       
       <!-- analitycs button -->
-      <div class="analitycs-button">
+      <div 
+        class="analitycs-button"
+        :class="tab == '/analytics' ? 'active-button' : ''"
+        @click="handleAnalyticsButton" >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9 3V4H4C2.90694 4 2 4.90694 2 6V10V14V18C2 19.0931 2.90694 20 4 20H20C21.0931 20 22 19.0931 22 18V14V10V6C22 4.90694 21.0931 4 20 4H15V3H9ZM4 6H20V10V14H4V10V6ZM12 10C11.7348 10 11.4804 10.1054 11.2929 10.2929C11.1054 10.4804 11 10.7348 11 11C11 11.2652 11.1054 11.5196 11.2929 11.7071C11.4804 11.8946 11.7348 12 12 12C12.2652 12 12.5196 11.8946 12.7071 11.7071C12.8946 11.5196 13 11.2652 13 11C13 10.7348 12.8946 10.4804 12.7071 10.2929C12.5196 10.1054 12.2652 10 12 10ZM4 16H20V18H4V16Z" fill="#A6A5AA"/>
           </svg>
@@ -78,6 +84,30 @@ export default {
     handleSettingsButton() {
       if (this.$router.currentRoute.path != '/settings') {
         this.$router.replace('/settings')
+      }
+      else {
+        window.scroll({
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth'
+        });
+      }
+    },
+    handleRecentButton() {
+      if (this.$router.currentRoute.path != '/recent') {
+        this.$router.replace('/recent')
+      }
+      else {
+        window.scroll({
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth'
+        });
+      }
+    },
+    handleAnalyticsButton() {
+      if (this.$router.currentRoute.path != '/analytics') {
+        this.$router.replace('/analytics')
       }
       else {
         window.scroll({

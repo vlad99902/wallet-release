@@ -147,6 +147,80 @@ const state = {
         },
       }
     },
+    '2020-07-25': {
+      total: '50136',
+      counter: '3',
+      purchases: {
+        'ID17': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'Transport',
+          count: '1'
+        },
+        'ID18': {
+          name: 'Smetana',
+          description: '',
+          cost: '80',
+          category: 'Foodstuff',
+          count: '2'
+        },
+        'ID19': {
+          name: 'iPhone XR',
+          description: '',
+          cost: '50000',
+          category: 'Other',
+          count: '3'
+        },
+      }
+    },
+    '2020-07-26': {
+      total: '566',
+      counter: '4',
+      purchases: {
+        'ID20': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'Transport',
+          count: '1'
+        },
+        'ID21': {
+          name: 'Closing sole partnership',
+          description: '',
+          cost: '160',
+          category: 'Business',
+          count: '2'
+        },
+        'ID22': {
+          name: 'Rolls',
+          description: '',
+          cost: '150',
+          category: 'Eating Out',
+          count: '3'
+        },
+        'ID23': {
+          name: 'iPhone Case',
+          description: '',
+          cost: '200',
+          category: 'Other',
+          count: '4'
+        },
+      }
+    },
+    '2020-07-27': {
+      total: '56',
+      counter: '1',
+      purchases: {
+        'ID24': {
+          name: 'Bus x2',
+          description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam ipsum pariatur quod enim expedita atque eaque vitae soluta iusto maxime.',
+          cost: '56',
+          category: 'Transport',
+          count: '1'
+        },
+      }
+    },
   },
   analytics: {
     overallBudget: '',
@@ -154,6 +228,7 @@ const state = {
     spentDay: '',
     dailyLimit: '',
     spentThisWeek: 0,
+    spentLastWeek: 0,
     percentage: '',
     progress: ''
   }
@@ -204,7 +279,10 @@ const mutations = {
   },
   calcSpentThisWeek(state, newSpentThisWeek) {
     Vue.set(state.analytics, 'spentThisWeek', newSpentThisWeek)
-  }
+  },
+  calcSpentLastWeek(state, newSpentLastWeek) {
+    Vue.set(state.analytics, 'spentLastWeek', newSpentLastWeek)
+  },
 }
 
 const actions = {
@@ -235,8 +313,19 @@ const actions = {
       if (typeof state.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')] != "undefined") {
         newSpentThisWeek = newSpentThisWeek + parseFloat(state.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
       }
+    }
+
+    //counting all expenses on the last week within that amount of days
+    let newSpentLastWeek = 0
+    for (let i = 0; i < dayNumber; i++) {
+      if (typeof state.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 168+24*i }), 'YYYY-MM-DD')] != "undefined") {
+        newSpentLastWeek = newSpentLastWeek + parseFloat(state.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 168+24*i }), 'YYYY-MM-DD')].total)
       }
-      commit('calcSpentThisWeek', newSpentThisWeek)
+    }
+
+    commit('calcSpentThisWeek', newSpentThisWeek)
+    newSpentLastWeek -= newSpentThisWeek
+    commit('calcSpentLastWeek', newSpentLastWeek)
   }
 }
 
@@ -266,6 +355,9 @@ const getters = {
   },
   spentThisWeek: (state) => {
     return state.analytics.spentThisWeek
+  },
+  spentLastWeek: (state) => {
+    return state.analytics.spentLastWeek
   }
 }
 

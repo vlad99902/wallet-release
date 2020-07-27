@@ -4,15 +4,13 @@
       <q-card-section>
         <div class="container">
 
-
         <!-- header -->
           <div class="header-container">
 
         <!-- expense name -->
             <div class="header-name">
-              {{expense.name}}
+              {{ expense.name }}
             </div>
-
 
         <!-- tag img -->
             <div class="header-tag">
@@ -20,28 +18,23 @@
               <img src="../../../statics/tagFull1.png" alt="" width="100%">
             </div>
 
-
         <!-- expense cost -->
             <div class="header-cost">
-              ${{expense.cost}}
+              ${{ expense.cost }}
             </div>
-
 
         <!-- expense date -->
             <div class="header-date">
-              {{date}}
+              {{ date | fullDate }}
             </div>
 
           </div>
 
-
           <div class="description">
-            {{expense.description}}
+            {{ expense.description }}
           </div>
 
-
           <div class="buttons-container">
-
 
             <!-- delete button -->
             <button 
@@ -49,7 +42,6 @@
               @click.stop="promtToDeleteExpense()">
               delete
             </button>
-
 
             <!-- edit button -->
             <button class="button-edit">
@@ -66,6 +58,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { date } from "quasar";
 
 export default {
   props: ['expense','id','date'],
@@ -91,6 +84,11 @@ export default {
       this.deleteExpense(this.dataToDelete)
     }
     
+  },
+  filters: {
+    fullDate(value) {
+      return date.formatDate(value, 'YYYY.MM.DD')
+    }
   },
   mounted (){
     this.moreExpense = Object.assign({}, this.expense)

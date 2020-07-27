@@ -1,9 +1,13 @@
 <template>
-  <div>
+  <div class="month-container">
     <div class="date-container">
 
       <div class="month" v-if="date === this.id">
         Today
+      </div>
+
+      <div class="month" v-else-if="yesterdayDate == this.id">
+        Yesterday
       </div>
 
       <div class="month" v-else>
@@ -33,7 +37,8 @@ import { date } from 'quasar'
 export default {
   data() {
     return {
-      date: date.formatDate(Date.now(), 'YYYY-MM-DD')
+      date: date.formatDate(Date.now(), 'YYYY-MM-DD'),
+      yesterdayDate: date.formatDate(date.subtractFromDate(Date.now(), { hours: 24 }), 'YYYY-MM-DD')
     }
   },
   props: ['months', 'id'],
@@ -72,6 +77,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+.month-container {
+  padding-bottom: .4rem;
+}
 
 </style>

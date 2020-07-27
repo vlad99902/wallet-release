@@ -141,6 +141,8 @@ export default {
 }
 
 .week-analitycs {
+  display: inline-block;
+
   font-weight: 700;
   font-size: 3.2vw;
   line-height: 4vw;

@@ -50,7 +50,27 @@
           </span>
 
           <div class="week-analitycs row">
-            You’re spending 7% less than on previous  week
+            <div v-if="spentLastWeek !== 0">
+              You’re spending 
+
+              <b v-if="spentLastWeek > 0" class="less-spent">
+                ${{ spentLastWeek }} less 
+              </b>
+
+              <b v-if="spentLastWeek < 0" class="more-spent">
+                ${{ spentLastWeek | removeMinus }} more 
+              </b>
+
+              than on previous week &nbsp <small> (within the same amount of days) </small>
+
+              
+
+            </div>
+
+            <div v-else>
+              You’re spending the same amount of money as on the previous week
+            </div>
+
           </div>
 
         </div>
@@ -79,11 +99,16 @@ export default {
   },
   computed: {
     ...mapGetters('settings', ['settings']),
-    ...mapGetters('expenses', ['expenses', 'spentThisWeek']),
+    ...mapGetters('expenses', ['expenses', 'spentThisWeek', 'spentLastWeek']),
     
   },
   methods: {
     ...mapActions('expenses', ['calcSpentThisWeek'])
+  },
+  filters: {
+    removeMinus(value) {
+      return value.toString().slice(1)
+    }
   },
   mounted() {
     this.calcSpentThisWeek()
@@ -92,13 +117,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 .create-gap {
   margin-left: 1rem;
 }
 .create-gap-2 {
   padding-right: 2rem;
+}
+
+.less-spent {
+  color: $less-spent;
+}
+
+.more-spent {
+  color: $more-spent;
 }
 
 </style>

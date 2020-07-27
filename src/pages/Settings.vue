@@ -62,12 +62,7 @@ export default {
 
 <style lang="scss">
 
-//basic header
-.heading {
-  font-size: 3.375rem;
-  font-weight: 700;
-  padding-left: 2rem;
-}
+
 
 //basic margin
 .line {

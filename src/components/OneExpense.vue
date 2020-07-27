@@ -27,7 +27,6 @@
           :id = "id"
           :date = "date"/>
       </q-dialog>
-
     </div>
 </template>
 
