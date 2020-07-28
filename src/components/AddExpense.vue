@@ -69,13 +69,18 @@
       <!-- input category test -->
       <div class="tag-container">
 
-        <div
-          v-for="category in categories"
-          :key = "category.id"
-          class="tag-object">
-            <div class="tag-object-round"></div>
+        <button
+          v-for="(category, key) in categories"
+          @click="expenseToSubmit.category = key"
+          :key="key"
+          type="button"
+          class="tag-object"
+          v-bind:style="category.categoryStyle">
+            <div
+              class="tag-object-round"
+              v-bind:style="{background: category.categoryStyle.color}"></div>
             {{category.name}}
-        </div>
+        </button>
       
       </div>
 
@@ -130,24 +135,39 @@ export default {
       todayDate: date.formatDate(Date.now(), 'YYYY-MM-DD'),
       categories: {
         'ID1': {
-          colorCode: 'color-name',
-          name: 'Food'
+          name: 'Food',
+          categoryStyle: {
+            background: '#F2F0F9',
+            color: '#6E6893'
+          }
         },
         'ID2': {
-          colorCode: 'color-name2',
-          name: 'Alcohol'
+          name: 'Alcohol',
+          categoryStyle: {
+            background: '#FFDE8A',
+            color: '#FDA701'
+          }
         },
         'ID3': {
-          colorCode: 'color-name3',
-          name: 'Bad Habits'
+          name: 'Bad Habits',
+          categoryStyle: {
+            background: '#FFE0E0',
+            color: '#D30000'
+          }
         },
         'ID4': {
-          colorCode: 'color-name4',
-          name: 'Lifestyle'
+          name: 'Lifestyle',
+          categoryStyle: {
+            background: '#BEBEFF',
+            color: '#4A4AFF'
+          }
         },
         'ID5': {
-          colorCode: 'color-name5',
-          name: 'Home'
+          name: 'Home',
+          categoryStyle: {
+            background: '#CDFFCD',
+            color: '#007F00'
+          }
         }
       }
     }
@@ -193,7 +213,7 @@ export default {
         return true
       else 
         return false
-    },
+    }
 
   },
   mounted() {
@@ -235,10 +255,11 @@ export default {
 
   overflow-x: scroll;
   white-space: nowrap;
+  
 }
 
 .tag-object {
-  background-color: $add-button;
+ // background-color: $add-button;
 
   padding: 0.2rem 0.6rem 0.1rem 0.6rem;
   border-radius: 12px;
@@ -250,6 +271,8 @@ export default {
 
   display: inline-block;
 
+  border: none;
+  outline: none !important;
   //height: 23px;
 }
 
@@ -257,8 +280,8 @@ export default {
   border-radius: 50%;
   background: #fff;
 
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 0.6rem;
+  height: 0.6rem;
 
   display: inline-block;
   
@@ -437,7 +460,6 @@ export default {
 .button-current-date-selected {
   background-color: $for-background;
   color: $dark;
-
 
   outline: none !important;
   border: none;
