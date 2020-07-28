@@ -73,16 +73,16 @@
       <!-- selected category -->
         <div
           class="tag-selected-container"
-          v-if="selectedCategoryId != ''">
+          v-if="expenseToSubmit.category != ''">
           <div
             class="tag-object"
-            :style="categories[selectedCategoryId].categoryStyle"
-            v-on:click="cancelSetCategory ()">
+            :style="categories[expenseToSubmit.category].categoryStyle"
+            v-on:click="cancelSetCategory()">
             <div
               class="tag-object-round"
-              v-bind:style="{background: categories[selectedCategoryId].categoryStyle.color}">
+              v-bind:style="{background: categories[expenseToSubmit.category].categoryStyle.color}">
             </div>
-            {{ categories[selectedCategoryId].name }}
+            {{ categories[expenseToSubmit.category].name }}
           </div>
         </div>
 
@@ -133,6 +133,8 @@
           ADD
         </button>
 
+        <pre> {{ expenseToSubmit }} </pre>
+
       </q-card-section>
     </form>
   </q-card>
@@ -161,8 +163,6 @@ export default {
       yesterdayDate: date.formatDate(date.subtractFromDate(Date.now(), { hours: 24 }), 'YYYY-MM-DD'),
       todayDate: date.formatDate(Date.now(), 'YYYY-MM-DD'),
       
-      //category id to set it into expense
-      selectedCategoryId: ''
     }
   },
 
@@ -211,12 +211,10 @@ export default {
     //setting expense category
     setCategory (id) {
       this.expenseToSubmit.category = id;
-      this.selectedCategoryId = id;
     },
 
     cancelSetCategory () {
       this.expenseToSubmit.category = '';
-      this.selectedCategoryId = '';
     }
 
   },
