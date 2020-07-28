@@ -76,13 +76,13 @@
           v-if="selectedCategoryId != ''">
           <div
             class="tag-object"
-            :style="selectedCategory.categoryStyle"
+            :style="categories[selectedCategoryId].categoryStyle"
             v-on:click="cancelSetCategory ()">
             <div
               class="tag-object-round"
-              v-bind:style="{background: selectedCategory.categoryStyle.color}">
+              v-bind:style="{background: categories[selectedCategoryId].categoryStyle.color}">
             </div>
-            {{ selectedCategory.name }}
+            {{ categories[selectedCategoryId].name }}
           </div>
         </div>
 
@@ -197,8 +197,7 @@ export default {
           }
         }
       },
-      selectedCategoryId: '',
-      selectedCategory: '',
+      selectedCategoryId: ''
     }
   },
 
@@ -248,13 +247,11 @@ export default {
     setCategory (id) {
       this.expenseToSubmit.category = id;
       this.selectedCategoryId = id;
-      this.selectedCategory = this.categories[id];
     },
 
     cancelSetCategory () {
       this.expenseToSubmit.category = '';
       this.selectedCategoryId = '';
-      this.selectedCategory = '';
     }
 
   },
