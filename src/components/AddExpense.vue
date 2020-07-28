@@ -69,18 +69,43 @@
       <!-- input category test -->
       <div class="tag-container">
 
-        <button
-          v-for="(category, key) in categories"
-          @click="expenseToSubmit.category = key"
-          :key="key"
-          type="button"
-          class="tag-object"
-          v-bind:style="category.categoryStyle">
+
+      <!-- selected category -->
+        <div
+          v-if="selectedCategoryId != ''">
+          <div
+            class="tag-object"
+            v-bind:style="selectedCategory.categoryStyle">
             <div
               class="tag-object-round"
-              v-bind:style="{background: category.categoryStyle.color}"></div>
-            {{category.name}}
-        </button>
+              v-bind:style="{background: selectedCategory.categoryStyle.color}">
+            </div>
+            {{selectedCategory.name}}
+          </div>
+        </div>
+
+        <div 
+          v-else>
+          Select category
+        </div>
+
+        <hr>
+        
+        <!-- all categoryes show -->
+        <div class="tag-all-container ">
+          <button
+            v-for="(category, key) in categories"
+            v-on:click="setCategory(key)"
+            :key="key"
+            type="button"
+            class="tag-object"
+            v-bind:style="category.categoryStyle">
+              <div
+                class="tag-object-round"
+                v-bind:style="{background: category.categoryStyle.color}"></div>
+              {{category.name}}
+          </button>
+        </div>
       
       </div>
 
@@ -169,7 +194,9 @@ export default {
             color: '#007F00'
           }
         }
-      }
+      },
+      selectedCategoryId: '',
+      selectedCategory: '',
     }
   },
 
@@ -213,6 +240,13 @@ export default {
         return true
       else 
         return false
+    },
+
+    //setting expense category
+    setCategory (id) {
+      this.expenseToSubmit.category = id;
+      this.selectedCategoryId = id;
+      this.selectedCategory = this.categories[id];
     }
 
   },
@@ -239,7 +273,7 @@ export default {
 
   width: 100%;
 
-  height: 5.5vh;
+  height: 11vh;
 
   font-size: 1.95vh;
 
@@ -253,9 +287,13 @@ export default {
 
   resize: none;
 
+ 
+  
+}
+
+.tag-all-container {
   overflow-x: scroll;
   white-space: nowrap;
-  
 }
 
 .tag-object {
@@ -285,6 +323,8 @@ export default {
 
   display: inline-block;
   
+  //margin-left: 0.01rem;
+  margin-right: 0.2rem;
 }
 
 ///////////////////////////
