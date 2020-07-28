@@ -209,15 +209,36 @@ const state = {
       }
     },
     '2020-07-27': {
-      total: '56',
-      counter: '1',
+      total: '546.5',
+      counter: '4',
       purchases: {
         'ID24': {
           name: 'Bus x2',
-          description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam ipsum pariatur quod enim expedita atque eaque vitae soluta iusto maxime.',
+          description: '',
           cost: '56',
           category: 'Transport',
           count: '1'
+        },
+        'ID25': {
+          name: 'Meds',
+          description: '',
+          cost: '26',
+          category: 'Meds',
+          count: '2'
+        },
+        'ID26': {
+          name: 'Matcha tea',
+          description: 'Gift for my wife',
+          cost: '180',
+          category: 'Eating Out',
+          count: '3'
+        },
+        'ID27': {
+          name: 'Maxi',
+          description: '',
+          cost: '284.5',
+          category: 'Foodstuff',
+          count: '4'
         },
       }
     },

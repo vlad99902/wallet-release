@@ -76,12 +76,13 @@
           v-if="selectedCategoryId != ''">
           <div
             class="tag-object"
-            v-bind:style="selectedCategory.categoryStyle">
+            v-bind:style="selectedCategory.categoryStyle"
+            @click="selectedCategoryId = ''">
             <div
               class="tag-object-round"
               v-bind:style="{background: selectedCategory.categoryStyle.color}">
             </div>
-            {{selectedCategory.name}}
+            {{ selectedCategory.name }}
           </div>
         </div>
 
@@ -103,7 +104,7 @@
               <div
                 class="tag-object-round"
                 v-bind:style="{background: category.categoryStyle.color}"></div>
-              {{category.name}}
+              {{ category.name }}
           </button>
         </div>
       
@@ -140,6 +141,7 @@
 <script>
 import { mapActions } from "vuex";
 import { date } from 'quasar'
+
 //validatin fields
 import { required, maxLength, minValue } from 'vuelidate/lib/validators'
 
@@ -280,7 +282,8 @@ export default {
   //margin-bottom: 1rem;
   margin-bottom: 2vh;
 
-  padding: 0.6rem 0.875rem;
+  //padding: 0.6rem 0.875rem;
+  padding: 0.6rem 0rem;
 
   font-weight: 500;
   color: $for-white;
@@ -290,22 +293,31 @@ export default {
 
 .tag-selected-container {
   padding-bottom: 0.5rem;
+  margin-left: .875rem;
   color: $secondary-dark;
+
+  height: 4vh;
 }
 
 .tag-all-container {
   overflow-x: scroll;
   white-space: nowrap;
 
-  border-top: 2px solid $for-white;
-  padding-top: 0.5rem;
+  padding-left: .875rem;
+
+  border-top: 1px solid $for-white;
+  padding-top: 0.6rem;
+}
+
+.tag-all-container::-webkit-scrollbar {
+  display: none;
 }
 
 .tag-object {
  // background-color: $add-button;
 
-  padding: 0.2rem 0.6rem 0.1rem 0.6rem;
-  border-radius: 12px;
+  padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+  border-radius: 100px;
 
   margin-right: 0.8rem;
 

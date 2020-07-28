@@ -191,6 +191,7 @@ export default {
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
+  font-size: .9rem;
 
   background-color: $add-button;
   color: $for-white;
@@ -212,6 +213,7 @@ export default {
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
+  font-size: .9rem;
 
   background: none;
   color: $for-white;
