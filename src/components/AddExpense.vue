@@ -76,7 +76,7 @@
           v-if="selectedCategoryId != ''">
           <div
             class="tag-object"
-            v-bind:style="selectedCategory.categoryStyle"
+            :style="selectedCategory.categoryStyle"
             v-on:click="cancelSetCategory ()">
             <div
               class="tag-object-round"
@@ -100,10 +100,10 @@
             :key="key"
             type="button"
             class="tag-object"
-            v-bind:style="category.categoryStyle">
+            :style="category.categoryStyle">
               <div
                 class="tag-object-round"
-                v-bind:style="{background: category.categoryStyle.color}"></div>
+                :style="{background: category.categoryStyle.color}"></div>
               {{ category.name }}
           </button>
         </div>
