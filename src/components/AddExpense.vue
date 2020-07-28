@@ -77,7 +77,7 @@
           <div
             class="tag-object"
             v-bind:style="selectedCategory.categoryStyle"
-            @click="selectedCategoryId = ''">
+            v-on:click="cancelSetCategory ()">
             <div
               class="tag-object-round"
               v-bind:style="{background: selectedCategory.categoryStyle.color}">
@@ -249,6 +249,12 @@ export default {
       this.expenseToSubmit.category = id;
       this.selectedCategoryId = id;
       this.selectedCategory = this.categories[id];
+    },
+
+    cancelSetCategory () {
+      this.expenseToSubmit.category = '';
+      this.selectedCategoryId = '';
+      this.selectedCategory = '';
     }
 
   },
