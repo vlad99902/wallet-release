@@ -95,7 +95,7 @@
         <!-- all categoryes show -->
         <div class="tag-all-container ">
           <button
-            v-for="(category, key) in categories"
+            v-for="(category, key) in noSelectedCategory()"
             v-on:click="setCategory(key)"
             :key="key"
             type="button"
@@ -209,17 +209,29 @@ export default {
     },
 
     //setting expense category
-    setCategory (id) {
+    setCategory(id) {
       this.expenseToSubmit.category = id;
     },
 
-    cancelSetCategory () {
+    cancelSetCategory() {
       this.expenseToSubmit.category = '';
+    },
+
+    noSelectedCategory() {
+      console.log('fired');
+      let newCategories = {}
+      for (let category in this.categories) {
+        if (this.expenseToSubmit.category !== category) {
+          newCategories[category] = this.categories[category]
+        }
+      }
+      return newCategories
     }
 
   },
   mounted() {
     this.setShowBlur()
+    this.noSelectedCategory()
   },
   destroyed() {
     this.setShowBlur()
