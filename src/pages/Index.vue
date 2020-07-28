@@ -25,6 +25,8 @@
         :id="key" />
     </div>
 
+
+<!-- image if no expenses at all -->
     <div class="no-expenses" v-else>
       <img src="../assets/no-expenses.svg" width="60%">
       
@@ -59,7 +61,6 @@ export default {
     ...mapActions('expenses', ['checkTodayExpenses'])
   },
   mounted() {
-    console.log(Object.keys(this.expenses).length)
     this.checkTodayExpenses()
   }
 }
