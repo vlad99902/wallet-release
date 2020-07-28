@@ -9,6 +9,7 @@ import VueCurrencyInput from 'vue-currency-input'
 // import example from './module-example'
 import expenses from './store-expenses'
 import settings from './store-settings'
+import categories from './store-categories'
 
 Vue.use(Vuex)
 Vue.use(Vuelidate)
@@ -28,7 +29,8 @@ export default function (/* { ssrContext } */) {
     modules: {
       // example
       expenses,
-      settings
+      settings,
+      categories
     },
 
     // enable strict mode (adds overhead!)
