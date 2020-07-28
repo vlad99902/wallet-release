@@ -11,7 +11,7 @@
     </div>
 
 <!-- all of purchases -->
-    <div class="purchase-container">
+    <div class="purchase-container" v-if="Object.keys(this.expenses).length">
 
       <div class="img-no-expenses" v-if="!todayExpenses">
         No expenses today! <br> Press “+” button to add new ones!
@@ -23,6 +23,15 @@
         :key="key"
         :months="months"
         :id="key" />
+    </div>
+
+    <div class="no-expenses" v-else>
+      <img src="../assets/no-expenses.svg" width="60%">
+      
+      <div class="no-expenses-title">
+        Add your first expense by repssing "+" button below!
+      </div>
+
     </div>
 
   </q-page>
@@ -50,6 +59,7 @@ export default {
     ...mapActions('expenses', ['checkTodayExpenses'])
   },
   mounted() {
+    console.log(Object.keys(this.expenses).length)
     this.checkTodayExpenses()
   }
 }
@@ -329,6 +339,24 @@ export default {
 
   margin-bottom: 2rem;
   margin-top: 1rem;
+}
+
+.no-expenses {
+  display: flex;
+  
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 2rem;
+  
+  img {
+    margin-bottom: 1rem;
+  }
+}
+
+.no-expenses-title {
+  width: 60%;
+  text-align: center;
 }
 
 
