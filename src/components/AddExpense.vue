@@ -72,6 +72,7 @@
 
       <!-- selected category -->
         <div
+          class="tag-selected-container"
           v-if="selectedCategoryId != ''">
           <div
             class="tag-object"
@@ -84,12 +85,11 @@
           </div>
         </div>
 
-        <div 
+        <div
+          class="tag-selected-container"
           v-else>
           Select category
-        </div>
-
-        <hr>
+        </div> 
         
         <!-- all categoryes show -->
         <div class="tag-all-container ">
@@ -286,14 +286,19 @@ export default {
   color: $for-white;
 
   resize: none;
+}
 
- 
-  
+.tag-selected-container {
+  padding-bottom: 0.5rem;
+  color: $secondary-dark;
 }
 
 .tag-all-container {
   overflow-x: scroll;
   white-space: nowrap;
+
+  border-top: 2px solid $for-white;
+  padding-top: 0.5rem;
 }
 
 .tag-object {
