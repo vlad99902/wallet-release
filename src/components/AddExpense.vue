@@ -218,7 +218,6 @@ export default {
     },
 
     noSelectedCategory() {
-      console.log('fired');
       let newCategories = {}
       for (let category in this.categories) {
         if (this.expenseToSubmit.category !== category) {
