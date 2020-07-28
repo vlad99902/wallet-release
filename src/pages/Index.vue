@@ -275,10 +275,10 @@ export default {
 }
 
 //purcahse tag recent only img
-.purchase-tag img {
-  width: 1.2rem;
-  height: 1.2rem;
-}
+// .purchase-tag img {
+//   width: 1.2rem;
+//   height: 1.2rem;
+// }
 
 //
 .purchase-name {
@@ -360,6 +360,58 @@ export default {
   text-align: center;
 }
 
+////////////////////////////
+//tags (categories) style
+////////////////////////////
 
+.tag-object {
+
+  padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+  border-radius: 100px;
+
+  margin-right: 0.8rem;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  display: inline-block;
+
+  border: none;
+  outline: none !important;
+  //height: 23px;
+}
+
+.tag-object-round {
+
+  border-radius: 50%;
+  background: #fff;
+
+  width: 8px;
+  height: 8px;
+
+  margin-bottom: 6px;
+  margin-left: 4px;
+
+  display: inline-block;
+  
+  //margin-left: 0.01rem;
+  margin-right: 0.2rem;
+}
+
+.tag-object-round-big {
+  border-radius: 50%;
+  background: #fff;
+
+  width: 16px;
+  height: 16px;
+
+  justify-content: center;
+  align-content: center;
+
+  display: inline-block;
+  
+  //margin-left: 0.01rem;
+  margin-right: 0.2rem;
+}
 
 </style>

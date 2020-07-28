@@ -59,16 +59,9 @@
             placeholder="$$$"
             class="input-field" />
 
-      <!-- input category
-          <input
-            v-model="expenseToSubmit.category"
-            type="text"
-            placeholder="Start writing tag"
-            class="input-field" /> -->
 
       <!-- input category test -->
       <div class="tag-container">
-
 
       <!-- selected category -->
         <div
@@ -79,8 +72,8 @@
             :style="categories[expenseToSubmit.category].categoryStyle"
             v-on:click="cancelSetCategory()">
             <div
-              class="tag-object-round"
-              v-bind:style="{background: categories[expenseToSubmit.category].categoryStyle.color}">
+              class="tag-object-round-add"
+              :style="{background: categories[expenseToSubmit.category].categoryStyle.color}">
             </div>
             {{ categories[expenseToSubmit.category].name }}
           </div>
@@ -102,7 +95,7 @@
             class="tag-object"
             :style="category.categoryStyle">
               <div
-                class="tag-object-round"
+                class="tag-object-round-add"
                 :style="{background: category.categoryStyle.color}"></div>
               {{ category.name }}
           </button>
@@ -133,7 +126,7 @@
           ADD
         </button>
 
-        <pre> {{ expenseToSubmit }} </pre>
+        <!-- <pre> {{ expenseToSubmit }} </pre> -->
 
       </q-card-section>
     </form>
@@ -217,6 +210,7 @@ export default {
       this.expenseToSubmit.category = '';
     },
 
+    //function for hide selected category by rewrite categories list
     noSelectedCategory() {
       let newCategories = {}
       for (let category in this.categories) {
@@ -296,7 +290,6 @@ export default {
 }
 
 .tag-object {
- // background-color: $add-button;
 
   padding: 0.2rem 0.6rem 0.2rem 0.6rem;
   border-radius: 100px;
@@ -313,12 +306,12 @@ export default {
   //height: 23px;
 }
 
-.tag-object-round {
+.tag-object-round-add {
   border-radius: 50%;
   background: #fff;
 
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 9px;
+  height: 9px;
 
   display: inline-block;
   
