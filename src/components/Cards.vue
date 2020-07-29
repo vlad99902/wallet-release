@@ -51,7 +51,8 @@
 
           <div class="week-analitycs row">
             <div v-if="spentLastWeek === null">
-              No expenses were tracked during the last week
+              <!-- No expenses were tracked during the last week -->
+              Here will be comparison with your last week spendings once you have them!
             </div>
             <div v-else-if="spentLastWeek !== 0">
               You’re spending 

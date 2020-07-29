@@ -349,6 +349,7 @@ export default {
   align-items: center;
 
   margin-top: 2rem;
+  padding-bottom: 6rem;
   
   img {
     margin-bottom: 1rem;
