@@ -4,7 +4,7 @@
     Settings
   </div>
 
-  <div class="line">
+  <!-- <div class="line">
     Dark Mode
     <q-space></q-space>
     <label class="form-switch">
@@ -13,6 +13,7 @@
     </label>
     
   </div>
+
   <div class="line">
     Budget
     <q-space></q-space>
@@ -20,6 +21,48 @@
       <input type="checkbox" v-model="budget">
       <i></i>
     </label>
+  </div> -->
+
+  <div class="line">
+    Account
+    <q-space></q-space>
+    <img src="../assets/more.svg" width="15px" alt="">
+  </div>
+
+  <div class="line">
+    Dark mode
+    <q-space></q-space>
+    <img src="../assets/more.svg" width="15px" alt="">
+  </div>
+
+  <div class="line">
+    Budget
+    <q-space></q-space>
+    <img src="../assets/more.svg" width="15px" alt="">
+  </div>
+
+  <div class="line">
+    First day of the week
+    <q-space></q-space>
+    <img src="../assets/more.svg" width="15px" alt="">
+  </div>
+
+  <div class="line">
+    Categories
+    <q-space></q-space>
+    <img src="../assets/more.svg" width="15px" alt="">
+  </div>
+
+  <div class="line">
+    About
+    <q-space></q-space>
+    <img src="../assets/more.svg" width="15px" alt="">
+  </div>
+
+  <div class="bordered-btn-container">
+    <button class="bordered-btn">
+      LOG OUT
+    </button>
   </div>
 
 </q-page>
@@ -62,6 +105,22 @@ export default {
 
 <style lang="scss">
 
+.bordered-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.bordered-btn {
+  background-color: $add-button;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  color: $for-white;
+  padding: .5rem 1.5rem;
+  margin-top: 3rem;
+  
+}
+
 
 
 //basic margin
@@ -69,8 +128,9 @@ export default {
   display: flex;
   margin-left: 2rem;
   margin-right: 2rem;
-  margin-top: 1rem;
-  font-weight: 400;
+  margin-top: 1.5rem;
+  font-weight: 300;
+  font-size: 1.2rem;
 }
 
 //just copied from somewhere
