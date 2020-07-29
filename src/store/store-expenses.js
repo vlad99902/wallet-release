@@ -72,9 +72,9 @@ const state = {
         },
         'ID8': {
           name: 'Rolls',
-          description: 'ID4',
+          description: '',
           cost: '175',
-          category: '',
+          category: 'ID4',
           count: '2'
         },
       }
@@ -98,8 +98,8 @@ const state = {
           count: '2'
         },
         'ID11': {
-          name: '',
-          description: 'McDonalds',
+          name: 'McDonalds',
+          description: '',
           cost: '50',
           category: 'ID4',
           count: '3'
@@ -266,6 +266,19 @@ const state = {
           cost: '75',
           category: 'ID4',
           count: '3'
+        },
+      }
+    },
+    '2020-07-29': {
+      total: '56',
+      counter: '1',
+      purchases: {
+        'ID28': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
         },
       }
     },

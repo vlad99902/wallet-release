@@ -5,37 +5,37 @@ const state = {
         'ID1': {
             name: 'Foodstuff',
             categoryStyle: {
-            background: '#FFC9C4',
-            color: '#FE3D2E'
-        }
+                background: '#C6F5D9',
+                color: '#15C759'
+            }
         },
         'ID2': {
             name: 'Alcohol',
             categoryStyle: {
-            background: '#FFEBCF',
-            color: '#FE9400'
-        }
+                background: '#FFEBCF',
+                color: '#FE9400'
+            }
         },
         'ID3': {
             name: 'Bad Habits',
             categoryStyle: {
-            background: '#BADBff',
-            color: '#007AFF'
-        }
+                background: '#BADBff',
+                color: '#007AFF'
+            }
         },
         'ID4': {
             name: 'Eating Out',
             categoryStyle: {
-            background: '#C6F5D9',
-            color: '#15C759'
-        }
+                background: '#FFC9C4',
+                color: '#FE3D2E'
+            }
         },
         'ID5': {
             name: 'Transport',
             categoryStyle: {
-            background: '#B6D6F0',
-            color: '#50ABF2'
-        }
+                background: '#B6D6F0',
+                color: '#50ABF2'
+            }
         }
     }
 }
