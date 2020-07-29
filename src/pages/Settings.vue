@@ -23,40 +23,42 @@
     </label>
   </div> -->
 
-  <div class="line">
-    Account
-    <q-space></q-space>
-    <img src="../assets/more.svg" width="15px" alt="">
+  <div class="for-ripple">
+    <div class="line">
+      Account
+      <q-space></q-space>
+      <img src="../assets/next.svg" width="15px" alt="">
+    </div>
   </div>
 
   <div class="line">
     Dark mode
     <q-space></q-space>
-    <img src="../assets/more.svg" width="15px" alt="">
+    <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
   <div class="line">
     Budget
     <q-space></q-space>
-    <img src="../assets/more.svg" width="15px" alt="">
+    <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
   <div class="line">
     First day of the week
     <q-space></q-space>
-    <img src="../assets/more.svg" width="15px" alt="">
+    <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
   <div class="line">
     Categories
     <q-space></q-space>
-    <img src="../assets/more.svg" width="15px" alt="">
+    <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
   <div class="line" @click="handleAbout">
     About
     <q-space></q-space>
-    <img src="../assets/more.svg" width="15px" alt="">
+    <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
   <div class="bordered-btn-container">
@@ -109,11 +111,11 @@ export default {
 
 <style lang="scss">
 
+//log out button
 .bordered-btn-container {
   display: flex;
   justify-content: center;
 }
-
 .bordered-btn {
   background-color: $add-button;
   border: none;
@@ -126,18 +128,24 @@ export default {
 }
 
 
-
-//basic margin
+//styles for one line
 .line {
   display: flex;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  margin-top: 1.5rem;
+  padding: .75rem 2rem;
   font-weight: 400;
   font-size: 1rem;
+  cursor: pointer;
+}
+.line:active {
+  background-color: #E5E5EA;
 }
 
-//just copied from somewhere
+//activate this for desktop
+// .line:hover {
+//   background-color: #E5E5EA;
+// }
+
+//just copied from somewhere styles for switches
 .form-switch {
   display: inline-block;
   cursor: pointer;

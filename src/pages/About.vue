@@ -1,5 +1,5 @@
 <template>
-  <q-page class="settings-page">
+  <q-page>
 
     <div class="settings-header">
       <img src="../assets/back.svg" class="back-btn"  alt="" @click="$router.replace('/settings')">
@@ -12,19 +12,19 @@
       <img src="../assets/back.svg" class="back-btn-pseudo"  alt="">
     </div>
 
-    <div class="about-line">
+    <div class="line">
       Version
       <q-space></q-space>
       0.0.0
     </div>
 
-    <div class="about-line">
+    <div class="line">
       Show Terms & Condition
       <q-space></q-space>
       <img src="../assets/next.svg" alt="">
     </div>
 
-    <div class="about-line">
+    <div class="line">
       Show Privacy Policy
       <q-space></q-space>
       <img src="../assets/next.svg" alt="">
@@ -41,21 +41,17 @@ export default {
 
 <style lang="scss">
 
-.settings-page {
-  padding: 0 2rem;
-}
-
 .settings-header {
   font-size: 1.1rem;
   font-weight: 700;
   
-
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
+  padding: 0 2rem;
   
 }
 
@@ -66,18 +62,5 @@ export default {
 .back-btn {
   margin-right: auto;
 }
-
-.about-line {
-  display: flex;
-
-  margin-top: 1.5rem;
-
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-
-
-
 
 </style>
