@@ -262,7 +262,7 @@ const state = {
         },
         'ID30': {
           name: 'Magnit',
-          description: 'Gift for my wife',
+          description: '',
           cost: '75',
           category: 'ID4',
           count: '3'
