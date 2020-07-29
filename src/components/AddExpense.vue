@@ -92,7 +92,7 @@
             v-on:click="setCategory(key)"
             :key="key"
             type="button"
-            class="tag-object"
+            class="tag-object tag-margin-right"
             :style="category.categoryStyle">
               <div
                 class="tag-object-round-add"
@@ -282,41 +282,15 @@ export default {
   padding-left: .875rem;
 
   border-top: 1px solid $for-white;
-  padding-top: 0.6rem;
+  padding-top: 0.5rem;
 }
 
 .tag-all-container::-webkit-scrollbar {
   display: none;
 }
 
-.tag-object {
-
-  padding: 0.2rem 0.6rem 0.2rem 0.6rem;
-  border-radius: 100px;
-
+.tag-margin-right {
   margin-right: 0.8rem;
-
-  font-size: 0.8rem;
-  font-weight: 400;
-
-  display: inline-block;
-
-  border: none;
-  outline: none !important;
-  //height: 23px;
-}
-
-.tag-object-round-add {
-  border-radius: 50%;
-  background: #fff;
-
-  width: 9px;
-  height: 9px;
-
-  display: inline-block;
-  
-  //margin-left: 0.01rem;
-  margin-right: 0.2rem;
 }
 
 ///////////////////////////

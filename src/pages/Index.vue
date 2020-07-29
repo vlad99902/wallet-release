@@ -361,7 +361,7 @@ export default {
 }
 
 ////////////////////////////
-//tags (categories) style
+//tags (categories) style (in recent)
 ////////////////////////////
 
 .tag-object-round {
@@ -382,5 +382,37 @@ export default {
 
   display: inline-block;
 }
+
+//////////////////////////////
+//tag object style more and add
+////////////////////////////
+
+.tag-object {
+  padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+  border-radius: 100px;
+
+  // margin-right: 0.8rem;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  display: inline-block;
+
+  border: none;
+  outline: none !important;
+}
+
+.tag-object-round-add {
+  border-radius: 50%;
+  background: #fff;
+
+  width: 9px;
+  height: 9px;
+
+  display: inline-block;
+  
+  margin-right: 0.3rem;
+}
+
 
 </style>

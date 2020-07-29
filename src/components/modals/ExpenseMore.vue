@@ -15,7 +15,19 @@
         <!-- tag img -->
             <div class="header-tag">
               <!-- tag width="60%" height="80%"-->
-              <img src="../../../statics/tagFull1.png" alt="" width="100%">
+              <!-- <img src="../../../statics/tagFull1.png" alt="" width="100%"> -->
+              
+              <div
+                class="tag-object"
+                :style="categories[expense.category].categoryStyle">
+                <div
+                  class="tag-object-round-add"
+                  :style="{background: categories[expense.category].categoryStyle.color}">
+                </div>
+                {{ categories[expense.category].name }}
+              </div>
+              
+              
             </div>
 
         <!-- expense cost -->
@@ -57,7 +69,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { date } from "quasar";
 
 export default {
@@ -89,6 +101,9 @@ export default {
     fullDate(value) {
       return date.formatDate(value, 'YYYY.MM.DD')
     }
+  },
+  computed: {
+    ...mapGetters("categories", ["categories"])
   },
   mounted (){
     this.moreExpense = Object.assign({}, this.expense)
@@ -147,7 +162,7 @@ export default {
 }
 
 .header-tag {
-  grid-column: 3 / 4;
+  grid-column: 2 / 4;
   grid-row: 1 / 2;
 
   justify-self: end;
