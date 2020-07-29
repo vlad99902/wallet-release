@@ -9,6 +9,7 @@ const routes = [
       { path: '/recent', component: () => import('pages/Recent.vue') },
       { path: '/analytics', component: () => import('pages/Analytics.vue') },
       { path: '/settings/about', component: () => import('pages/About.vue') },
+      { path: '/settings/first-day', component: () => import('pages/FirstDay.vue') },
     ]
   },
 

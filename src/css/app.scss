@@ -119,3 +119,20 @@ body {
   font-weight: 700;
   padding-left: 2rem;
 }
+
+//styles for one line
+.line {
+  display: flex;
+  padding: .75rem 2rem;
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.line:active {
+  background-color: #E5E5EA;
+}
+
+//activate this for desktop
+// .line:hover {
+//   background-color: #E5E5EA;
+// }

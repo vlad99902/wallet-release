@@ -43,7 +43,7 @@
     <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
-  <div class="line">
+  <div class="line" @click="$router.replace('/settings/first-day')">
     First day of the week
     <q-space></q-space>
     <img src="../assets/next.svg" width="15px" alt="">
@@ -55,7 +55,7 @@
     <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
-  <div class="line" @click="handleAbout">
+  <div class="line" @click="$router.replace('/settings/about')">
     About
     <q-space></q-space>
     <img src="../assets/next.svg" width="15px" alt="">
@@ -101,9 +101,6 @@ export default {
   methods: {
     ...mapActions('settings', ['setShowDarkMode', 'setBudget']),
 
-    handleAbout() {
-      this.$router.replace('/settings/about')
-    }
   },
   
 }
@@ -128,22 +125,7 @@ export default {
 }
 
 
-//styles for one line
-.line {
-  display: flex;
-  padding: .75rem 2rem;
-  font-weight: 400;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.line:active {
-  background-color: #E5E5EA;
-}
 
-//activate this for desktop
-// .line:hover {
-//   background-color: #E5E5EA;
-// }
 
 //just copied from somewhere styles for switches
 .form-switch {
