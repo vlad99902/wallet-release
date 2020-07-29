@@ -379,11 +379,10 @@ const actions = {
   calcSpentThisWeek({ commit }) {
     let timeStamp = Date.now()
 
-    //figuring out how much days already past from the start of the week
+    //figuring out how much days already past from the start of the week with offset
     let dayNumber = parseInt(date.formatDate(timeStamp, 'd')) - parseInt(state.analytics.firstDay) + 1
     if (dayNumber <= 0) dayNumber = 7 + dayNumber
 
-    console.log('dayNumber: ', dayNumber)
     //counting all expenses within that amount of days
     let newSpentThisWeek = 0
     for (let i = 0; i < dayNumber; i++) {
