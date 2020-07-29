@@ -12,55 +12,59 @@
       <img src="../assets/back.svg" class="back-btn-pseudo"  alt="">
     </div>
 
-    <div class="line">
+    <div class="line" @click="daySelected = 7">
       Sunday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="">
+      <img src="../assets/tick.svg" alt="" v-if="daySelected === 7">
     </div>
 
-    <div class="line">
+    <div class="line" @click="daySelected = 1">
       Monday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="">
+      <img src="../assets/tick.svg" alt="" v-if="daySelected === 1">
     </div>
  
-    <div class="line">
+    <div class="line" @click="daySelected = 2">
       Tuesday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="">
+      <img src="../assets/tick.svg" alt="" v-if="daySelected === 2">
     </div>
  
-    <div class="line">
+    <div class="line" @click="daySelected = 3">
       Wednesday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="">
+      <img src="../assets/tick.svg" alt="" v-if="daySelected === 3">
     </div>
  
-    <div class="line">
+    <div class="line" @click="daySelected = 4">
       Thursday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="">
+      <img src="../assets/tick.svg" alt="" v-if="daySelected === 4">
     </div>
  
-    <div class="line">
+    <div class="line" @click="daySelected = 5">
       Friday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="">
+      <img src="../assets/tick.svg" alt="" v-if="daySelected === 5">
     </div>
  
-    <div class="line">
+    <div class="line" @click="daySelected = 6">
       Saturday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="">
+      <img src="../assets/tick.svg" alt="" v-if="daySelected === 6">
     </div>
- 
-    
+
 
   </q-page>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      daySelected: 1    
+    }
+  }
 
 }
 </script>
