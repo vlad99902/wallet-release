@@ -14,11 +14,10 @@
 
         <!-- tag img -->
             <div class="header-tag">
-              <!-- tag width="60%" height="80%"-->
-              <!-- <img src="../../../statics/tagFull1.png" alt="" width="100%"> -->
               
               <div
                 class="tag-object"
+                v-if="expense.category != ''"
                 :style="categories[expense.category].categoryStyle">
                 <div
                   class="tag-object-round-add"
@@ -26,7 +25,11 @@
                 </div>
                 {{ categories[expense.category].name }}
               </div>
-              
+
+              <div
+                v-if="expense.category == ''">
+                No category
+              </div>
               
             </div>
 
@@ -157,8 +160,6 @@ export default {
 
   justify-self: start;
   align-self: center;
-
-  margin-bottom: 0.2rem;
 }
 
 .header-tag {
