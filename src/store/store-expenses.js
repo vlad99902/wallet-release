@@ -5,270 +5,270 @@ import { uid, Notify, date } from 'quasar'
 
 const state = {
   expenses: {
-    // '2020-07-20' : {
-    //   total: '351',
-    //   counter: '3',
-    //   purchases: {
-    //     'ID1': {
-    //       name: 'Cigarettes',
-    //       description: '',
-    //       cost: '145',
-    //       category: 'ID3',
-    //       count: '1'
-    //     },
-    //     'ID2': {
-    //       name: 'Rolls',
-    //       description: '',
-    //       cost: '150',
-    //       category: 'ID1',
-    //       count: '2'
-    //     },
-    //     'ID3': {
-    //       name: 'Bus',
-    //       description: '',
-    //       cost: '56',
-    //       category: 'ID4',
-    //       count: '3'
-    //     },
-    //   }
-    // },
-    // '2020-07-21': {
-    //   total: '159',
-    //   counter: '3',
-    //   purchases: {
-    //     'ID4': {
-    //       name: 'Milk',
-    //       description: '',
-    //       cost: '43',
-    //       category: '',
-    //       count: '1'
-    //     },
-    //     'ID5': {
-    //       name: 'Bus',
-    //       description: '',
-    //       cost: '28',
-    //       category: '',
-    //       count: '2'
-    //     },
-    //     'ID6': {
-    //       name: 'Beer',
-    //       description: '',
-    //       cost: '85',
-    //       category: '',
-    //       count: '3'
-    //     },
-    //   }
-    // },
-    // '2020-07-22': {
-    //   total: '231',
-    //   counter: '2',
-    //   purchases: {
-    //     'ID7': {
-    //       name: 'Bus x2',
-    //       description: '',
-    //       cost: '56',
-    //       category: '',
-    //       count: '1'
-    //     },
-    //     'ID8': {
-    //       name: 'Rolls',
-    //       description: '',
-    //       cost: '175',
-    //       category: '',
-    //       count: '2'
-    //     },
-    //   }
-    // },
-    // '2020-07-23': {
-    //   total: '467',
-    //   counter: '6',
-    //   purchases: {
-    //     'ID9': {
-    //       name: 'Bus x2',
-    //       description: '',
-    //       cost: '56',
-    //       category: '',
-    //       count: '1'
-    //     },
-    //     'ID10': {
-    //       name: 'Meds',
-    //       description: '',
-    //       cost: '26',
-    //       category: '',
-    //       count: '2'
-    //     },
-    //     'ID11': {
-    //       name: '',
-    //       description: '',
-    //       cost: '50',
-    //       category: '',
-    //       count: '3'
-    //     },
-    //     'ID12': {
-    //       name: 'Beer x2',
-    //       description: '',
-    //       cost: '140',
-    //       category: '',
-    //       count: '4'
-    //     },
-    //     'ID13': {
-    //       name: 'Cigarettes',
-    //       description: '',
-    //       cost: '145',
-    //       category: '',
-    //       count: '5'
-    //     },
-    //     'ID14': {
-    //       name: 'Gas',
-    //       description: '',
-    //       cost: '50',
-    //       category: '',
-    //       count: '6'
-    //     },
-    //   }
-    // },
-    // '2020-07-24': {
-    //   total: '117',
-    //   counter: '2',
-    //   purchases: {
-    //     'ID15': {
-    //       name: 'Bus x3',
-    //       description: '',
-    //       cost: '84',
-    //       category: '',
-    //       count: '1'
-    //     },
-    //     'ID16': {
-    //       name: 'Vologosha',
-    //       description: '',
-    //       cost: '33',
-    //       category: '',
-    //       count: '2'
-    //     },
-    //   }
-    // },
-    // '2020-07-25': {
-    //   total: '50136',
-    //   counter: '3',
-    //   purchases: {
-    //     'ID17': {
-    //       name: 'Bus x2',
-    //       description: '',
-    //       cost: '56',
-    //       category: '',
-    //       count: '1'
-    //     },
-    //     'ID18': {
-    //       name: 'Smetana',
-    //       description: '',
-    //       cost: '80',
-    //       category: '',
-    //       count: '2'
-    //     },
-    //     'ID19': {
-    //       name: 'iPhone XR',
-    //       description: '',
-    //       cost: '50000',
-    //       category: '',
-    //       count: '3'
-    //     },
-    //   }
-    // },
-    // '2020-07-26': {
-    //   total: '566',
-    //   counter: '4',
-    //   purchases: {
-    //     'ID20': {
-    //       name: 'Bus x2',
-    //       description: '',
-    //       cost: '56',
-    //       category: '',
-    //       count: '1'
-    //     },
-    //     'ID21': {
-    //       name: 'Closing sole partnership',
-    //       description: '',
-    //       cost: '160',
-    //       category: '',
-    //       count: '2'
-    //     },
-    //     'ID22': {
-    //       name: 'Rolls',
-    //       description: '',
-    //       cost: '150',
-    //       category: '',
-    //       count: '3'
-    //     },
-    //     'ID23': {
-    //       name: 'iPhone Case',
-    //       description: '',
-    //       cost: '200',
-    //       category: '',
-    //       count: '4'
-    //     },
-    //   }
-    // },
-    // '2020-07-27': {
-    //   total: '546.5',
-    //   counter: '4',
-    //   purchases: {
-    //     'ID24': {
-    //       name: 'Bus x2',
-    //       description: '',
-    //       cost: '56',
-    //       category: 'ID3',
-    //       count: '1'
-    //     },
-    //     'ID25': {
-    //       name: 'Meds',
-    //       description: '',
-    //       cost: '26',
-    //       category: 'ID4',
-    //       count: '2'
-    //     },
-    //     'ID26': {
-    //       name: 'Matcha tea',
-    //       description: 'Gift for my wife',
-    //       cost: '180',
-    //       category: 'ID1',
-    //       count: '3'
-    //     },
-    //     'ID27': {
-    //       name: 'Maxi',
-    //       description: '',
-    //       cost: '284.5',
-    //       category: 'ID1',
-    //       count: '4'
-    //     },
-    //   }
-    // },
-    // '2020-07-28': {
-    //   total: '191',
-    //   counter: '3',
-    //   purchases: {
-    //     'ID28': {
-    //       name: 'Bus x3',
-    //       description: '',
-    //       cost: '84',
-    //       category: 'ID3',
-    //       count: '1'
-    //     },
-    //     'ID29': {
-    //       name: 'Vologosha',
-    //       description: '',
-    //       cost: '32',
-    //       category: 'ID4',
-    //       count: '2'
-    //     },
-    //     'ID30': {
-    //       name: 'Magnit',
-    //       description: 'Gift for my wife',
-    //       cost: '75',
-    //       category: 'ID1',
-    //       count: '3'
-    //     },
-    //   }
-    // },
+    '2020-07-20' : {
+      total: '351',
+      counter: '3',
+      purchases: {
+        'ID1': {
+          name: 'Cigarettes',
+          description: '',
+          cost: '145',
+          category: 'ID3',
+          count: '1'
+        },
+        'ID2': {
+          name: 'Rolls',
+          description: '',
+          cost: '150',
+          category: 'ID4',
+          count: '2'
+        },
+        'ID3': {
+          name: 'Bus',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '3'
+        },
+      }
+    },
+    '2020-07-21': {
+      total: '159',
+      counter: '3',
+      purchases: {
+        'ID4': {
+          name: 'Milk',
+          description: '',
+          cost: '43',
+          category: 'ID1',
+          count: '1'
+        },
+        'ID5': {
+          name: 'Bus',
+          description: '',
+          cost: '28',
+          category: 'ID5',
+          count: '2'
+        },
+        'ID6': {
+          name: 'Beer',
+          description: '',
+          cost: '85',
+          category: 'ID2',
+          count: '3'
+        },
+      }
+    },
+    '2020-07-22': {
+      total: '231',
+      counter: '2',
+      purchases: {
+        'ID7': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID8': {
+          name: 'Rolls',
+          description: 'ID4',
+          cost: '175',
+          category: '',
+          count: '2'
+        },
+      }
+    },
+    '2020-07-23': {
+      total: '467',
+      counter: '6',
+      purchases: {
+        'ID9': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID10': {
+          name: 'Meds',
+          description: '',
+          cost: '26',
+          category: '',
+          count: '2'
+        },
+        'ID11': {
+          name: '',
+          description: 'McDonalds',
+          cost: '50',
+          category: 'ID4',
+          count: '3'
+        },
+        'ID12': {
+          name: 'Beer x2',
+          description: '',
+          cost: '140',
+          category: 'ID2',
+          count: '4'
+        },
+        'ID13': {
+          name: 'Cigarettes',
+          description: '',
+          cost: '145',
+          category: 'ID3',
+          count: '5'
+        },
+        'ID14': {
+          name: 'Gas',
+          description: '',
+          cost: '50',
+          category: 'ID5',
+          count: '6'
+        },
+      }
+    },
+    '2020-07-24': {
+      total: '117',
+      counter: '2',
+      purchases: {
+        'ID15': {
+          name: 'Bus x3',
+          description: '',
+          cost: '84',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID16': {
+          name: 'Vologosha',
+          description: '',
+          cost: '33',
+          category: 'ID1',
+          count: '2'
+        },
+      }
+    },
+    '2020-07-25': {
+      total: '50136',
+      counter: '3',
+      purchases: {
+        'ID17': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID18': {
+          name: 'Smetana',
+          description: '',
+          cost: '80',
+          category: 'ID1',
+          count: '2'
+        },
+        'ID19': {
+          name: 'iPhone XR',
+          description: '',
+          cost: '50000',
+          category: '',
+          count: '3'
+        },
+      }
+    },
+    '2020-07-26': {
+      total: '566',
+      counter: '4',
+      purchases: {
+        'ID20': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID21': {
+          name: 'Closing sole partnership',
+          description: '',
+          cost: '160',
+          category: '',
+          count: '2'
+        },
+        'ID22': {
+          name: 'Rolls',
+          description: '',
+          cost: '150',
+          category: 'ID4',
+          count: '3'
+        },
+        'ID23': {
+          name: 'iPhone Case',
+          description: '',
+          cost: '200',
+          category: '',
+          count: '4'
+        },
+      }
+    },
+    '2020-07-27': {
+      total: '546.5',
+      counter: '4',
+      purchases: {
+        'ID24': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID25': {
+          name: 'Meds',
+          description: '',
+          cost: '26',
+          category: '',
+          count: '2'
+        },
+        'ID26': {
+          name: 'Matcha tea',
+          description: 'Gift for my wife',
+          cost: '180',
+          category: 'ID4',
+          count: '3'
+        },
+        'ID27': {
+          name: 'Maxi',
+          description: '',
+          cost: '284.5',
+          category: 'ID1',
+          count: '4'
+        },
+      }
+    },
+    '2020-07-28': {
+      total: '191',
+      counter: '3',
+      purchases: {
+        'ID28': {
+          name: 'Bus x3',
+          description: '',
+          cost: '84',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID29': {
+          name: 'Vologosha',
+          description: '',
+          cost: '32',
+          category: 'ID1',
+          count: '2'
+        },
+        'ID30': {
+          name: 'Magnit',
+          description: 'Gift for my wife',
+          cost: '75',
+          category: 'ID4',
+          count: '3'
+        },
+      }
+    },
   },
   analytics: {
     overallBudget: '',

@@ -3,7 +3,7 @@ import Vue from 'vue'
 const state = {
     categories: {
         'ID1': {
-            name: 'Food',
+            name: 'Foodstuff',
             categoryStyle: {
             background: '#FFC9C4',
             color: '#FE3D2E'
@@ -24,14 +24,14 @@ const state = {
         }
         },
         'ID4': {
-            name: 'Lifestyle',
+            name: 'Eating Out',
             categoryStyle: {
             background: '#C6F5D9',
             color: '#15C759'
         }
         },
         'ID5': {
-            name: 'Home',
+            name: 'Transport',
             categoryStyle: {
             background: '#B6D6F0',
             color: '#50ABF2'
