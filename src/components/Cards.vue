@@ -50,7 +50,10 @@
           </span>
 
           <div class="week-analitycs row">
-            <div v-if="spentLastWeek !== 0">
+            <div v-if="spentLastWeek === null">
+              No expenses were tracked during the last week
+            </div>
+            <div v-else-if="spentLastWeek !== 0">
               You’re spending 
 
               <b v-if="spentLastWeek > 0" class="less-spent">
