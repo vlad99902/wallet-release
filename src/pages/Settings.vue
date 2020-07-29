@@ -53,7 +53,7 @@
     <img src="../assets/more.svg" width="15px" alt="">
   </div>
 
-  <div class="line">
+  <div class="line" @click="handleAbout">
     About
     <q-space></q-space>
     <img src="../assets/more.svg" width="15px" alt="">
@@ -98,6 +98,10 @@ export default {
   },
   methods: {
     ...mapActions('settings', ['setShowDarkMode', 'setBudget']),
+
+    handleAbout() {
+      this.$router.replace('/settings/about')
+    }
   },
   
 }
@@ -129,8 +133,8 @@ export default {
   margin-left: 2rem;
   margin-right: 2rem;
   margin-top: 1.5rem;
-  font-weight: 300;
-  font-size: 1.2rem;
+  font-weight: 400;
+  font-size: 1rem;
 }
 
 //just copied from somewhere
