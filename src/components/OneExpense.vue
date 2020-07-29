@@ -3,18 +3,27 @@
 
       <div class="purchase-tag">
         <!-- <img src="../../statics/tag1.png" alt=""> -->
-        <!-- {{ expense.category }} -->
+
+        <!-- expense category -->
+
         <div
           class="tag-object-round-big"
           v-if="expense.category != ''"
           :style="{background: categories[expense.category].categoryStyle.background}">
           <div
             class="tag-object-round"
-            v-if="expense.category != ''"
             :style="{background: categories[expense.category].categoryStyle.color}">
           </div>
         </div>
+
+        <div
+          class="tag-object-round-big"
+          v-if="expense.category == ''">
+        </div>
+
       </div>
+
+      
 
       <div class="purchase-name">
         {{ expense.name }} 
