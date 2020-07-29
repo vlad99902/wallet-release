@@ -290,6 +290,7 @@ const state = {
     dailyLimit: '',
     spentThisWeek: 0,
     spentLastWeek: 0,
+    firstDay: 1,
     percentage: '',
     progress: ''
   },
@@ -348,6 +349,10 @@ const mutations = {
 
   setTodayExpenses(state, value) {
     Vue.set(state, 'todayExpenses', value)
+  },
+
+  setFirstDay(state, value) {
+    Vue.set(state.analytics, 'firstDay', value)
   }
 }
 
@@ -410,6 +415,10 @@ const actions = {
     else {
       commit('setTodayExpenses', false)
     }
+  },
+
+  setFirstDay ({ commit }, value) {
+    commit('setFirstDay', value)
   }
 }
 
@@ -445,6 +454,9 @@ const getters = {
   },
   todayExpenses: (state) => {
     return state.todayExpenses
+  },
+  firstDay: (state) => {
+    return state.analytics.firstDay
   }
 }
 

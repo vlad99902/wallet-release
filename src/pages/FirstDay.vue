@@ -12,46 +12,46 @@
       <img src="../assets/back.svg" class="back-btn-pseudo"  alt="">
     </div>
 
-    <div class="line" @click="daySelected = 7">
+    <div class="line" @click="setFirstDay(7)">
       Sunday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="daySelected === 7">
+      <img src="../assets/tick.svg" alt="" v-if="firstDay === 7">
     </div>
 
-    <div class="line" @click="daySelected = 1">
+    <div class="line" @click="setFirstDay(1)">
       Monday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="daySelected === 1">
+      <img src="../assets/tick.svg" alt="" v-if="firstDay === 1">
     </div>
  
-    <div class="line" @click="daySelected = 2">
+    <div class="line" @click="setFirstDay(2)">
       Tuesday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="daySelected === 2">
+      <img src="../assets/tick.svg" alt="" v-if="firstDay === 2">
     </div>
  
-    <div class="line" @click="daySelected = 3">
+    <div class="line" @click="setFirstDay(3)">
       Wednesday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="daySelected === 3">
+      <img src="../assets/tick.svg" alt="" v-if="firstDay === 3">
     </div>
  
-    <div class="line" @click="daySelected = 4">
+    <div class="line" @click="setFirstDay(4)">
       Thursday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="daySelected === 4">
+      <img src="../assets/tick.svg" alt="" v-if="firstDay === 4">
     </div>
  
-    <div class="line" @click="daySelected = 5">
+    <div class="line" @click="setFirstDay(5)">
       Friday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="daySelected === 5">
+      <img src="../assets/tick.svg" alt="" v-if="firstDay === 5">
     </div>
  
-    <div class="line" @click="daySelected = 6">
+    <div class="line" @click="setFirstDay(6)">
       Saturday
       <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="daySelected === 6">
+      <img src="../assets/tick.svg" alt="" v-if="firstDay === 6">
     </div>
 
 
@@ -59,11 +59,19 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   data() {
     return {
-      daySelected: 1    
+      //firstDay: 1    
     }
+  },
+  computed: {
+    ...mapGetters('expenses', ['firstDay'])
+  },
+  methods: {
+    ...mapActions('expenses', ['setFirstDay'])
   }
 
 }
