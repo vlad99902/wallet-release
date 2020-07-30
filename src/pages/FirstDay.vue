@@ -22,6 +22,8 @@
       Monday
       <q-space></q-space>
       <img src="../assets/tick.svg" alt="" v-if="firstDay === 1">
+
+      
     </div>
  
     <div class="line" @click="setFirstDay(2)">
@@ -54,6 +56,9 @@
       <img src="../assets/tick.svg" alt="" v-if="firstDay === 6">
     </div>
 
+    <div class="settings-small">
+        Choose the first day of your week. We'll use it to properly do analysis within your needs.
+    </div>
 
   </q-page>
 </template>
@@ -79,26 +84,6 @@ export default {
 
 <style lang="scss">
 
-.settings-header {
-  font-size: 1.1rem;
-  font-weight: 700;
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 
-  margin-bottom: 1rem;
-  padding: 0 2rem;
-  
-}
-
-.back-btn-pseudo {
-  margin-left: auto;
-  visibility: hidden;
-}
-.back-btn {
-  margin-right: auto;
-}
 
 </style>
