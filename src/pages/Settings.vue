@@ -55,6 +55,18 @@
     <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
+  <div class="line">
+    Language and currency
+    <q-space></q-space>
+    <img src="../assets/next.svg" width="15px" alt="">
+  </div>
+
+  <div class="line">
+    Restart instructions
+    <q-space></q-space>
+    <img src="../assets/next.svg" width="15px" alt="">
+  </div>
+
   <div class="line" @click="$router.replace('/settings/about')">
     About
     <q-space></q-space>
