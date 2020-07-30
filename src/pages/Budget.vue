@@ -53,12 +53,22 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      budget: false
     }
   },
   computed: {
+    ...mapGetters('settings', ['settings']),
+
+    budget: {
+      get() {
+        return this.settings.budget
+      },
+      set(value) {
+        this.setBudget(value)
+      }
+    },
   },
   methods: {
+    ...mapActions('settings', ['setBudget']),
   }
 
 }
