@@ -12,6 +12,7 @@ const routes = [
       { path: '/settings/first-day', component: () => import('pages/FirstDay.vue') },
       { path: '/settings/budget', component: () => import('pages/Budget.vue') },
       { path: '/settings/budget/period', component: () => import('pages/Period.vue') },
+      { path: '/settings/dark-mode', component: () => import('pages/DarkMode.vue') },
     ]
   },
 

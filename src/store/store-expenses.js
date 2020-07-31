@@ -368,7 +368,7 @@ const state = {
     spentLastWeek: 0,
     firstDay: 1,
     percentage: '',
-    progress: ''
+    progress: 0
   },
   todayExpenses: true
 }

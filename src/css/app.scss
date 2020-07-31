@@ -133,6 +133,10 @@ body {
   background-color: #E5E5EA;
 }
 
+.dark .line:active {
+  background-color: #535353;
+}
+
 .settings-small {
   font-size: .875rem;
   margin: 0.75rem 2rem;

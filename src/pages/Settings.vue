@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div class="line">
+  <div class="line" @click="$router.replace('/settings/dark-mode')">
     Dark mode
     <q-space></q-space>
     <img src="../assets/next.svg" width="15px" alt="">
