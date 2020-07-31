@@ -3,7 +3,7 @@
 
     <heading />
 
-    <cards :progress="progress" />
+    <cards />
 
     <!-- vlad -->
     <div class="recent">

@@ -27,7 +27,7 @@
           <div class="spent-limit row">
             Spent: ${{ spentBudget }}
             <q-space></q-space>
-            Daily limit: $12.43
+            Daily limit: ${{ dailyLimit }}
           </div>
 
         </div>
@@ -94,14 +94,14 @@ import { mapGetters, mapActions } from "vuex";
 import { date } from 'quasar'
 
 export default {
-  props: ['progress'],
+  //props: ['progress'],
   data() {
     return {
     }
   },
   computed: {
     ...mapGetters('settings', ['settings']),
-    ...mapGetters('expenses', ['expenses', 'spentThisWeek', 'spentLastWeek', 'spentBudget', 'availableBudget']),
+    ...mapGetters('expenses', ['expenses', 'spentThisWeek', 'spentLastWeek', 'spentBudget', 'availableBudget', 'dailyLimit', 'progress']),
     
   },
   methods: {

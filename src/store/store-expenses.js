@@ -282,9 +282,84 @@ const state = {
         },
       }
     },
+    '2020-07-30': {
+      total: '647.5',
+      counter: '7',
+      purchases: {
+        'ID29': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+        // 'ID30': {
+        //   name: 'Rent',
+        //   description: '',
+        //   cost: '5000',
+        //   category: 'ID0',
+        //   count: '2'
+        // },
+        'ID31': {
+          name: 'Milk',
+          description: '',
+          cost: '76.5',
+          category: 'ID1',
+          count: '3'
+        },
+        'ID32': {
+          name: 'Blades',
+          description: '',
+          cost: '90',
+          category: 'ID0',
+          count: '4'
+        },
+        'ID33': {
+          name: 'Cigarettes',
+          description: '',
+          cost: '145',
+          category: 'ID3',
+          count: '5'
+        },
+        'ID34': {
+          name: 'Home internet',
+          description: '',
+          cost: '130',
+          category: 'ID0',
+          count: '6'
+        },
+        'ID35': {
+          name: 'Rolls',
+          description: '',
+          cost: '150',
+          category: 'ID4',
+          count: '7'
+        },
+      }
+    },
+    '2020-07-31': {
+      total: '771',
+      counter: '2',
+      purchases: {
+        'ID36': {
+          name: 'Bus x3',
+          description: '',
+          cost: '84',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID37': {
+          name: 'Meds',
+          description: '',
+          cost: '687',
+          category: 'ID0',
+          count: '2'
+        },
+      }
+    },
   },
   analytics: {
-    overallBudget: 2000,
+    overallBudget: 3000,
     availableBudget: '',
     spentBudget: '',
     period: 7,
@@ -369,6 +444,14 @@ const mutations = {
 
   setAvailableBudget(state, value) {
     Vue.set(state.analytics, 'availableBudget', value)
+  },
+
+  setDailyLimit(state, value) {
+    Vue.set(state.analytics, 'dailyLimit', value)
+  },
+
+  setProgress(state, value) {
+    Vue.set(state.analytics, 'progress', value)
   }
 
 }
@@ -459,12 +542,35 @@ const actions = {
       //just need to make sure that spentThisWeek is being calculated earlier
       commit('setSpentBudget', state.analytics.spentThisWeek)
       dispatch('calcAvailableBudget')
+      dispatch('calcDailyLimit')
+      dispatch('calcProgress')
     }
   },
 
   calcAvailableBudget({ commit }) {
     let newAvailableBudget = state.analytics.overallBudget - state.analytics.spentBudget
     commit('setAvailableBudget', newAvailableBudget)
+  },
+
+  calcDailyLimit({ commit }) {
+    if (state.analytics.period === 1) {
+
+    }
+    else if (state.analytics.period === 7) {
+      let timeStamp = Date.now()
+      //figuring out how much days already past from the start of the week with offset
+      let dayNumber = parseInt(date.formatDate(timeStamp, 'd')) - parseInt(state.analytics.firstDay) + 1
+      if (dayNumber <= 0) dayNumber = 7 + dayNumber
+      dayNumber = 7 - dayNumber
+      let newDailyLimit = state.analytics.availableBudget / dayNumber
+      commit('setDailyLimit', newDailyLimit)
+    }
+  },
+
+  calcProgress({ commit }) {
+    let newProgress = state.analytics.availableBudget / state.analytics.overallBudget
+    newProgress = Math.round((newProgress + Number.EPSILON) * 100) / 100
+    commit('setProgress', newProgress)
   }
 }
 
@@ -503,6 +609,12 @@ const getters = {
   },
   availableBudget: (state) => {
     return state.analytics.availableBudget
+  },
+  dailyLimit: (state) => {
+    return state.analytics.dailyLimit
+  },
+  progress: (state) => {
+    return state.analytics.progress
   },
   todayExpenses: (state) => {
     return state.todayExpenses

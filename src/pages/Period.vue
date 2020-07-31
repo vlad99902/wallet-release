@@ -18,18 +18,6 @@
       <img src="../assets/tick.svg" alt="" v-if="period === 7">
     </div>
 
-    <div class="line" @click="setPeriod(14)">
-      2 weeks
-      <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="period === 14">
-    </div>
-
-    <div class="line" @click="setPeriod(21)">
-      3 weeks
-      <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="period === 21">
-    </div>
-
     <div class="line" @click="setPeriod(1)">
       1 month
       <q-space></q-space>
