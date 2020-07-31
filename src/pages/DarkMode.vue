@@ -25,35 +25,38 @@
       This app’s appearance will change automatically when you enable or disable iOS dark mode.
     </div>
 
+    <div v-if="!userSystemMode">
+      <div class="settings-strong">
+        Automatic mode
+        <q-space></q-space>
+        <label class="form-switch">
+          <input type="checkbox" v-model="automaticMode">
+          <i></i>
+        </label>
+      </div>
 
-    <div class="settings-strong">
-      Automatic mode
-      <q-space></q-space>
-      <label class="form-switch">
-        <input type="checkbox" v-model="automaticMode">
-        <i></i>
-      </label>
+      <div class="settings-small">
+        This app’s appearance will change automatically when you enable or disable iOS dark mode.
+      </div>
+
+
+      <div class="settings-strong">
+        Modes
+      </div>
+
+      <div class="line" @click="setShowDarkMode(false)">
+        Light
+        <q-space></q-space>
+        <img src="../assets/tick.svg" alt="" v-if="!showDarkMode">
+      </div>
+      <div class="line" @click="setShowDarkMode(true)">
+        Dark
+        <q-space></q-space>
+        <img src="../assets/tick.svg" alt="" v-if="showDarkMode">
+      </div>
     </div>
 
-    <div class="settings-small">
-      This app’s appearance will change automatically when you enable or disable iOS dark mode.
-    </div>
 
-
-    <div class="settings-strong">
-      Modes
-    </div>
-
-    <div class="line" @click="setShowDarkMode(false)">
-      Light
-      <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="!showDarkMode">
-    </div>
-    <div class="line" @click="setShowDarkMode(true)">
-      Dark
-      <q-space></q-space>
-      <img src="../assets/tick.svg" alt="" v-if="showDarkMode">
-    </div>
 
 
 
