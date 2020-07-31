@@ -22,24 +22,26 @@
     </div>
 
     <div v-if="budget">
-      <div class="settings-strong">
+      <div class="line">
         Amount
         <q-space></q-space>
-        <span class="settings-strong-span">
+        <span class="settings-strong-span small-m-r">
           $2000
         </span>
+        <img src="../assets/next.svg" alt="">
       </div>
 
       <div class="settings-small">
         Amount of money you’re ready to spend within the selected period.
       </div>
 
-      <div class="settings-strong">
+      <div class="line" @click="$router.replace('/settings/budget/period')">
         Period
         <q-space></q-space>
-        <span class="settings-strong-span">
+        <span class="settings-strong-span small-m-r">
           7 days
         </span>
+        <img src="../assets/next.svg" alt="">
       </div>
     </div>
 
@@ -76,6 +78,9 @@ export default {
 
 <style lang="scss">
 
-
+.small-m-r {
+  margin-right: .5rem;
+  // padding-right: 2rem;
+}
 
 </style>

@@ -11,6 +11,7 @@ const routes = [
       { path: '/settings/about', component: () => import('pages/About.vue') },
       { path: '/settings/first-day', component: () => import('pages/FirstDay.vue') },
       { path: '/settings/budget', component: () => import('pages/Budget.vue') },
+      { path: '/settings/budget/period', component: () => import('pages/Period.vue') },
     ]
   },
 
