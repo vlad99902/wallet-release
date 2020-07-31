@@ -4,25 +4,6 @@
     Settings
   </div>
 
-  <!-- <div class="line">
-    Dark Mode
-    <q-space></q-space>
-    <label class="form-switch">
-      <input type="checkbox" v-model="showDarkMode">
-      <i></i>
-    </label>
-    
-  </div>
-
-  <div class="line">
-    Budget
-    <q-space></q-space>
-    <label class="form-switch">
-      <input type="checkbox" v-model="budget">
-      <i></i>
-    </label>
-  </div> -->
-
   <div class="for-ripple">
     <div class="line">
       Account
@@ -83,37 +64,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-
 export default {
-  data() {
-     return {
-       
-     }
-  },
-  computed: {
-    ...mapGetters('settings', ['settings']),
-    showDarkMode: {
-      get() {
-        return this.settings.showDarkMode
-      },
-      set(value) {
-        this.setShowDarkMode(value)
-      }
-    },
-    budget: {
-      get() {
-        return this.settings.budget
-      },
-      set(value) {
-        this.setBudget(value)
-      }
-    },
-  },
-  methods: {
-    ...mapActions('settings', ['setShowDarkMode', 'setBudget']),
-
-  },
   
 }
 </script>
@@ -135,11 +86,6 @@ export default {
   margin-top: 3rem;
   outline: none !important;
 }
-
-
-
-
-//just copied from somewhere styles for switches
 
 
 </style>
