@@ -12,25 +12,25 @@
       <img src="../assets/back.svg" class="back-btn-pseudo"  alt="">
     </div>
 
-    <div class="line" @click="period = 7">
+    <div class="line" @click="setPeriod(7)">
       1 week
       <q-space></q-space>
       <img src="../assets/tick.svg" alt="" v-if="period === 7">
     </div>
 
-    <div class="line" @click="period = 14">
+    <div class="line" @click="setPeriod(14)">
       2 weeks
       <q-space></q-space>
       <img src="../assets/tick.svg" alt="" v-if="period === 14">
     </div>
 
-    <div class="line" @click="period = 21">
+    <div class="line" @click="setPeriod(21)">
       3 weeks
       <q-space></q-space>
       <img src="../assets/tick.svg" alt="" v-if="period === 21">
     </div>
 
-    <div class="line" @click="period = 1">
+    <div class="line" @click="setPeriod(1)">
       1 month
       <q-space></q-space>
       <img src="../assets/tick.svg" alt="" v-if="period === 1">
@@ -49,12 +49,14 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      period: 7
+      //period: 7
     }
   },
   computed: {
+    ...mapGetters('expenses', ['period'])
   },
   methods: {
+    ...mapActions('expenses', ['setPeriod'])
   }
 
 }

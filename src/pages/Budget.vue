@@ -38,9 +38,23 @@
       <div class="line" @click="$router.replace('/settings/budget/period')">
         Period
         <q-space></q-space>
-        <span class="settings-strong-span small-m-r">
-          7 days
+
+        <span class="settings-strong-span small-m-r" v-if="period === 7">
+          1 week
         </span>
+
+        <span class="settings-strong-span small-m-r" v-if="period === 14">
+          2 weeks
+        </span>
+
+        <span class="settings-strong-span small-m-r" v-if="period === 21">
+          3 weeks
+        </span>
+
+        <span class="settings-strong-span small-m-r" v-if="period === 1">
+          1 month
+        </span>
+
         <img src="../assets/next.svg" alt="">
       </div>
     </div>
@@ -59,6 +73,7 @@ export default {
   },
   computed: {
     ...mapGetters('settings', ['settings']),
+    ...mapGetters('expenses', ['period']),
 
     budget: {
       get() {

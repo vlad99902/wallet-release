@@ -286,7 +286,7 @@ const state = {
   analytics: {
     overallBudget: '',
     availableBudget: '',
-    spentDay: '',
+    period: 7,
     dailyLimit: '',
     spentThisWeek: 0,
     spentLastWeek: 0,
@@ -353,6 +353,9 @@ const mutations = {
 
   setFirstDay(state, value) {
     Vue.set(state.analytics, 'firstDay', value)
+  },
+  setPeriod(state, value) {
+    Vue.set(state.analytics, 'period', value)
   }
 }
 
@@ -423,6 +426,9 @@ const actions = {
   setFirstDay ({ commit, dispatch }, value) {
     commit('setFirstDay', value)
     dispatch('calcSpentThisWeek')
+  },
+  setPeriod ({ commit }, value) {
+    commit('setPeriod', value)
   }
 }
 
@@ -461,6 +467,9 @@ const getters = {
   },
   firstDay: (state) => {
     return state.analytics.firstDay
+  },
+  period: (state) => {
+    return state.analytics.period
   }
 }
 
