@@ -284,8 +284,9 @@ const state = {
     },
   },
   analytics: {
-    overallBudget: '',
+    overallBudget: 2000,
     availableBudget: '',
+    spentBudget: '',
     period: 7,
     dailyLimit: '',
     spentThisWeek: 0,
@@ -356,7 +357,20 @@ const mutations = {
   },
   setPeriod(state, value) {
     Vue.set(state.analytics, 'period', value)
+  },
+
+  //////////////////////
+  //mutations for budget
+  //////////////////////
+
+  setSpentBudget(state, value) {
+    Vue.set(state.analytics, 'spentBudget', value)
+  },
+
+  setAvailableBudget(state, value) {
+    Vue.set(state.analytics, 'availableBudget', value)
   }
+
 }
 
 const actions = {
@@ -367,6 +381,7 @@ const actions = {
     commit('deleteExpense', payload)
     dispatch('calcSpentThisWeek')
     dispatch('checkTodayExpenses')
+    dispatch('calcSpentBudget')
   },
   addExpense({ commit, dispatch }, expense) {
     let expenseId = uid()
@@ -377,6 +392,7 @@ const actions = {
     commit('addExpense', payload)
     dispatch('calcSpentThisWeek')
     dispatch('checkTodayExpenses')
+    dispatch('calcSpentBudget')
     
   },
   calcSpentThisWeek({ commit }) {
@@ -429,6 +445,26 @@ const actions = {
   },
   setPeriod ({ commit }, value) {
     commit('setPeriod', value)
+  },
+
+  ////////////////////
+  //actions for budget
+  ////////////////////
+
+  calcSpentBudget({ commit, dispatch }) {
+    if (state.analytics.period === 1) {
+
+    }
+    else if (state.analytics.period === 7) {
+      //just need to make sure that spentThisWeek is being calculated earlier
+      commit('setSpentBudget', state.analytics.spentThisWeek)
+      dispatch('calcAvailableBudget')
+    }
+  },
+
+  calcAvailableBudget({ commit }) {
+    let newAvailableBudget = state.analytics.overallBudget - state.analytics.spentBudget
+    commit('setAvailableBudget', newAvailableBudget)
   }
 }
 
@@ -461,6 +497,12 @@ const getters = {
   },
   spentLastWeek: (state) => {
     return state.analytics.spentLastWeek
+  },
+  spentBudget: (state) => {
+    return state.analytics.spentBudget
+  },
+  availableBudget: (state) => {
+    return state.analytics.availableBudget
   },
   todayExpenses: (state) => {
     return state.todayExpenses

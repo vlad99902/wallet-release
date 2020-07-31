@@ -11,7 +11,7 @@
           </span>
 
           <span class="avaliable-money">
-            $564.4
+            ${{ availableBudget }}
           </span>
 
           <!-- progress bar -->
@@ -25,7 +25,7 @@
 
           <!-- budget analitycs -->
           <div class="spent-limit row">
-            Spent: $12.43
+            Spent: ${{ spentBudget }}
             <q-space></q-space>
             Daily limit: $12.43
           </div>
@@ -67,8 +67,6 @@
 
               than on previous week &nbsp <small> (within the same amount of days) </small>
 
-              
-
             </div>
 
             <div v-else>
@@ -103,11 +101,11 @@ export default {
   },
   computed: {
     ...mapGetters('settings', ['settings']),
-    ...mapGetters('expenses', ['expenses', 'spentThisWeek', 'spentLastWeek']),
+    ...mapGetters('expenses', ['expenses', 'spentThisWeek', 'spentLastWeek', 'spentBudget', 'availableBudget']),
     
   },
   methods: {
-    ...mapActions('expenses', ['calcSpentThisWeek'])
+    ...mapActions('expenses', ['calcSpentThisWeek', 'calcSpentBudget'])
   },
   filters: {
     removeMinus(value) {
@@ -116,6 +114,7 @@ export default {
   },
   mounted() {
     this.calcSpentThisWeek()
+    this.calcSpentBudget()
     //need to make offset and analytics and move it into the store
   }
 }

@@ -1,7 +1,7 @@
 const state = {
   settings: {
     showDarkMode: false,
-    budget: false,
+    budget: true,
     showBlur: false
   }
 }
