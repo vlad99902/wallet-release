@@ -421,11 +421,10 @@ export default {
   background-color: $add-button;
   color: $for-white;
 
-  border-radius: 12px;
+  border-radius: 50px;
   width: 7.25rem;
 
   margin: -.8vh 1rem 0rem 1rem;
- // padding: 0.6rem 0.875rem;
   padding: 1.2vh 0.875rem;
 
   font-weight: 600;
@@ -443,15 +442,11 @@ export default {
 
   color: $for-white;
 
-  //height: 4.5vh;
-
   padding: 0.3rem 0.875rem;
- // padding: 0.4rem 0.875rem 1.4rem 0.875rem;
 
   margin-right: 1rem;
   margin-bottom: 1rem;
 
-  //font-size: 0.86rem;
   font-size: 1.8vh;
   font-weight: 500;
   text-align: center;

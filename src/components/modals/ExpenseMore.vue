@@ -133,7 +133,7 @@ export default {
 
 .header-container {
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 50% 50%;
   justify-items: center;
   align-items: center;
 
@@ -155,19 +155,19 @@ export default {
 .header-name {
   font-weight: 600;
 
+  grid-column: 1 / 2;
   grid-row: 1 / 2;
-  grid-column: 1 / 3;
 
   justify-self: start;
   align-self: center;
 }
 
 .header-tag {
-  grid-column: 2 / 4;
+  grid-column: 2 / 3;
   grid-row: 1 / 2;
 
   justify-self: end;
-  align-self: center;
+  align-self: start;
 }
 
 .header-cost {
@@ -182,7 +182,7 @@ export default {
 }
 
 .header-date {
-  grid-column: 2 / 4;
+  grid-column: 2 / 3;
   grid-row: 2 / 3;
 
   justify-self: end;
@@ -212,11 +212,11 @@ export default {
   background-color: $add-button;
   color: $for-white;
 
-  border-radius: 12px;
-  //width: 7.25rem;
+  border-radius: 50px;
   width: 30vw;
+  max-width: 30vw;
 
-  padding: 1.1vh 0.875rem;
+  padding: 1vh;
 
   border: none;
   outline: none !important;
@@ -234,11 +234,11 @@ export default {
   background: none;
   color: $for-white;
 
-  border-radius: 12px;
-  //width: 7.25rem;
+  border-radius: 50px;
   width: 30vw;
+  max-width: 30vw;
 
-  padding: 1.1vh 0.875rem;
+  padding: 1vh;
 
   border: 1px solid $for-white;
   outline: none !important;

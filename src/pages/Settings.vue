@@ -133,7 +133,7 @@ export default {
   color: $for-white;
   padding: .5rem 1.5rem;
   margin-top: 3rem;
-  
+  outline: none !important;
 }
 
 
