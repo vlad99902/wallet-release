@@ -65,8 +65,7 @@
 
       <!-- selected category -->
         <div
-          class="tag-selected-container"
-          v-if="expenseToSubmit.category != ''">
+          class="tag-selected-container">
           <div
             class="tag-object"
             :style="categories[expenseToSubmit.category].categoryStyle"
@@ -78,12 +77,6 @@
             {{ categories[expenseToSubmit.category].name }}
           </div>
         </div>
-
-        <div
-          class="tag-selected-container"
-          v-else>
-          Select category
-        </div> 
         
         <!-- all categoryes show -->
         <div class="tag-all-container ">
@@ -148,7 +141,7 @@ export default {
           name: "",
           description: "",
           cost: 0,
-          category: "",
+          category: "ID0",
           count: ""
       },
       date: date.formatDate(Date.now(), 'YYYY-MM-DD'),
@@ -207,7 +200,7 @@ export default {
     },
 
     cancelSetCategory() {
-      this.expenseToSubmit.category = '';
+      this.expenseToSubmit.category = 'ID0';
     },
 
     //function for hide selected category by rewrite categories list
@@ -317,10 +310,8 @@ export default {
 .input-fiels-container {
   margin-top: 3vh;
   margin-bottom: 1rem;
-  //width: 76vw;
   width: 100%;
   box-sizing: border-box;
-
 
   padding: 0rem 1rem 0rem 1rem;
 }

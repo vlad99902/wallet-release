@@ -374,7 +374,6 @@ export default {
 
 .tag-object-round-big {
   border-radius: 50%;
-  background: $secondary-dark;
 
   width: 20px;
   height: 20px;
@@ -392,9 +391,9 @@ export default {
   padding: 0.2rem 0.6rem 0.2rem 0.6rem;
   border-radius: 100px;
 
-  // margin-right: 0.8rem;
+  font-size: 1.7vh;
 
-  font-size: 0.8rem;
+  //font-size: 0.8rem;
   font-weight: 400;
 
   display: inline-block;

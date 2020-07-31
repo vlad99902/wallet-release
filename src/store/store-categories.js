@@ -2,6 +2,14 @@ import Vue from 'vue'
 
 const state = {
     categories: {
+        //ID0 USED onlu for OTHER category
+        'ID0': {
+            name: 'Other',
+            categoryStyle: {
+                background: '#A6A5AA',
+                color: '#212121'
+            }
+        },
         'ID1': {
             name: 'Foodstuff',
             categoryStyle: {

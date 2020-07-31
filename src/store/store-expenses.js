@@ -94,7 +94,7 @@ const state = {
           name: 'Meds',
           description: '',
           cost: '26',
-          category: '',
+          category: 'ID0',
           count: '2'
         },
         'ID11': {
@@ -169,7 +169,7 @@ const state = {
           name: 'iPhone XR',
           description: '',
           cost: '50000',
-          category: '',
+          category: 'ID0',
           count: '3'
         },
       }
@@ -189,7 +189,7 @@ const state = {
           name: 'Closing sole partnership',
           description: '',
           cost: '160',
-          category: '',
+          category: 'ID0',
           count: '2'
         },
         'ID22': {
@@ -203,7 +203,7 @@ const state = {
           name: 'iPhone Case',
           description: '',
           cost: '200',
-          category: '',
+          category: 'ID0',
           count: '4'
         },
       }
@@ -223,7 +223,7 @@ const state = {
           name: 'Meds',
           description: '',
           cost: '26',
-          category: '',
+          category: 'ID0',
           count: '2'
         },
         'ID26': {

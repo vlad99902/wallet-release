@@ -17,18 +17,13 @@
               
               <div
                 class="tag-object"
-                v-if="expense.category != ''"
+                
                 :style="categories[expense.category].categoryStyle">
                 <div
                   class="tag-object-round-add"
                   :style="{background: categories[expense.category].categoryStyle.color}">
                 </div>
                 {{ categories[expense.category].name }}
-              </div>
-
-              <div
-                v-if="expense.category == ''">
-                No category
               </div>
               
             </div>

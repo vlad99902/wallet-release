@@ -8,17 +8,11 @@
 
         <div
           class="tag-object-round-big"
-          v-if="expense.category != ''"
           :style="{background: categories[expense.category].categoryStyle.background}">
           <div
             class="tag-object-round"
             :style="{background: categories[expense.category].categoryStyle.color}">
           </div>
-        </div>
-
-        <div
-          class="tag-object-round-big"
-          v-if="expense.category == ''">
         </div>
 
       </div>
