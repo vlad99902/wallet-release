@@ -29,12 +29,14 @@
 
       <div class="input-budget-container">
           <currency-input
+            v-autofocus
             currency="USD"
             locale="en-US"
             v-model="budgetToSubmit"
             @blur="$v.budgetToSubmit.$touch"
             placeholder="Budget amount"
-            class="input-budget" />
+            class="input-budget select-all"
+            v-select-all />
       </div>
 
     </form>
@@ -45,10 +47,19 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+
 //validatin fields
 import { required } from 'vuelidate/lib/validators'
 
+//directives
+import { autofocus } from "src/directives/directive-autofocus"
+import { selectAll } from "src/directives/directive-select-all"
+
 export default {
+  directives: {
+    autofocus,
+    selectAll
+  },
   data() {
     return {
       doneActive: false,

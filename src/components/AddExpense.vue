@@ -15,7 +15,7 @@
             @blur="$v.expenseToSubmit.name.$touch"
             :class="{'invalid' : $v.expenseToSubmit.name.$error}"
             ref="name" 
-            autofocus
+            v-autofocus
             type="text"
             placeholder="Name"
             class="input-field"
@@ -133,8 +133,14 @@ import { date } from 'quasar'
 //validatin fields
 import { required, maxLength, minValue } from 'vuelidate/lib/validators'
 
+//directives
+import { autofocus } from "src/directives/directive-autofocus";
+
 export default {
   props: ['showAddExpense'],
+  directives: {
+    autofocus
+  },
   data() {
     return {
       expenseToSubmit:  {

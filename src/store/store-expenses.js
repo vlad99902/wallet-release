@@ -148,7 +148,7 @@ const state = {
       }
     },
     '2020-07-25': {
-      total: '50136',
+      total: '136',
       counter: '3',
       purchases: {
         'ID17': {
@@ -169,7 +169,7 @@ const state = {
           name: 'iPhone XR',
           description: '',
           cost: '50000',
-          category: 'ID0',
+          category: 'NO_BUDGET',
           count: '3'
         },
       }
@@ -284,7 +284,7 @@ const state = {
     },
     '2020-07-30': {
       total: '647.5',
-      counter: '6',
+      counter: '7',
       purchases: {
         'ID29': {
           name: 'Bus x2',
@@ -293,13 +293,13 @@ const state = {
           category: 'ID5',
           count: '1'
         },
-        // 'ID30': {
-        //   name: 'Rent',
-        //   description: '',
-        //   cost: '5000',
-        //   category: 'ID0',
-        //   count: '2'
-        // },
+        'ID30': {
+          name: 'Rent',
+          description: '',
+          cost: '5000',
+          category: 'NO_BUDGET',
+          count: '2'
+        },
         'ID31': {
           name: 'Milk',
           description: '',
@@ -338,7 +338,7 @@ const state = {
       }
     },
     '2020-07-31': {
-      total: '771',
+      total: '84',
       counter: '2',
       purchases: {
         'ID36': {
@@ -352,7 +352,7 @@ const state = {
           name: 'Meds',
           description: '',
           cost: '687',
-          category: 'ID0',
+          category: 'NO_BUDGET',
           count: '2'
         },
       }
@@ -407,7 +407,7 @@ const mutations = {
     if (state.expenses[date]) {
 
       //check if tag Out of budget
-      if (state.expenses[date].category == 'NO_BUDGET') {
+      if (payload.expense.category !== 'NO_BUDGET') {
         let newTotal =  parseFloat(state.expenses[date].total) + parseFloat(payload.expense.cost)
         Vue.set(state.expenses[date], 'total', newTotal)
       }
@@ -421,7 +421,7 @@ const mutations = {
       let newPayload;
 
       //check for out of budget tag
-      if (payload.expense.category == 'NO_BUDGET'){
+      if (payload.expense.category === 'NO_BUDGET'){
         newPayload = { total: '0', counter: '1', purchases: {}}
       }
       else {
