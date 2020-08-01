@@ -79,7 +79,7 @@
       </div>
 
       <!-- third card -->
-      <div class="card-3" v-if="!settings.budget">
+      <div class="card-3" v-if="!settings.budget" @click="$router.replace('/settings/budget')">
         <img src="../../statics/card3-dark.png" v-if="settings.showDarkMode">
         <img src="../../statics/card3.png" v-else>
       </div>
@@ -136,5 +136,6 @@ export default {
 .more-spent {
   color: $more-spent;
 }
+
 
 </style>

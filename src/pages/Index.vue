@@ -89,6 +89,7 @@ export default {
   overflow-x: scroll;
   display: flex;
   padding-top: 1.4rem;
+  box-sizing: border-box;
 }
 
 //disable display of scroll for cards
@@ -125,6 +126,10 @@ export default {
   max-width: 300px;
   margin-right: 2rem;
   margin-left: 1rem;
+}
+
+.card-3:active {
+  transform: matrix(0.95, 0, 0, 0.95, 0, 0);
 }
 
 //container inside of cards
