@@ -11,11 +11,18 @@
           </div>
 
           <div class="buttons-container">
-            <!-- delete button -->
+            <!-- cancel button -->
             <button 
               class="button-delete"
+              @click="$emit('close')">
+              cancel
+            </button>
+
+            <!-- confirm button -->
+            <button 
+              class="button-edit"
               @click.stop="promtToDeleteExpense()">
-              delete
+              confirm
             </button>
 
           </div>
@@ -58,12 +65,10 @@ export default {
     
   },
 
-  mounted (){
+  mounted() {
     this.moreExpense = Object.assign({}, this.expense)
-    // this.setShowBlur()
   },
   destroyed() {
-    // this.setShowBlur()
   }
 }
 </script>
