@@ -11,22 +11,28 @@
 
       <span
         class="back-btn-2 control-button"
-        :class="!doneActive ? 'not-active' : ''"
+        :class="$v.budgetToSubmit.$invalid ? 'not-active' : ''"
         @click="$router.replace('/settings/budget')">Done</span>
     </div>
-
-    
-    
 
     <div class="settings-small">
       Enter amount of money you're planning to spend during selected period.
     </div>
 
     <div class="input-budget-container">
-      <input
+      <!-- <input
         type="number"
         class="input-budget"
-        placeholder="Budget amount">
+        v-model="budgetToSubmit"
+        placeholder="Budget amount"> -->
+
+        <currency-input
+          currency="USD"
+          locale="en-US"
+          v-model="budgetToSubmit"
+          @blur="$v.budgetToSubmit.$touch"
+          placeholder="Budget amount"
+          class="input-budget" />
     </div>
 
 
@@ -35,13 +41,21 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+//validatin fields
+import { required } from 'vuelidate/lib/validators'
 
 export default {
   data() {
     return {
-      doneActive: false
+      doneActive: false,
+      budgetToSubmit: 2000
     }
   },
+
+  validations: {
+    budgetToSubmit: {required}
+  },
+
   computed: {
   },
   methods: {
