@@ -452,6 +452,10 @@ const mutations = {
 
   setProgress(state, value) {
     Vue.set(state.analytics, 'progress', value)
+  },
+
+  setBudget(state, value) {
+    Vue.set(state.analytics, 'overallBudget', value)
   }
 
 }
@@ -571,6 +575,11 @@ const actions = {
     let newProgress = state.analytics.availableBudget / state.analytics.overallBudget
     newProgress = Math.round((newProgress + Number.EPSILON) * 100) / 100
     commit('setProgress', newProgress)
+  },
+
+  setBudget({ commit, dispatch }, value) {
+    commit('setBudget', value)
+    dispatch('calcSpentBudget')
   }
 }
 
@@ -609,6 +618,9 @@ const getters = {
   },
   availableBudget: (state) => {
     return state.analytics.availableBudget
+  },
+  overallBudget: (state) => {
+    return state.analytics.overallBudget
   },
   dailyLimit: (state) => {
     return state.analytics.dailyLimit

@@ -26,7 +26,7 @@
         Amount
         <q-space></q-space>
         <span class="settings-strong-span small-m-r">
-          $2000
+          ${{ overallBudget }}
         </span>
         <img src="../assets/next.svg" alt="">
       </div>
@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     ...mapGetters('settings', ['settings']),
-    ...mapGetters('expenses', ['period']),
+    ...mapGetters('expenses', ['period', 'overallBudget']),
 
     budget: {
       get() {

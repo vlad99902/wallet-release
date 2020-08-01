@@ -1,39 +1,43 @@
 <template>
   <q-page>
 
-    <div class="settings-header">
+    <form @submit.prevent="submitForm" novalidate>
 
-      <span class="back-btn control-button" @click="$router.replace('/settings/budget')">Cancel</span>
+      <div class="settings-header">
 
-      <div class="settings-header-title">
-        Budget amount
+        <button
+          class="back-btn control-button"
+          type="button"
+          @click="$router.replace('/settings/budget')">Cancel</button>
+
+        <div class="settings-header-title">
+          Budget amount
+        </div>
+
+        <button
+          class="back-btn-2 control-button"
+          :class="$v.budgetToSubmit.$invalid ? 'not-active' : ''"
+          type="submit"
+          :disabled="$v.budgetToSubmit.$invalid">
+            Done
+          </button>
       </div>
 
-      <span
-        class="back-btn-2 control-button"
-        :class="$v.budgetToSubmit.$invalid ? 'not-active' : ''"
-        @click="$router.replace('/settings/budget')">Done</span>
-    </div>
+      <div class="settings-small">
+        Enter amount of money you're planning to spend during selected period.
+      </div>
 
-    <div class="settings-small">
-      Enter amount of money you're planning to spend during selected period.
-    </div>
+      <div class="input-budget-container">
+          <currency-input
+            currency="USD"
+            locale="en-US"
+            v-model="budgetToSubmit"
+            @blur="$v.budgetToSubmit.$touch"
+            placeholder="Budget amount"
+            class="input-budget" />
+      </div>
 
-    <div class="input-budget-container">
-      <!-- <input
-        type="number"
-        class="input-budget"
-        v-model="budgetToSubmit"
-        placeholder="Budget amount"> -->
-
-        <currency-input
-          currency="USD"
-          locale="en-US"
-          v-model="budgetToSubmit"
-          @blur="$v.budgetToSubmit.$touch"
-          placeholder="Budget amount"
-          class="input-budget" />
-    </div>
+    </form>
 
 
   </q-page>
@@ -48,7 +52,7 @@ export default {
   data() {
     return {
       doneActive: false,
-      budgetToSubmit: 2000
+      budgetToSubmit: 0
     }
   },
 
@@ -57,8 +61,17 @@ export default {
   },
 
   computed: {
+    ...mapGetters('expenses', ['overallBudget'])
   },
   methods: {
+    ...mapActions('expenses', ['setBudget']),
+    submitForm() {
+      this.setBudget(this.budgetToSubmit)
+      this.$router.replace('/settings/budget')
+    }
+  },
+  mounted() {
+    this.budgetToSubmit = this.overallBudget
   }
 
 }
@@ -70,6 +83,10 @@ export default {
   font-size: 1rem;
   font-weight: 400;
   color: #5D8BCC;
+
+  border: none;
+  padding: 0;
+  outline: none !important;
 }
 
 .dark .control-button {
