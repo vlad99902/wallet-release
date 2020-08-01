@@ -49,8 +49,16 @@
 
               <!-- delete button -->
               <button 
+                v-if="deleteWithoutConfirm"
                 class="button-delete"
                 @click.stop="showConfirmDelete = true">
+                delete
+              </button>
+
+              <button 
+                v-if="deleteWithoutConfirm == false"
+                class="button-delete"
+                @click.stop="promtToDeleteExpense()">
                 delete
               </button>
 
@@ -87,11 +95,30 @@ export default {
   props: ['expense','id','date'],
   data() {
     return {
-      showConfirmDelete: false
+      dataToDelete: {
+        date: "",
+        id: ""
+      },
+
+      showConfirmDelete: false,
+      
+      //variable to delete without confirm dialog
+      //will take it from settings
+      deleteWithoutConfirm: true
     }
   },
   methods: {
-    ...mapActions('settings', ['setShowBlur'])
+    ...mapActions('expenses', ['deleteExpense']),
+    ...mapActions('settings', ['setShowBlur']),
+
+    promtToDeleteExpense() {
+      
+      //save data about expense to delete in object to push it
+      this.dataToDelete.date = this.date;
+      this.dataToDelete.id = this.id;
+
+      this.deleteExpense(this.dataToDelete)
+    }
   },
   filters: {
     fullDate(value) {

@@ -42,8 +42,6 @@ export default {
   props: ['expense','id','date'],
   data() {
     return {
-      moreExpense: {
-      },
       dataToDelete: {
         date: "",
         id: ""
@@ -63,12 +61,6 @@ export default {
       this.deleteExpense(this.dataToDelete)
     }
     
-  },
-
-  mounted() {
-    this.moreExpense = Object.assign({}, this.expense)
-  },
-  destroyed() {
   }
 }
 </script>
