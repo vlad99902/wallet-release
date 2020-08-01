@@ -1,62 +1,65 @@
 <template>
-  <q-card>
+  
+  <q-card class="more-modal" :class="showConfirmDelete ? 'hide-on-delete' : ''">
     <div>
-      <q-card-section>
+      <q-card-section >
         <div class="container">
+          
+            <!-- header -->
+            <div class="header-container">
 
-        <!-- header -->
-          <div class="header-container">
-
-        <!-- expense name -->
-            <div class="header-name">
-              {{ expense.name }}
-            </div>
-
-        <!-- tag img -->
-            <div class="header-tag">
-              
-              <div
-                class="tag-object"
-                
-                :style="categories[expense.category].categoryStyle">
-                <div
-                  class="tag-object-round-add"
-                  :style="{background: categories[expense.category].categoryStyle.color}">
-                </div>
-                {{ categories[expense.category].name }}
+          <!-- expense name -->
+              <div class="header-name">
+                {{ expense.name }}
               </div>
-              
+
+          <!-- tag img -->
+              <div class="header-tag">
+                
+                <div
+                  class="tag-object"
+                  
+                  :style="categories[expense.category].categoryStyle">
+                  <div
+                    class="tag-object-round-add"
+                    :style="{background: categories[expense.category].categoryStyle.color}">
+                  </div>
+                  {{ categories[expense.category].name }}
+                </div>
+                
+              </div>
+
+          <!-- expense cost -->
+              <div class="header-cost">
+                ${{ expense.cost }}
+              </div>
+
+          <!-- expense date -->
+              <div class="header-date">
+                {{ date | fullDate }}
+              </div>
+
             </div>
 
-        <!-- expense cost -->
-            <div class="header-cost">
-              ${{ expense.cost }}
+            <div class="description">
+              {{ expense.description }}
             </div>
 
-        <!-- expense date -->
-            <div class="header-date">
-              {{ date | fullDate }}
-            </div>
+            <div class="buttons-container">
 
+              <!-- delete button -->
+              <button 
+                class="button-delete"
+                @click.stop="showConfirmDelete = true">
+                delete
+              </button>
+
+              <!-- edit button -->
+              <button class="button-edit">
+                edit
+              </button>
           </div>
-
-          <div class="description">
-            {{ expense.description }}
-          </div>
-
-          <div class="buttons-container">
-
-            <!-- delete button -->
-            <button 
-              class="button-delete"
-              @click.stop="showConfirmDelete = true">
-              delete
-            </button>
-
-            <!-- edit button -->
-            <button class="button-edit">
-              edit
-            </button>
+        
             
             <q-dialog v-model="showConfirmDelete">
               <confirm-delete
@@ -66,13 +69,14 @@
                 :date = "date"/>
             </q-dialog>
 
-          </div>
+          
           
         </div>
         
       </q-card-section>
     </div>
   </q-card>
+  
 </template>
 
 <script>
@@ -234,6 +238,19 @@ export default {
   border: 1px solid $for-white;
   outline: none !important;
 }
+
+
+.hide-on-delete {
+  visibility: hidden;
+  opacity: 0;
+  //transition: visibility .3s, opacity .3s linear;
+}
+
+.more-modal {
+  transition: visibility .3s, opacity .3s linear;
+}
+
+
 
 
 </style>
