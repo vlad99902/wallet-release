@@ -381,8 +381,11 @@ const mutations = {
     if (state.expenses[payload.date]){
 
       //set new total
-      let newTotal =  parseFloat(state.expenses[payload.date].total) - parseFloat(state.expenses[payload.date].purchases[payload.id].cost)
-      Vue.set(state.expenses[payload.date], 'total', newTotal)
+      //if category != 'NO_BUDGET'
+      if (state.expenses[payload.date].purchases[payload.id].category != 'NO_BUDGET') {
+        let newTotal =  parseFloat(state.expenses[payload.date].total) - parseFloat(state.expenses[payload.date].purchases[payload.id].cost)
+        Vue.set(state.expenses[payload.date], 'total', newTotal)
+      }
 
       //set counter--
       let newCounter = parseInt(state.expenses[payload.date].counter) - parseInt('1')
@@ -402,15 +405,29 @@ const mutations = {
     delete payload.expense.date
     //if already exists this date
     if (state.expenses[date]) {
-      let newTotal =  parseFloat(state.expenses[date].total) + parseFloat(payload.expense.cost)
+
+      //check if tag Out of budget
+      if (state.expenses[date].category == 'NO_BUDGET') {
+        let newTotal =  parseFloat(state.expenses[date].total) + parseFloat(payload.expense.cost)
+        Vue.set(state.expenses[date], 'total', newTotal)
+      }
+
       let newCounter = parseInt(state.expenses[date].counter) + parseInt('1')
       payload.expense.count = newCounter
       Vue.set(state.expenses[date].purchases, payload.id, payload.expense)
-      Vue.set(state.expenses[date], 'total', newTotal)
       Vue.set(state.expenses[date], 'counter', newCounter)
     }
     else {
-      let newPayload = { total: payload.expense.cost, counter: '1', purchases: {}}
+      let newPayload;
+
+      //check for out of budget tag
+      if (payload.expense.category == 'NO_BUDGET'){
+        newPayload = { total: '0', counter: '1', purchases: {}}
+      }
+      else {
+        newPayload = { total: payload.expense.cost, counter: '1', purchases: {}}
+      }
+      
       payload.expense.count = '1'
       Vue.set(state.expenses, date, newPayload)
       Vue.set(state.expenses[date].purchases, payload.id, payload.expense)

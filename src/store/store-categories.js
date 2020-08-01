@@ -44,6 +44,13 @@ const state = {
                 background: '#B6D6F0',
                 color: '#50ABF2'
             }
+        },
+        'NO_BUDGET': {
+            name: 'Out of budget',
+            categoryStyle: {
+                background: '#A6A5AA',
+                color: '#393645'
+            }
         }
     }
 }
