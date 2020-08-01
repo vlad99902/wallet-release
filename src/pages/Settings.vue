@@ -55,7 +55,8 @@
   </div>
 
   <div class="bordered-btn-container">
-    <button class="bordered-btn">
+    <button
+      class="bordered-btn">
       LOG OUT
     </button>
   </div>
@@ -65,7 +66,7 @@
 
 <script>
 export default {
-  
+ 
 }
 </script>
 
@@ -85,6 +86,10 @@ export default {
   padding: .5rem 1.5rem;
   margin-top: 3rem;
   outline: none !important;
+}
+
+.bordered-btn:active {
+  transform: matrix(0.95, 0, 0, 0.95, 0, 0);
 }
 
 

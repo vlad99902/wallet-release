@@ -22,7 +22,7 @@
     </div>
 
     <div v-if="budget">
-      <div class="line">
+      <div class="line" @click="$router.replace('/settings/budget/budget-amount')">
         Amount
         <q-space></q-space>
         <span class="settings-strong-span small-m-r">

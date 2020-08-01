@@ -172,8 +172,16 @@ body {
   margin-left: auto;
   visibility: hidden;
 }
+
+.back-btn-2 {
+  margin-left: auto;
+}
 .back-btn {
   margin-right: auto;
+}
+
+.pressed {
+  transform: matrix(0.95, 0, 0, 0.95, 0, 0);
 }
 
 //activate this for desktop
