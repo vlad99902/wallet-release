@@ -10,6 +10,14 @@ const state = {
                 color: '#212121'
             }
         },
+        //id 'NO_BUDGED' used to check purchases without a budget
+        'NO_BUDGET': {
+            name: 'Out of budget',
+            categoryStyle: {
+                background: '#A6A5AA',
+                color: '#393645'
+            }
+        },
         'ID1': {
             name: 'Foodstuff',
             categoryStyle: {
@@ -43,13 +51,6 @@ const state = {
             categoryStyle: {
                 background: '#B6D6F0',
                 color: '#50ABF2'
-            }
-        },
-        'NO_BUDGET': {
-            name: 'Out of budget',
-            categoryStyle: {
-                background: '#A6A5AA',
-                color: '#393645'
             }
         }
     }

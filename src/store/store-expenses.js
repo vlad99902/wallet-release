@@ -284,7 +284,7 @@ const state = {
     },
     '2020-07-30': {
       total: '647.5',
-      counter: '7',
+      counter: '6',
       purchases: {
         'ID29': {
           name: 'Bus x2',

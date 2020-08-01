@@ -49,7 +49,7 @@
             <!-- delete button -->
             <button 
               class="button-delete"
-              @click.stop="promtToDeleteExpense()">
+              @click.stop="showConfirmDelete = true">
               delete
             </button>
 
@@ -57,6 +57,15 @@
             <button class="button-edit">
               edit
             </button>
+            
+            <q-dialog v-model="showConfirmDelete">
+              <confirm-delete
+                @close="showConfirmDelete = false"
+                :expense = "expense"
+                :id = "id"
+                :date = "date"/>
+            </q-dialog>
+
           </div>
           
         </div>
@@ -74,26 +83,11 @@ export default {
   props: ['expense','id','date'],
   data() {
     return {
-      moreExpense: {
-      },
-      dataToDelete: {
-        date: "",
-        id: ""
-      }
+      showConfirmDelete: false
     }
   },
   methods: {
-    ...mapActions('expenses', ['deleteExpense']),
-    ...mapActions('settings', ['setShowBlur']),
-    promtToDeleteExpense() {
-      
-      //save data about expense to delete in object to push it
-      this.dataToDelete.date = this.date;
-      this.dataToDelete.id = this.id;
-
-      this.deleteExpense(this.dataToDelete)
-    }
-    
+    ...mapActions('settings', ['setShowBlur'])
   },
   filters: {
     fullDate(value) {
@@ -103,8 +97,10 @@ export default {
   computed: {
     ...mapGetters("categories", ["categories"])
   },
+  components: {
+    'confirm-delete': require('components/modals/ConfirmDelete.vue').default,
+  },
   mounted (){
-    this.moreExpense = Object.assign({}, this.expense)
     this.setShowBlur()
   },
   destroyed() {
