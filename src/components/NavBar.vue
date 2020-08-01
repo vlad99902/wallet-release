@@ -138,10 +138,17 @@ export default {
   background: $for-white;
   transition: .5s ease-in-out;
   height: 4rem;
+
+  
   position: fixed;
   left: 0;
   bottom: 0;
+
+  
+
   width: 100%;
+
+  
 }
 
 .dark .main-nav-bar {

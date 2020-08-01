@@ -3,9 +3,11 @@
   <div id="q-app" class="main-app" :class="settings.showDarkMode ? 'dark' : ''">
 
     <!-- <router-view :class="showAddExpense ? 'blur-overlay' : ''" /> -->
+    
     <router-view
       :class="settings.showBlur ? 'blur-overlay' : ''"
        />
+    
     
     <nav-bar :showAddExpense.sync="showAddExpense" :class="settings.showBlur ? 'blur-overlay' : ''" />
 

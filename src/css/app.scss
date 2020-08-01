@@ -100,9 +100,14 @@ body {
   margin: 0;
   height: 100vh;
   width: 100vw;
+  
   font-family: 'Lato';
   font-weight: 300;
   font-size: 16px;
+
+  background: $for-background;
+
+  
 
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -113,6 +118,8 @@ body {
                                   supported by Chrome, Edge, Opera and Firefox */
 
 }
+
+
 
 .heading {
   font-size: 3.375rem;
