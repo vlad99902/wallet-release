@@ -171,6 +171,14 @@ export default {
   props: ['expense','id','date'],
   data() {
     return {
+      expenseToUpdate: {
+        date: '',
+        id: '',
+        name: '',
+        cost: '',
+        categiry: '',
+        description: ''
+      },
       dataToDelete: {
         date: "",
         id: ""
@@ -183,7 +191,7 @@ export default {
       deleteWithoutConfirm: true,
 
       //to show input edit input fields
-      showEditFields: true
+      showEditFields: false
     }
   },
   methods: {
