@@ -409,7 +409,7 @@ const state = {
     overallBudget: 3000,
     availableBudget: '',
     spentBudget: '',
-    period: 7,
+    period: 1,
     dailyLimit: '',
     spentThisWeek: 0,
     spentLastWeek: 0,
@@ -606,15 +606,26 @@ const actions = {
 
   calcSpentBudget({ commit, dispatch }) {
     if (state.analytics.period === 1) {
+      let timeStamp = Date.now()
+      let dayNumber = date.formatDate(timeStamp, 'D')
+      
+      //counting all expenses within that amount of days
+      let newSpentThisMonth = 0
+      for (let i = 0; i < dayNumber; i++) {
+        if (typeof state.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')] != "undefined") {
+          newSpentThisMonth = newSpentThisMonth + parseFloat(state.expenses[date.formatDate(date.subtractFromDate(timeStamp, { hours: 24*i }), 'YYYY-MM-DD')].total)
+        }
+      }
 
+      commit('setSpentBudget', newSpentThisMonth)
     }
     else if (state.analytics.period === 7) {
       //just need to make sure that spentThisWeek is being calculated earlier
       commit('setSpentBudget', state.analytics.spentThisWeek)
-      dispatch('calcAvailableBudget')
-      dispatch('calcDailyLimit')
-      dispatch('calcProgress')
     }
+    dispatch('calcAvailableBudget')
+    dispatch('calcDailyLimit')
+    dispatch('calcProgress')
   },
 
   calcAvailableBudget({ commit }) {
@@ -623,18 +634,27 @@ const actions = {
   },
 
   calcDailyLimit({ commit }) {
+    let newDailyLimit
+    let timeStamp = Date.now()
     if (state.analytics.period === 1) {
+      //got it from stackoverflow
+      let month = date.formatDate(timeStamp, 'M')
+      let year = date.formatDate(timeStamp, 'YYYY')
+      let d = new Date(year, month + 1, 0);
 
+      //this is the number of day until the end of month including this date
+      let dayNumber = date.formatDate(d, 'D')
+
+      newDailyLimit = state.analytics.availableBudget / dayNumber
     }
     else if (state.analytics.period === 7) {
-      let timeStamp = Date.now()
       //figuring out how much days already past from the start of the week with offset
       let dayNumber = parseInt(date.formatDate(timeStamp, 'd')) - parseInt(state.analytics.firstDay) + 1
       if (dayNumber <= 0) dayNumber = 7 + dayNumber
       dayNumber = 7 - dayNumber + 1
-      let newDailyLimit = state.analytics.availableBudget / dayNumber
-      commit('setDailyLimit', newDailyLimit)
+      newDailyLimit = state.analytics.availableBudget / dayNumber
     }
+    commit('setDailyLimit', newDailyLimit)
   },
 
   calcProgress({ commit }) {
