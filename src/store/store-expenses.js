@@ -369,6 +369,41 @@ const state = {
         },
       }
     },
+    '2020-08-01': {
+      total: '196',
+      counter: '2',
+      currentOrder: 2,
+      purchases: {
+        'ID38': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID39': {
+          name: 'Beer',
+          description: '',
+          cost: '140',
+          category: 'ID2',
+          count: '2'
+        },
+      }
+    },
+    '2020-08-02': {
+      total: '56',
+      counter: '1',
+      currentOrder: 1,
+      purchases: {
+        'ID39': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+      }
+    },
   },
   analytics: {
     overallBudget: 3000,
