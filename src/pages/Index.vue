@@ -277,10 +277,10 @@ export default {
 }
 
 //purcahse tag recent only img
-.purchase-tag img {
-  width: 1.2rem;
-  height: 1.2rem;
-}
+// .purchase-tag img {
+//   width: 1.2rem;
+//   height: 1.2rem;
+// }
 
 //
 .purchase-name {

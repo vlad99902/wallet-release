@@ -103,7 +103,7 @@
             :class="{'invalid' : $v.expenseToSubmit.description.$error}"
             type="text"
             placeholder="Description"
-            class="input-field-desc"
+            class="input-field input-field-desc"
             rows="2"
             autogrow
             ></textarea>
@@ -355,30 +355,11 @@ export default {
   }
 }
 
+
+//secons class for description field
 .input-field-desc {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0);
-
-  width: 100%;
-
-
-  font-size: 1.95vh;
- // font-size: 2.2vh;
-
   margin-bottom: 1rem;
-  padding: 0.6rem 0.875rem;
-
-  font-weight: 500;
-  color: $for-white;
-
-  resize: none;
-
-  &::placeholder {
-    color: $secondary;
-    font-weight: 500;
-  }
+  height: auto;
 }
 
 //focus
