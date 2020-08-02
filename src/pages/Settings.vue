@@ -88,8 +88,8 @@ export default {
   outline: none !important;
 }
 
-.bordered-btn:active {
-  transform: matrix(0.95, 0, 0, 0.95, 0, 0);
-}
+// .bordered-btn:active {
+//   transform: matrix(0.95, 0, 0, 0.95, 0, 0);
+// }
 
 </style>

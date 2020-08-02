@@ -187,6 +187,10 @@ body {
   margin-right: auto;
 }
 
+.purchase:active, .bordered-btn:active, .card-3:active, .card-2:active, .card-1:active {
+  transform: matrix(0.98, 0, 0, 0.98, 0, 0);
+}
+
 
 //activate this for desktop
 // .line:hover {

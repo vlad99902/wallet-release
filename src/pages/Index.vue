@@ -128,9 +128,6 @@ export default {
   margin-left: 1rem;
 }
 
-.card-3:active {
-  transform: matrix(0.95, 0, 0, 0.95, 0, 0);
-}
 
 //container inside of cards
 .card-content {
