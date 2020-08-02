@@ -8,6 +8,7 @@ const state = {
     '2020-07-20' : {
       total: '351',
       counter: '3',
+      currentOrder: 3,
       purchases: {
         'ID1': {
           name: 'Cigarettes',
@@ -35,6 +36,7 @@ const state = {
     '2020-07-21': {
       total: '159',
       counter: '3',
+      currentOrder: 3,
       purchases: {
         'ID4': {
           name: 'Milk',
@@ -62,6 +64,7 @@ const state = {
     '2020-07-22': {
       total: '231',
       counter: '2',
+      currentOrder: 2,
       purchases: {
         'ID7': {
           name: 'Bus x2',
@@ -82,6 +85,7 @@ const state = {
     '2020-07-23': {
       total: '467',
       counter: '6',
+      currentOrder: 6,
       purchases: {
         'ID9': {
           name: 'Bus x2',
@@ -130,6 +134,7 @@ const state = {
     '2020-07-24': {
       total: '117',
       counter: '2',
+      currentOrder: 2,
       purchases: {
         'ID15': {
           name: 'Bus x3',
@@ -150,6 +155,7 @@ const state = {
     '2020-07-25': {
       total: '136',
       counter: '3',
+      currentOrder: 3,
       purchases: {
         'ID17': {
           name: 'Bus x2',
@@ -177,6 +183,7 @@ const state = {
     '2020-07-26': {
       total: '566',
       counter: '4',
+      currentOrder: 4,
       purchases: {
         'ID20': {
           name: 'Bus x2',
@@ -211,6 +218,7 @@ const state = {
     '2020-07-27': {
       total: '546.5',
       counter: '4',
+      currentOrder: 4,
       purchases: {
         'ID24': {
           name: 'Bus x2',
@@ -245,6 +253,7 @@ const state = {
     '2020-07-28': {
       total: '191',
       counter: '3',
+      currentOrder: 3,
       purchases: {
         'ID28': {
           name: 'Bus x3',
@@ -272,6 +281,7 @@ const state = {
     '2020-07-29': {
       total: '56',
       counter: '1',
+      currentOrder: 1,
       purchases: {
         'ID28': {
           name: 'Bus x2',
@@ -285,6 +295,7 @@ const state = {
     '2020-07-30': {
       total: '647.5',
       counter: '7',
+      currentOrder: 7,
       purchases: {
         'ID29': {
           name: 'Bus x2',
@@ -340,6 +351,7 @@ const state = {
     '2020-07-31': {
       total: '84',
       counter: '2',
+      currentOrder: 2,
       purchases: {
         'ID36': {
           name: 'Bus x3',
@@ -413,19 +425,21 @@ const mutations = {
       }
 
       let newCounter = parseInt(state.expenses[date].counter) + parseInt('1')
-      payload.expense.count = newCounter
+      let newOrder = state.expenses[date].currentOrder + 1
+      payload.expense.count = newOrder
       Vue.set(state.expenses[date].purchases, payload.id, payload.expense)
       Vue.set(state.expenses[date], 'counter', newCounter)
+      Vue.set(state.expenses[date], 'currentOrder', newOrder)
     }
     else {
       let newPayload;
 
       //check for out of budget tag
       if (payload.expense.category === 'NO_BUDGET'){
-        newPayload = { total: '0', counter: '1', purchases: {}}
+        newPayload = { total: '0', counter: '1', currentOrder: 1, purchases: {}}
       }
       else {
-        newPayload = { total: payload.expense.cost, counter: '1', purchases: {}}
+        newPayload = { total: payload.expense.cost, counter: '1', currentOrder: 1, purchases: {}}
       }
       
       payload.expense.count = '1'
@@ -582,7 +596,7 @@ const actions = {
       //figuring out how much days already past from the start of the week with offset
       let dayNumber = parseInt(date.formatDate(timeStamp, 'd')) - parseInt(state.analytics.firstDay) + 1
       if (dayNumber <= 0) dayNumber = 7 + dayNumber
-      dayNumber = 7 - dayNumber
+      dayNumber = 7 - dayNumber + 1
       let newDailyLimit = state.analytics.availableBudget / dayNumber
       commit('setDailyLimit', newDailyLimit)
     }

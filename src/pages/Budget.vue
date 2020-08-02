@@ -43,14 +43,6 @@
           1 week
         </span>
 
-        <span class="settings-strong-span small-m-r" v-if="period === 14">
-          2 weeks
-        </span>
-
-        <span class="settings-strong-span small-m-r" v-if="period === 21">
-          3 weeks
-        </span>
-
         <span class="settings-strong-span small-m-r" v-if="period === 1">
           1 month
         </span>

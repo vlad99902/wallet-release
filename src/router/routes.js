@@ -14,6 +14,7 @@ const routes = [
       { path: '/settings/budget/period', component: () => import('pages/Period.vue') },
       { path: '/settings/budget/budget-amount', component: () => import('pages/BudgetAmount.vue') },
       { path: '/settings/dark-mode', component: () => import('pages/DarkMode.vue') },
+      { path: '/settings/language-and-currency', component: () => import('pages/LanguageAndCurrency.vue') },
     ]
   },
 

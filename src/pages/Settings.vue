@@ -36,7 +36,7 @@
     <img src="../assets/next.svg" width="15px" alt="">
   </div>
 
-  <div class="line">
+  <div class="line" @click="$router.replace('/settings/language-and-currency')">
     Language and currency
     <q-space></q-space>
     <img src="../assets/next.svg" width="15px" alt="">
@@ -91,6 +91,5 @@ export default {
 .bordered-btn:active {
   transform: matrix(0.95, 0, 0, 0.95, 0, 0);
 }
-
 
 </style>
