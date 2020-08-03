@@ -395,7 +395,7 @@ const state = {
       counter: '1',
       currentOrder: 1,
       purchases: {
-        'ID39': {
+        'ID40': {
           name: 'Bus x2',
           description: '',
           cost: '56',
@@ -422,8 +422,6 @@ const state = {
 
 const mutations = {
   updateExpense(state, payload) {
-    //Object.assign(state.expenses[payload.id], payload.updates)
-
     //delete date from updation object
     let newDate = payload.updates.date;
     delete payload.updates.date;
@@ -444,18 +442,17 @@ const mutations = {
     //if date changed
     else {
       Object.assign(state.expenses[payload.date].purchases[payload.id], payload.updates);
+      //save update object
       let expenseToAdd = {
         expense: {
           date: ''
         },
         id: ''
       }
+      //create object to call add expense
       Vue.set(expenseToAdd, 'expense', state.expenses[payload.date].purchases[payload.id])
       Vue.set(expenseToAdd.expense, 'date', newDate)
-      Vue.set(expenseToAdd, 'id', payload.id)
-      //expenseToAdd.expense = state.expenses[payload.date].purchases[payload.id];
-      //expenseToAdd.expense.date = newDate;
-      //expenseToAdd.id = payload.id;
+      Vue.set(expenseToAdd, 'id', uid())
       mutations.deleteExpense (state, payload);
       //console.log ('\n', expenseToAdd, '\n\n', payload);
       mutations.addExpense (state, expenseToAdd);
@@ -564,8 +561,11 @@ const mutations = {
 }
 
 const actions = {
-  updateExpense({ commit }, payload) {
+  updateExpense({ commit, dispatch }, payload) {
     commit('updateExpense', payload)
+    dispatch('calcSpentThisWeek')
+    dispatch('checkTodayExpenses')
+    dispatch('calcSpentBudget')
   },
   deleteExpense({ commit, dispatch }, payload) {
     commit('deleteExpense', payload)
