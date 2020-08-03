@@ -17,6 +17,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+//today's date
+.date {
+  //font-size: 1.4rem;
+  font-size: 1.2rem;
+  padding-left: 2rem;
+  font-weight: 300;
+}
 
 </style>

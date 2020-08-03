@@ -2,10 +2,7 @@
   <div class="purchase">
 
       <div class="purchase-tag">
-        <!-- <img src="../../statics/tag1.png" alt=""> -->
-
         <!-- expense category -->
-
         <div
           class="tag-object-round-big"
           :style="{background: categories[expense.category].categoryStyle.background}">
@@ -14,10 +11,7 @@
             :style="{background: categories[expense.category].categoryStyle.color}">
           </div>
         </div>
-
       </div>
-
-      
 
       <div class="purchase-name">
         {{ expense.name }} 
@@ -64,7 +58,5 @@ export default {
 </script>
 
 <style>
-
-
 
 </style>

@@ -94,11 +94,6 @@ import { mapGetters, mapActions } from "vuex";
 import { date } from 'quasar'
 
 export default {
-  //props: ['progress'],
-  data() {
-    return {
-    }
-  },
   computed: {
     ...mapGetters('settings', ['settings']),
     ...mapGetters('expenses', ['expenses', 'spentThisWeek', 'spentLastWeek', 'spentBudget', 'availableBudget', 'dailyLimit', 'progress']),
@@ -115,12 +110,161 @@ export default {
   mounted() {
     this.calcSpentThisWeek()
     this.calcSpentBudget()
-    //need to make offset and analytics and move it into the store
   }
 }
 </script>
 
 <style lang="scss">
+
+//card's container
+.cards {
+  overflow-x: scroll;
+  display: flex;
+  padding-top: 1.4rem;
+  box-sizing: border-box;
+}
+
+//disable display of scroll for cards
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+.card-1 {
+  position: relative;
+  margin-left: 2rem;
+}
+.card-2 {
+  position: relative;
+  margin-left: 1rem;
+}
+.card-3 {
+  position: relative;
+}
+
+.card-1 img {
+  width: 80vw;
+  max-width: 300px;
+
+}
+
+.card-2 img {
+  width: 80vw;
+  max-width: 300px;
+  //margin-right: 2rem;
+}
+
+.card-3 img {
+  width: 80vw;
+  max-width: 300px;
+  margin-right: 2rem;
+  margin-left: 1rem;
+}
+
+
+//container inside of cards
+.card-content {
+  line-height: 10vw;
+  color: $for-white;
+  font-size: 8vw;
+  font-weight: 700;
+  padding-left: 8vw;
+  position: absolute;
+  top: 0%;
+  padding-top: 7vw;
+  //margin-right: 55px;
+}
+
+.avaliable-money {
+  font-weight: 300;
+}
+
+//styling progress bar
+.q-linear-progress {
+  border-radius: 9px;
+}
+
+.bar {
+  margin-top: 3vw;
+  width: 63vw;
+  max-width: 233px;
+}
+
+.spent-limit {
+  font-weight: 700;
+  font-size: 3.2vw;
+}
+
+.week-analitycs {
+  display: inline-block;
+
+  font-weight: 700;
+  font-size: 3.2vw;
+  line-height: 4vw;
+  margin-top: 2vw;
+
+  width: 63vw;
+  max-width: 233px;
+}
+
+//fixing how cards look for displays more than 372px width
+@media screen and (min-width: 372px) {
+  .card-content {
+    font-size: 33px;
+    line-height: 37px;
+    padding-top: 26px;
+    padding-left: 30px;
+    margin-right: 60px;
+  }
+
+  .week-analitycs {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 9px;
+  }
+
+  .spent-limit {
+    font-size: 12px;
+  }
+
+  .bar {
+  margin-top: 15px;
+  } 
+
+}
+
+.recent {
+  font-size: 2rem;
+  font-weight: 700;
+  padding-left: 2rem;
+  margin-top: -1rem;
+}
+
+.month {
+  font-weight: 700;
+  color: $secondary;
+  font-size: 0.75rem;
+}
+
+.date-container {
+  display: flex;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  padding-top: 0.4rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  max-width: 600px;
+}
+
+.date-2-month {
+  font-size: 0.55rem;
+  color: $secondary;
+}
+
+.total {
+  font-size: .75rem;
+  font-weight: 700;
+  padding-right: 1rem;;
+}
 
 .create-gap {
   margin-left: 1rem;
