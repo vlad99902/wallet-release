@@ -404,6 +404,20 @@ const state = {
         },
       }
     },
+    '2020-08-03': {
+      total: '84',
+      counter: '1',
+      currentOrder: 1,
+      purchases: {
+        'ID41': {
+          name: 'Bus x3',
+          description: '',
+          cost: '84',
+          category: 'ID5',
+          count: '1'
+        },
+      }
+    },
   },
   analytics: {
     overallBudget: 1500,
