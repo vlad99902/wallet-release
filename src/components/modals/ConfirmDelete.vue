@@ -3,32 +3,21 @@
     <div>
       <q-card-section>
         <div class="container">
-          
           <div class="header-container">
             <div class="header-title">
-              Do you want to delete: <strong>{{ expense.name }}</strong>?
+              Do you want to delete:
+              <strong>{{ expense.name }}</strong>?
             </div>
           </div>
 
           <div class="buttons-container">
             <!-- cancel button -->
-            <button 
-              class="button-delete"
-              @click="$emit('close')">
-              cancel
-            </button>
+            <button class="button-delete" @click="$emit('close')">cancel</button>
 
             <!-- confirm button -->
-            <button 
-              class="button-edit"
-              @click.stop="promtToDeleteExpense()">
-              confirm
-            </button>
-
+            <button class="button-edit" @click.stop="promtToDeleteExpense()">confirm</button>
           </div>
-          
         </div>
-        
       </q-card-section>
     </div>
   </q-card>
@@ -39,33 +28,31 @@ import { mapActions, mapGetters } from "vuex";
 import { date } from "quasar";
 
 export default {
-  props: ['expense','id','date'],
+  props: ["expense", "id", "date"],
   data() {
     return {
       dataToDelete: {
         date: "",
-        id: ""
-      }
-    }
+        id: "",
+      },
+    };
   },
   methods: {
-    ...mapActions('expenses', ['deleteExpense']),
-    ...mapActions('settings', ['setShowBlur']),
+    ...mapActions("expenses", ["deleteExpense"]),
+    ...mapActions("settings", ["setShowBlur"]),
 
     promtToDeleteExpense() {
-      
       //save data about expense to delete in object to push it
       this.dataToDelete.date = this.date;
       this.dataToDelete.id = this.id;
 
-      this.deleteExpense(this.dataToDelete)
-    }
-    
-  }
-}
+      this.deleteExpense(this.dataToDelete);
+    },
+  },
+};
 </script>
 
-<style lang="scss"> 
+<style lang="scss">
 .header-title {
   grid-row: 1/2;
   grid-column: 1/3;

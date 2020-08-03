@@ -1,47 +1,40 @@
 <template>
   <q-page>
-
     <form @submit.prevent="submitForm" novalidate>
-
       <div class="settings-header">
-
         <button
           class="back-btn control-button"
           type="button"
-          @click="$router.replace('/settings/budget')">Cancel</button>
+          @click="$router.replace('/settings/budget')"
+        >Cancel</button>
 
-        <div class="settings-header-title">
-          Budget amount
-        </div>
+        <div class="settings-header-title">Budget amount</div>
 
         <button
           class="back-btn-2 control-button"
           :class="$v.budgetToSubmit.$invalid ? 'not-active' : ''"
           type="submit"
-          :disabled="$v.budgetToSubmit.$invalid">
-            Done
-          </button>
+          :disabled="$v.budgetToSubmit.$invalid"
+        >Done</button>
       </div>
-
-      <div class="settings-small">
-        Enter amount of money you're planning to spend during selected period.
-      </div>
+      
+      <div
+        class="settings-small"
+      >Enter amount of money you're planning to spend during selected period.</div>
 
       <div class="input-budget-container">
-          <currency-input
-            v-autofocus
-            currency="USD"
-            locale="en-US"
-            v-model="budgetToSubmit"
-            @blur="$v.budgetToSubmit.$touch"
-            placeholder="Budget amount"
-            class="input-budget select-all"
-            v-select-all />
+        <currency-input
+          v-autofocus
+          currency="USD"
+          locale="en-US"
+          v-model="budgetToSubmit"
+          @blur="$v.budgetToSubmit.$touch"
+          placeholder="Budget amount"
+          class="input-budget select-all"
+          v-select-all
+        />
       </div>
-
     </form>
-
-
   </q-page>
 </template>
 
@@ -49,51 +42,49 @@
 import { mapGetters, mapActions } from "vuex";
 
 //validatin fields
-import { required } from 'vuelidate/lib/validators'
+import { required } from "vuelidate/lib/validators";
 
 //directives
-import { autofocus } from "src/directives/directive-autofocus"
-import { selectAll } from "src/directives/directive-select-all"
+import { autofocus } from "src/directives/directive-autofocus";
+import { selectAll } from "src/directives/directive-select-all";
 
 export default {
   directives: {
     autofocus,
-    selectAll
+    selectAll,
   },
   data() {
     return {
       doneActive: false,
-      budgetToSubmit: 0
-    }
+      budgetToSubmit: 0,
+    };
   },
 
   validations: {
-    budgetToSubmit: {required}
+    budgetToSubmit: { required },
   },
 
   computed: {
-    ...mapGetters('expenses', ['overallBudget'])
+    ...mapGetters("expenses", ["overallBudget"]),
   },
   methods: {
-    ...mapActions('expenses', ['setBudget']),
+    ...mapActions("expenses", ["setBudget"]),
     submitForm() {
-      this.setBudget(this.budgetToSubmit)
-      this.$router.replace('/settings/budget')
-    }
+      this.setBudget(this.budgetToSubmit);
+      this.$router.replace("/settings/budget");
+    },
   },
   mounted() {
-    this.budgetToSubmit = this.overallBudget
-  }
-
-}
+    this.budgetToSubmit = this.overallBudget;
+  },
+};
 </script>
 
-<style lang="scss" >
-
+<style lang="scss">
 .control-button {
   font-size: 1rem;
   font-weight: 400;
-  color: #5D8BCC;
+  color: #5d8bcc;
 
   border: none;
   padding: 0;
@@ -105,7 +96,7 @@ export default {
 }
 
 .not-active {
-  color: #B8D2F1;
+  color: #b8d2f1;
 }
 
 .dark .not-active {
@@ -147,5 +138,4 @@ export default {
 .input-budget:focus {
   outline: none !important;
 }
-
 </style>

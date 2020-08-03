@@ -1,85 +1,60 @@
 <template>
-  
   <q-card class="more-modal" :class="showConfirmDelete ? 'hide-on-delete' : ''">
     <div>
-      <q-card-section >
-        <div
-          class="container"
-          v-if="showEditFields == false">
-          
-            <!-- header -->
-            <div class="header-container">
+      <q-card-section>
+        <div class="container" v-if="showEditFields == false">
+          <!-- header -->
+          <div class="header-container">
+            <!-- expense name -->
+            <div class="header-name">{{ expense.name }}</div>
 
-          <!-- expense name -->
-              <div class="header-name">
-                {{ expense.name }}
-              </div>
-
-          <!-- tag img -->
-              <div class="header-tag">
-                
+            <!-- tag img -->
+            <div class="header-tag">
+              <div class="tag-object" :style="categories[expense.category].categoryStyle">
                 <div
-                  class="tag-object"
-                  :style="categories[expense.category].categoryStyle">
-                  <div
-                    class="tag-object-round-add"
-                    :style="{background: categories[expense.category].categoryStyle.color}">
-                  </div>
-                  {{ categories[expense.category].name }}
-                </div>
-                
+                  class="tag-object-round-add"
+                  :style="{background: categories[expense.category].categoryStyle.color}"
+                ></div>
+                {{ categories[expense.category].name }}
               </div>
-
-          <!-- expense cost -->
-              <div class="header-cost">
-                ${{ expense.cost }}
-              </div>
-
-          <!-- expense date -->
-              <div class="header-date">
-                {{ date | fullDate }}
-              </div>
-
             </div>
 
-            <div class="description">
-              {{ expense.description }}
-            </div>
+            <!-- expense cost -->
+            <div class="header-cost">${{ expense.cost }}</div>
 
-
-            <!-- buttons  -->
-            <div class="buttons-container">
-
-              <!-- delete button -->
-              <button 
-                v-if="deleteWithoutConfirm"
-                class="button-delete"
-                @click.stop="showConfirmDelete = true">
-                delete
-              </button>
-
-              <button 
-                v-if="deleteWithoutConfirm == false"
-                class="button-delete"
-                @click.stop="promtToDeleteExpense()">
-                delete
-              </button>
-
-              <!-- edit button -->
-              <button
-                class="button-edit"
-                @click="showEditFields = true">
-                edit
-              </button>
+            <!-- expense date -->
+            <div class="header-date">{{ date | fullDate }}</div>
           </div>
-            
-            <q-dialog v-model="showConfirmDelete">
-              <confirm-delete
-                @close="showConfirmDelete = false"
-                :expense = "expense"
-                :id = "id"
-                :date = "date"/>
-            </q-dialog>
+
+          <div class="description">{{ expense.description }}</div>
+
+          <!-- buttons  -->
+          <div class="buttons-container">
+            <!-- delete button -->
+            <button
+              v-if="deleteWithoutConfirm"
+              class="button-delete"
+              @click.stop="showConfirmDelete = true"
+            >delete</button>
+
+            <button
+              v-if="deleteWithoutConfirm == false"
+              class="button-delete"
+              @click.stop="promtToDeleteExpense()"
+            >delete</button>
+
+            <!-- edit button -->
+            <button class="button-edit" @click="showEditFields = true">edit</button>
+          </div>
+
+          <q-dialog v-model="showConfirmDelete">
+            <confirm-delete
+              @close="showConfirmDelete = false"
+              :expense="expense"
+              :id="id"
+              :date="date"
+            />
+          </q-dialog>
         </div>
 
         <!-- ///////////////////// -->
@@ -88,12 +63,8 @@
         <!-- ///////////////////// -->
         <!-- ///////////////////// -->
         <form @submit.prevent="submitForm">
-
-          <div
-            class="container"
-            v-if="showEditFields">
-            
-              <!-- tag img
+          <div class="container" v-if="showEditFields">
+            <!-- tag img
               <div class="header-tag">
                 
                 <div
@@ -106,129 +77,118 @@
                   {{ categories[expense.category].name }}
                 </div>
                 
-              </div> -->
+            </div>-->
 
-          <!-- expense name -->
-              <input
-                class="input-field input-field-small"
-                @input="expenseToUpdate.name = $event.target.value"
-                type="text"
-                placeholder="Name"
-                :value="[[ expense.name ]]"/>
+            <!-- expense name -->
+            <input
+              class="input-field input-field-small"
+              @input="expenseToUpdate.name = $event.target.value"
+              type="text"
+              placeholder="Name"
+              :value="[[ expense.name ]]"
+            />
 
-          <!-- expense cost -->
-              <input
-                class="input-field input-field-small"
-                @input="expenseToUpdate.cost = $event.target.value"
-                type="text"
-                placeholder="0.0"
-                :value="[[ expense.cost ]]"/>
+            <!-- expense cost -->
+            <input
+              class="input-field input-field-small"
+              @input="expenseToUpdate.cost = $event.target.value"
+              type="text"
+              placeholder="0.0"
+              :value="[[ expense.cost ]]"
+            />
 
-          <!-- expense date -->
-              <input
-                class="input-field input-field-small"
-                @input="expenseToUpdate.date = $event.target.value"
-                type="text"
-                placeholder="date"
-                :value="[[ date ]]"/>
+            <!-- expense date -->
+            <input
+              class="input-field input-field-small"
+              @input="expenseToUpdate.date = $event.target.value"
+              type="text"
+              placeholder="date"
+              :value="[[ date ]]"
+            />
 
-          <!-- expense description -->
-              <textarea
-                class="input-field input-field-desc"
-                @input="expenseToUpdate.description = $event.target.value"
-                type="text"
-                placeholder="Description"
-                :value="[[ expense.description ]]"/>
+            <!-- expense description -->
+            <textarea
+              class="input-field input-field-desc"
+              @input="expenseToUpdate.description = $event.target.value"
+              type="text"
+              placeholder="Description"
+              :value="[[ expense.description ]]"
+            />
 
-              <!-- buttons  -->
-              <div class="buttons-container">
+            <!-- buttons  -->
+            <div class="buttons-container">
+              <!-- delete cancel -->
+              <button class="button-delete" @click="showEditFields = false">cancel</button>
 
-                <!-- delete cancel -->
-                <button 
-                  class="button-delete"
-                  @click="showEditFields = false">
-                  cancel
-                </button>
+              <!-- edit button -->
+              <button class="button-edit" type="submit">confirm</button>
 
-                <!-- edit button -->
-                <button
-                  class="button-edit"
-                  type="submit"
-                  >
-                  confirm
-                </button>
-
-                <!-- <p>
+              <!-- <p>
                   {{ $v.expenseToUpdate.name }}
-                </p> -->
+              </p>-->
             </div>
           </div>
         </form>
-        
       </q-card-section>
     </div>
   </q-card>
-  
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { date } from "quasar";
-import { required, maxLength, minValue } from 'vuelidate/lib/validators';
+import { required, maxLength, minValue } from "vuelidate/lib/validators";
 
 export default {
-  props: ['expense','id','date'],
+  props: ["expense", "id", "date"],
   data() {
     return {
-
       //data to update
-      expenseToUpdate: {
-      },
+      expenseToUpdate: {},
 
       //data to delete info
       dataToDelete: {
         date: "",
-        id: ""
+        id: "",
       },
 
       showConfirmDelete: false,
-      
+
       //variable to delete without confirm dialog
       //will take it from settings
       deleteWithoutConfirm: true,
 
       //to show input edit input fields
-      showEditFields: false
-    }
+      showEditFields: false,
+    };
   },
   //validations parameters
   //must be imported in umport section
 
   validations: {
     expenseToUpdate: {
-      name: {required, maxLength: maxLength(25)},
-      cost: {required, minValue: minValue(0)},
-      description: {maxLength: maxLength(99)}
+      name: { required, maxLength: maxLength(25) },
+      cost: { required, minValue: minValue(0) },
+      description: { maxLength: maxLength(99) },
     },
-    date: {required}
-
+    date: { required },
   },
   methods: {
-    ...mapActions('expenses', ['deleteExpense', 'updateExpense']),
-    ...mapActions('settings', ['setShowBlur']),
+    ...mapActions("expenses", ["deleteExpense", "updateExpense"]),
+    ...mapActions("settings", ["setShowBlur"]),
 
     promtToDeleteExpense() {
       //save data about expense to delete in object to push it
       this.dataToDelete.date = this.date;
       this.dataToDelete.id = this.id;
 
-      this.deleteExpense(this.dataToDelete)
+      this.deleteExpense(this.dataToDelete);
     },
 
     //submiting form for edit expense
     submitForm() {
       this.submitExpense();
-      this.$emit('close');
+      this.$emit("close");
     },
 
     //submit expense data
@@ -236,32 +196,31 @@ export default {
       this.updateExpense({
         id: this.id,
         date: this.date,
-        updates: this.expenseToUpdate
-      })
-    }
+        updates: this.expenseToUpdate,
+      });
+    },
   },
   filters: {
     fullDate(value) {
-      return date.formatDate(value, 'YYYY.MM.DD')
-    }
+      return date.formatDate(value, "YYYY.MM.DD");
+    },
   },
   computed: {
-    ...mapGetters("categories", ["categories"])
+    ...mapGetters("categories", ["categories"]),
   },
   components: {
-    'confirm-delete': require('components/modals/ConfirmDelete.vue').default,
+    "confirm-delete": require("components/modals/ConfirmDelete.vue").default,
   },
-  mounted (){
-    this.setShowBlur()
+  mounted() {
+    this.setShowBlur();
   },
   destroyed() {
-    this.setShowBlur()
-  }
-}
+    this.setShowBlur();
+  },
+};
 </script>
 
 <style lang="scss">
-
 ///////////////////////////
 //CONTAINERS AND OTHER
 ///////////////////////////
@@ -270,7 +229,7 @@ export default {
   padding-left: 1rem;
   padding-right: 1rem;
 
- // padding-bottom: 0.8rem;
+  // padding-bottom: 0.8rem;
 }
 
 .header-container {
@@ -359,7 +318,7 @@ export default {
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
-  font-size: .9rem;
+  font-size: 0.9rem;
 
   background-color: $add-button;
   color: $for-white;
@@ -381,7 +340,7 @@ export default {
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
-  font-size: .9rem;
+  font-size: 0.9rem;
 
   background: none;
   color: $for-white;
@@ -396,7 +355,6 @@ export default {
   outline: none !important;
 }
 
-
 .hide-on-delete {
   visibility: hidden;
   opacity: 0;
@@ -404,10 +362,6 @@ export default {
 }
 
 .more-modal {
-  transition: all .3s, opacity .3s linear;
+  transition: all 0.3s, opacity 0.3s linear;
 }
-
-
-
-
 </style>

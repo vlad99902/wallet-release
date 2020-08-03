@@ -1,20 +1,15 @@
 <template>
   <!-- applying dark mode here -->
   <div id="q-app" class="main-app" :class="settings.showDarkMode ? 'dark' : ''">
+    <router-view :class="settings.showBlur ? 'blur-overlay' : ''" />
 
-    <!-- <router-view :class="showAddExpense ? 'blur-overlay' : ''" /> -->
-    
-    <router-view
+    <nav-bar
+      :showAddExpense.sync="showAddExpense"
       :class="settings.showBlur ? 'blur-overlay' : ''"
-       />
-    
-    
-    <nav-bar :showAddExpense.sync="showAddExpense" :class="settings.showBlur ? 'blur-overlay' : ''" />
+    />
 
-    <q-dialog v-model="showAddExpense"  >
-      <add-expense
-        @close="closeAddExpense"
-        :class="settings.showDarkMode ? 'dark' : ''" />
+    <q-dialog v-model="showAddExpense">
+      <add-expense @close="closeAddExpense" :class="settings.showDarkMode ? 'dark' : ''" />
     </q-dialog>
   </div>
 </template>
@@ -30,15 +25,15 @@ export default {
     };
   },
   components: {
-    'add-expense' : require('components/AddExpense.vue').default,
-    'nav-bar' : require('components/NavBar.vue').default,
+    "add-expense": require("components/AddExpense.vue").default,
+    "nav-bar": require("components/NavBar.vue").default,
   },
   computed: {
-    ...mapGetters('settings', ['settings'])
+    ...mapGetters("settings", ["settings"]),
   },
   methods: {
     closeAddExpense() {
-      this.showAddExpense = false
+      this.showAddExpense = false;
     },
   },
 };
@@ -64,31 +59,24 @@ export default {
 .q-card {
   background: $for-background-dark;
   opacity: 0.85;
-  
+
   //opacity: 1;
   color: $for-white;
   border-radius: 20px !important;
   width: 100%;
   max-height: 80%;
-  
 
   padding-top: 1.6vh;
   padding-bottom: 1.6vh;
 }
 
-
 .blur-overlay {
-  
   filter: blur(5px);
   transition: 0.3s ease-in-out;
 }
 
-
-
 //////////////////////
 //inside dialog window
 //header
-
-
 </style>
 

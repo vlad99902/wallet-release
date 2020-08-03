@@ -1,77 +1,62 @@
 <template>
   <q-page>
-
     <heading />
 
     <cards />
 
     <!-- vlad -->
-    <div class="recent">
-      Recent
-    </div>
+    <div class="recent">Recent</div>
 
-<!-- all of purchases -->
+    <!-- all of purchases -->
     <div class="purchase-container" v-if="Object.keys(this.expenses).length">
-
       <div class="img-no-expenses" v-if="!todayExpenses">
-        No expenses today! <br> Press “+” button to add new ones!
-        <img src="../assets/no-expenses-today.svg">
+        No expenses today!
+        <br />Press “+” button to add new ones!
+        <img src="../assets/no-expenses-today.svg" />
       </div>
 
-      <expenses
-        v-for="(months, key) in expenses"
-        :key="key"
-        :months="months"
-        :id="key" />
+      <expenses v-for="(months, key) in expenses" :key="key" :months="months" :id="key" />
     </div>
 
-
-<!-- image if no expenses at all -->
+    <!-- image if no expenses at all -->
     <div class="no-expenses" v-else>
-      <img src="../assets/no-expenses.svg" width="60%">
-      
-      <div class="no-expenses-title">
-        Add your first expense by repssing "+" button below!
-      </div>
+      <img src="../assets/no-expenses.svg" width="60%" />
 
+      <div class="no-expenses-title">Add your first expense by repssing "+" button below!</div>
     </div>
-
   </q-page>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex"
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'PageIndex',
+  name: "PageIndex",
   data() {
     return {
-      progress: 0.4 //progress of progress bar
-    }
+      progress: 0.4, //progress of progress bar
+    };
   },
   computed: {
-    ...mapGetters('expenses', ['expenses', 'todayExpenses']) //getter for all expenses from store-expenses
+    ...mapGetters("expenses", ["expenses", "todayExpenses"]), //getter for all expenses from store-expenses
   },
   components: {
-    'cards' : require('components/Cards.vue').default,
-    'heading' : require('components/Heading.vue').default,
-    'expenses' : require('components/Expenses.vue').default,
+    cards: require("components/Cards.vue").default,
+    heading: require("components/Heading.vue").default,
+    expenses: require("components/Expenses.vue").default,
   },
   methods: {
-    ...mapActions('expenses', ['checkTodayExpenses'])
+    ...mapActions("expenses", ["checkTodayExpenses"]),
   },
   mounted() {
-    this.checkTodayExpenses()
-  }
-}
+    this.checkTodayExpenses();
+  },
+};
 </script>
 
 <style lang="scss">
-
-
-
 //vlad
-//one of element in recent 
+//one of element in recent
 
 .purchase-container {
   max-width: 600px;
@@ -81,14 +66,14 @@ export default {
 .purchase {
   display: grid;
   grid-template-columns: 10% 60% 30%;
-  
-  grid-gap: .1rem;
+
+  grid-gap: 0.1rem;
 
   margin: 0.6rem 2rem;
   padding: 3vw;
   border-radius: 12px;
   background-color: $for-white;
-  box-shadow: 0 0.2rem 1.2rem -0.2rem rgba(0,0,0,.1);
+  box-shadow: 0 0.2rem 1.2rem -0.2rem rgba(0, 0, 0, 0.1);
 }
 
 .dark .purchase {
@@ -109,9 +94,7 @@ export default {
   grid-row: 1/3;
   grid-column: 1/2;
 
-  padding-top: .15rem;
-
-  
+  padding-top: 0.15rem;
 }
 
 //purcahse tag recent only img
@@ -130,7 +113,6 @@ export default {
   margin-right: 2rem;
 
   font-weight: 400;
-
 }
 
 //
@@ -143,14 +125,12 @@ export default {
   padding-right: 1rem;
 
   font-weight: 300;
-
 }
 
 //
 .purchase-more {
   grid-row: 2/3;
   grid-column: 3/4;
-  
 
   justify-self: right;
   align-self: end;
@@ -162,11 +142,10 @@ export default {
   font-weight: 700;
 
   img {
-    vertical-align:middle;
+    vertical-align: middle;
     //padding-left: .1rem;
-    width: .58rem
+    width: 0.58rem;
   }
-
 }
 
 .img-no-expenses {
@@ -175,7 +154,7 @@ export default {
   align-items: center;
 
   text-align: right;
-  font-size: .75rem;
+  font-size: 0.75rem;
 
   img {
     margin-left: 1rem;
@@ -187,13 +166,13 @@ export default {
 
 .no-expenses {
   display: flex;
-  
+
   flex-direction: column;
   align-items: center;
 
   margin-top: 2rem;
   padding-bottom: 6rem;
-  
+
   img {
     margin-bottom: 1rem;
   }
@@ -243,8 +222,6 @@ export default {
 
   border: none;
   outline: none !important;
-
-  
 }
 
 .tag-object-round-add {
@@ -255,13 +232,7 @@ export default {
   height: 9px;
 
   display: inline-block;
-  
+
   margin-right: 0.3rem;
 }
-
-
-
-
-
-
 </style>

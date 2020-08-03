@@ -1,24 +1,21 @@
 <template>
-<div>
-  <div class="content">
-    <img src="../assets/404.svg" width="60%">
+  <div>
+    <div class="content">
+      <img src="../assets/404.svg" width="60%" />
+    </div>
+    <div class="title-404">Oops! Nothin here...</div>
   </div>
-  <div class="title-404">
-    Oops! Nothin here...
-  </div>
-</div>
 </template>
 
 <script >
 export default {
-  name: 'Error404'
-}
+  name: "Error404",
+};
 </script>
 
 <style lang="scss">
-
 body {
-  background-color: #EFF0F2;
+  background-color: #eff0f2;
 }
 
 .content {
@@ -33,5 +30,4 @@ body {
   display: flex;
   justify-content: center;
 }
-
 </style>

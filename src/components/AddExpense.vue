@@ -6,52 +6,46 @@
           <div class="header-element">Add</div>
           <div class="header-element">Split</div>
         </div>
-        
-        <div class="input-fiels-container">
-        
 
-      <!-- input name -->
+        <div class="input-fiels-container">
+          <!-- input name -->
           <input
             v-model="expenseToSubmit.name"
             @blur="$v.expenseToSubmit.name.$touch"
             :class="{'invalid' : $v.expenseToSubmit.name.$error}"
-            ref="name" 
+            ref="name"
             v-autofocus
             type="text"
             placeholder="Name"
             class="input-field"
           />
 
-      <!-- input date -->
+          <!-- input date -->
           <input
             v-model="date"
             @blur="$v.date.$touch"
             :class="{'invalid' : $v.date.$error}"
             type="date"
             placeholder="Date"
-            class="input-field" />
+            class="input-field"
+          />
 
-      <!-- buttons to set today or yesterdat date -->
+          <!-- buttons to set today or yesterdat date -->
           <button
             class="button-set-date"
             type="button"
             v-on:click="setTodayDate()"
             :class="{'button-current-date-selected' : activeButton === 'today' && this.checkdate() }"
-            >
-            Today
-          </button>
+          >Today</button>
 
           <button
             class="button-set-date"
             type="button"
             v-on:click="setYesterdayDate()"
             :class="{'button-current-date-selected' : activeButton === 'yesterday' && this.checkdate() }"
-            >
-            Yesterday
-          </button>
-          
+          >Yesterday</button>
 
-      <!-- input cost -->
+          <!-- input cost -->
           <currency-input
             currency="USD"
             locale="en-US"
@@ -59,53 +53,48 @@
             @blur="$v.expenseToSubmit.cost.$touch"
             :class="{'invalid' : $v.expenseToSubmit.cost.$error}"
             placeholder="$$$"
-            class="input-field" />
+            class="input-field"
+          />
 
-
-      <!-- input category test -->
-      <div class="tag-container">
-
-      <!-- selected category -->
-        <div
-          class="tag-selected-container">
-          
-          <div
-            class="tag-object"
-            :style="categories[expenseToSubmit.category].categoryStyle"
-            v-on:click="cancelSetCategory()">
-            <div
-              class="tag-object-round-add"
-              :style="{background: categories[expenseToSubmit.category].categoryStyle.color}">
-            </div>
-            {{ categories[expenseToSubmit.category].name }}
-          </div>
-          
-        </div>
-        
-        <!-- all categoryes show -->
-        <div class="tag-all-container demo" id="list-complete-demo">
-          <transition-group name="list-complete" >
-          <button
-            v-for="(category, key) in noSelectedCategory()"
-            v-on:click="setCategory(key)"
-            :key="category.name"
-            type="button"
-            class="tag-object tag-margin-right list-complete-item"
-            :style="category.categoryStyle">
+          <!-- input category test -->
+          <div class="tag-container">
+            <!-- selected category -->
+            <div class="tag-selected-container">
               <div
-                class="tag-object-round-add"
-                :style="{background: category.categoryStyle.color}"></div>
-              {{ category.name }}
-          </button>
-          </transition-group>
+                class="tag-object"
+                :style="categories[expenseToSubmit.category].categoryStyle"
+                v-on:click="cancelSetCategory()"
+              >
+                <div
+                  class="tag-object-round-add"
+                  :style="{background: categories[expenseToSubmit.category].categoryStyle.color}"
+                ></div>
+                {{ categories[expenseToSubmit.category].name }}
+              </div>
+            </div>
 
+            <!-- all categoryes show -->
+            <div class="tag-all-container demo" id="list-complete-demo">
+              <transition-group name="list-complete">
+                <button
+                  v-for="(category, key) in noSelectedCategory()"
+                  v-on:click="setCategory(key)"
+                  :key="category.name"
+                  type="button"
+                  class="tag-object tag-margin-right list-complete-item"
+                  :style="category.categoryStyle"
+                >
+                  <div
+                    class="tag-object-round-add"
+                    :style="{background: category.categoryStyle.color}"
+                  ></div>
+                  {{ category.name }}
+                </button>
+              </transition-group>
+            </div>
+          </div>
 
-          
-        </div>
-      
-      </div>
-
-      <!-- input description --> 
+          <!-- input description -->
           <textarea
             v-model="expenseToSubmit.description"
             @blur="$v.expenseToSubmit.description.$touch"
@@ -115,21 +104,19 @@
             class="input-field input-field-desc"
             rows="2"
             autogrow
-            ></textarea>
+          ></textarea>
         </div>
 
         <button
           class="button-add"
-          type="submit" 
-          :disabled = "$v.expenseToSubmit.name.$invalid 
+          type="submit"
+          :disabled="$v.expenseToSubmit.name.$invalid 
           || $v.expenseToSubmit.cost.$invalid 
           || $v.expenseToSubmit.description.$invalid
-          || $v.date.$invalid">
-          ADD
-        </button>
+          || $v.date.$invalid"
+        >ADD</button>
 
         <!-- <pre> {{ expenseToSubmit }} </pre> -->
-
       </q-card-section>
     </form>
   </q-card>
@@ -137,36 +124,39 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import { date } from 'quasar'
+import { date } from "quasar";
 
 //validatin fields
-import { required, maxLength, minValue } from 'vuelidate/lib/validators'
+import { required, maxLength, minValue } from "vuelidate/lib/validators";
 
 //directives
 import { autofocus } from "src/directives/directive-autofocus";
 
 export default {
-  props: ['showAddExpense'],
-  
+  props: ["showAddExpense"],
+
   directives: {
-    autofocus
+    autofocus,
   },
   data() {
     return {
-      expenseToSubmit:  {
-          name: "",
-          description: "",
-          cost: 0,
-          category: "ID0",
-          count: ""
+      expenseToSubmit: {
+        name: "",
+        description: "",
+        cost: 0,
+        category: "ID0",
+        count: "",
       },
-      items: [1,2,3,4,5,6,7,8,9],
+      items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       nextNum: 10,
-      date: date.formatDate(Date.now(), 'YYYY-MM-DD'),
-      activeButton: 'today',
-      yesterdayDate: date.formatDate(date.subtractFromDate(Date.now(), { hours: 24 }), 'YYYY-MM-DD'),
-      todayDate: date.formatDate(Date.now(), 'YYYY-MM-DD'),
-    }
+      date: date.formatDate(Date.now(), "YYYY-MM-DD"),
+      activeButton: "today",
+      yesterdayDate: date.formatDate(
+        date.subtractFromDate(Date.now(), { hours: 24 }),
+        "YYYY-MM-DD"
+      ),
+      todayDate: date.formatDate(Date.now(), "YYYY-MM-DD"),
+    };
   },
 
   //validations parameters
@@ -174,41 +164,39 @@ export default {
 
   validations: {
     expenseToSubmit: {
-      name: {required, maxLength: maxLength(25)},
-      cost: {required, minValue: minValue(0)},
-      description: {maxLength: maxLength(99)}
+      name: { required, maxLength: maxLength(25) },
+      cost: { required, minValue: minValue(0) },
+      description: { maxLength: maxLength(99) },
     },
-    date: {required}
-
+    date: { required },
   },
   methods: {
-    ...mapActions('expenses', ['addExpense']),
-    ...mapActions('settings', ['setShowBlur']),
+    ...mapActions("expenses", ["addExpense"]),
+    ...mapActions("settings", ["setShowBlur"]),
     submitForm() {
-      this.submitExpense()
-      this.$emit('close')
+      this.submitExpense();
+      this.$emit("close");
     },
     submitExpense() {
-      this.expenseToSubmit.date = this.date
-      this.addExpense(this.expenseToSubmit)
-    }, 
+      this.expenseToSubmit.date = this.date;
+      this.addExpense(this.expenseToSubmit);
+    },
 
     //setting yesterday date to date field
-    setYesterdayDate: function() {
-      this.date = this.yesterdayDate
-      this.activeButton = 'yesterday'
+    setYesterdayDate: function () {
+      this.date = this.yesterdayDate;
+      this.activeButton = "yesterday";
     },
 
     setTodayDate() {
-      this.date = this.todayDate
-      this.activeButton = 'today'
+      this.date = this.todayDate;
+      this.activeButton = "today";
     },
 
     checkdate() {
       if (this.date === this.todayDate || this.date === this.yesterdayDate)
-        return true
-      else 
-        return false
+        return true;
+      else return false;
     },
 
     //setting expense category
@@ -217,42 +205,38 @@ export default {
     },
 
     cancelSetCategory() {
-      this.expenseToSubmit.category = 'ID0';
+      this.expenseToSubmit.category = "ID0";
     },
 
     //function for hide selected category by rewrite categories list
     noSelectedCategory() {
-      let newCategories = {}
+      let newCategories = {};
       for (let category in this.categories) {
         if (this.expenseToSubmit.category !== category) {
-          newCategories[category] = this.categories[category]
+          newCategories[category] = this.categories[category];
         }
       }
-      return newCategories
+      return newCategories;
     },
 
-
     //copied from documentation
-    
-
   },
   mounted() {
-    this.setShowBlur()
-    this.noSelectedCategory()
+    this.setShowBlur();
+    this.noSelectedCategory();
   },
   destroyed() {
-    this.setShowBlur()
+    this.setShowBlur();
   },
-  
+
   //get data from categories store
   computed: {
-    ...mapGetters("categories", ["categories"])
-  }
-}
+    ...mapGetters("categories", ["categories"]),
+  },
+};
 </script>
 
 <style lang="scss">
-
 ////////////////
 //TAGS
 ////////////////
@@ -283,7 +267,7 @@ export default {
 
 .tag-selected-container {
   padding-bottom: 0.5rem;
-  margin-left: .875rem;
+  margin-left: 0.875rem;
   color: $secondary-dark;
 
   height: 4vh;
@@ -293,7 +277,7 @@ export default {
   overflow-x: scroll;
   white-space: nowrap;
 
-  padding-left: .875rem;
+  padding-left: 0.875rem;
 
   border-top: 1px solid $for-white;
   padding-top: 0.5rem;
@@ -310,7 +294,6 @@ export default {
 ///////////////////////////
 //CONTAINERS AND OTHER
 ///////////////////////////
-
 
 //add and split
 .header {
@@ -370,7 +353,6 @@ export default {
   }
 }
 
-
 //secons class for description field
 .input-field-desc {
   margin-bottom: 1rem;
@@ -390,18 +372,16 @@ export default {
 }
 
 .invalid {
-  border:1px solid $field-invalid-border;
+  border: 1px solid $field-invalid-border;
 }
 
 ::-webkit-calendar-picker-indicator {
-    background: url('../assets/calendar.svg') no-repeat;
-    width: 15px;
-    height: 15px;
-    border-width: thin;
-    margin-top: auto;
+  background: url("../assets/calendar.svg") no-repeat;
+  width: 15px;
+  height: 15px;
+  border-width: thin;
+  margin-top: auto;
 }
-
-
 
 ///////////////////////////
 //BUTTONS
@@ -417,7 +397,7 @@ export default {
   border-radius: 50px;
   width: 7.25rem;
 
-  margin: -.8vh 1rem 0rem 1rem;
+  margin: -0.8vh 1rem 0rem 1rem;
   padding: 1.2vh 0.875rem;
 
   font-weight: 600;
@@ -459,10 +439,9 @@ export default {
   border: none;
 }
 
-
 //for animation
 .list-complete-item {
-  transition: all .5s;
+  transition: all 0.5s;
   opacity: 1;
   //display: inline-block;
   //margin-right: 10px;
@@ -475,7 +454,4 @@ export default {
 .list-complete-leave-active {
   position: absolute;
 }
-
-
-
 </style>
