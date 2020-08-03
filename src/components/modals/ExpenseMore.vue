@@ -87,72 +87,78 @@
         <!-- section for editing -->
         <!-- ///////////////////// -->
         <!-- ///////////////////// -->
+        <form @submit.prevent="submitForm">
 
-        <div
-          class="container"
-          v-if="showEditFields">
-          
-            <!-- tag img
-            <div class="header-tag">
-              
-              <div
-                class="tag-object"
-                :style="categories[expense.category].categoryStyle">
-                <div
-                  class="tag-object-round-add"
-                  :style="{background: categories[expense.category].categoryStyle.color}">
-                </div>
-                {{ categories[expense.category].name }}
-              </div>
-              
-            </div> -->
-
-        <!-- expense name -->
-            <input
-              class="input-field input-field-small"
-              type="text"
-              placeholder="Name"
-              :value="[[ expense.name ]]"/>
-
-        <!-- expense cost -->
-            <input
-              class="input-field input-field-small"
-              type="text"
-              placeholder="0.0"
-              :value="[[ expense.cost ]]"/>
-
-
-        <!-- expense date -->
-            <input
-              class="input-field input-field-small"
-              type="text"
-              placeholder="date"
-              :value="[[ date ]]"/>
-
-            <textarea
-              class="input-field input-field-desc"
-              type="text"
-              placeholder="Description"
-              :value="[[ expense.description ]]"/>
+          <div
+            class="container"
+            v-if="showEditFields">
             
+              <!-- tag img
+              <div class="header-tag">
+                
+                <div
+                  class="tag-object"
+                  :style="categories[expense.category].categoryStyle">
+                  <div
+                    class="tag-object-round-add"
+                    :style="{background: categories[expense.category].categoryStyle.color}">
+                  </div>
+                  {{ categories[expense.category].name }}
+                </div>
+                
+              </div> -->
 
-            <!-- buttons  -->
-            <div class="buttons-container">
+          <!-- expense name -->
+              <input
+                class="input-field input-field-small"
+                @input="expenseToUpdate.name = $event.target.value"
+                type="text"
+                placeholder="Name"
+                :value="[[ expense.name ]]"/>
 
-              <!-- delete cancel -->
-              <button 
-                class="button-delete"
-                @click="showEditFields = false">
-                cancel
-              </button>
+          <!-- expense cost -->
+              <input
+                class="input-field input-field-small"
+                @input="expenseToUpdate.cost = $event.target.value"
+                type="text"
+                placeholder="0.0"
+                :value="[[ expense.cost ]]"/>
 
-              <!-- edit button -->
-              <button
-                class="button-edit">
-                confirm
-              </button>
+          <!-- expense date -->
+              <input
+                class="input-field input-field-small"
+                @input="expenseToUpdate.date = $event.target.value"
+                type="text"
+                placeholder="date"
+                :value="[[ date ]]"/>
+
+          <!-- expense description -->
+              <textarea
+                class="input-field input-field-desc"
+                @input="expenseToUpdate.description = $event.target.value"
+                type="text"
+                placeholder="Description"
+                :value="[[ expense.description ]]"/>
+
+              <!-- buttons  -->
+              <div class="buttons-container">
+
+                <!-- delete cancel -->
+                <button 
+                  class="button-delete"
+                  @click="showEditFields = false">
+                  cancel
+                </button>
+
+                <!-- edit button -->
+                <button
+                  class="button-edit"
+                  type="submit">
+                  confirm
+                </button>
+            </div>
           </div>
-        </div>
+        </form>
         
       </q-card-section>
     </div>
@@ -168,14 +174,12 @@ export default {
   props: ['expense','id','date'],
   data() {
     return {
+
+      //data to update
       expenseToUpdate: {
-        date: '',
-        id: '',
-        name: '',
-        cost: '',
-        categiry: '',
-        description: ''
       },
+
+      //data to delete info
       dataToDelete: {
         date: "",
         id: ""
@@ -192,16 +196,30 @@ export default {
     }
   },
   methods: {
-    ...mapActions('expenses', ['deleteExpense']),
+    ...mapActions('expenses', ['deleteExpense', 'updateExpense']),
     ...mapActions('settings', ['setShowBlur']),
 
     promtToDeleteExpense() {
-      
       //save data about expense to delete in object to push it
       this.dataToDelete.date = this.date;
       this.dataToDelete.id = this.id;
 
       this.deleteExpense(this.dataToDelete)
+    },
+
+    //submiting form for edit expense
+    submitForm() {
+      this.submitExpense();
+      this.$emit('close');
+    },
+
+    //submit expense data
+    submitExpense() {
+      this.updateExpense({
+        id: this.id,
+        date: this.date,
+        updates: this.expenseToUpdate
+      })
     }
   },
   filters: {
