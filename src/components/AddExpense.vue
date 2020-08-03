@@ -154,7 +154,6 @@ export default {
       activeButton: 'today',
       yesterdayDate: date.formatDate(date.subtractFromDate(Date.now(), { hours: 24 }), 'YYYY-MM-DD'),
       todayDate: date.formatDate(Date.now(), 'YYYY-MM-DD'),
-      
     }
   },
 

@@ -153,9 +153,14 @@
                 <!-- edit button -->
                 <button
                   class="button-edit"
-                  type="submit">
+                  type="submit"
+                  >
                   confirm
                 </button>
+
+                <!-- <p>
+                  {{ $v.expenseToUpdate.name }}
+                </p> -->
             </div>
           </div>
         </form>
@@ -169,6 +174,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { date } from "quasar";
+import { required, maxLength, minValue } from 'vuelidate/lib/validators';
 
 export default {
   props: ['expense','id','date'],
@@ -192,8 +198,20 @@ export default {
       deleteWithoutConfirm: true,
 
       //to show input edit input fields
-      showEditFields: true
+      showEditFields: false
     }
+  },
+  //validations parameters
+  //must be imported in umport section
+
+  validations: {
+    expenseToUpdate: {
+      name: {required, maxLength: maxLength(25)},
+      cost: {required, minValue: minValue(0)},
+      description: {maxLength: maxLength(99)}
+    },
+    date: {required}
+
   },
   methods: {
     ...mapActions('expenses', ['deleteExpense', 'updateExpense']),
