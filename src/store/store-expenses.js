@@ -406,10 +406,10 @@ const state = {
     },
   },
   analytics: {
-    overallBudget: 3000,
+    overallBudget: 1500,
     availableBudget: '',
     spentBudget: '',
-    period: 1,
+    period: 7,
     dailyLimit: '',
     spentThisWeek: 0,
     spentLastWeek: 0,
@@ -436,10 +436,10 @@ const mutations = {
         newTotal += parseFloat(payload.updates.cost);
         Vue.set(state.expenses[payload.date], 'total', newTotal);
       }
-      //update data
+      //update data (!!!!!!!!)
       Object.assign(state.expenses[payload.date].purchases[payload.id], payload.updates)
     }
-    //if date changed
+    //if date changed (!!!!!!)
     else {
       Object.assign(state.expenses[payload.date].purchases[payload.id], payload.updates);
       //save update object
@@ -691,6 +691,7 @@ const actions = {
       dayNumber = 7 - dayNumber + 1
       newDailyLimit = state.analytics.availableBudget / dayNumber
     }
+    newDailyLimit = Math.round((newDailyLimit + Number.EPSILON) * 100) / 100
     commit('setDailyLimit', newDailyLimit)
   },
 

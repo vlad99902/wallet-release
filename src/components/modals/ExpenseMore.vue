@@ -404,7 +404,7 @@ export default {
 }
 
 .more-modal {
-  transition: visibility .3s, opacity .3s linear;
+  transition: all .3s, opacity .3s linear;
 }
 
 

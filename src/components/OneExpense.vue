@@ -34,7 +34,7 @@
         <img src="../assets/more.svg">
       </div>
       
-      <q-dialog v-model="showExpenseMore">
+      <q-dialog  v-model="showExpenseMore">
         <expense-more
           @close="showExpenseMore = false"
           :expense = "expense"
@@ -64,5 +64,7 @@ export default {
 </script>
 
 <style>
+
+
 
 </style>

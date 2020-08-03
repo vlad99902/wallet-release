@@ -402,6 +402,8 @@ export default {
 
   border: none;
   outline: none !important;
+
+  
 }
 
 .tag-object-round-add {
@@ -415,6 +417,10 @@ export default {
   
   margin-right: 0.3rem;
 }
+
+
+
+
 
 
 </style>

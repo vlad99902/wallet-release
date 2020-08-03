@@ -8,6 +8,7 @@
         </div>
         
         <div class="input-fiels-container">
+        
 
       <!-- input name -->
           <input
@@ -48,6 +49,7 @@
             >
             Yesterday
           </button>
+          
 
       <!-- input cost -->
           <currency-input
@@ -66,6 +68,7 @@
       <!-- selected category -->
         <div
           class="tag-selected-container">
+          
           <div
             class="tag-object"
             :style="categories[expenseToSubmit.category].categoryStyle"
@@ -76,22 +79,28 @@
             </div>
             {{ categories[expenseToSubmit.category].name }}
           </div>
+          
         </div>
         
         <!-- all categoryes show -->
-        <div class="tag-all-container ">
+        <div class="tag-all-container demo" id="list-complete-demo">
+          <transition-group name="list-complete" >
           <button
             v-for="(category, key) in noSelectedCategory()"
             v-on:click="setCategory(key)"
-            :key="key"
+            :key="category.name"
             type="button"
-            class="tag-object tag-margin-right"
+            class="tag-object tag-margin-right list-complete-item"
             :style="category.categoryStyle">
               <div
                 class="tag-object-round-add"
                 :style="{background: category.categoryStyle.color}"></div>
               {{ category.name }}
           </button>
+          </transition-group>
+
+
+          
         </div>
       
       </div>
@@ -138,6 +147,7 @@ import { autofocus } from "src/directives/directive-autofocus";
 
 export default {
   props: ['showAddExpense'],
+  
   directives: {
     autofocus
   },
@@ -150,6 +160,8 @@ export default {
           category: "ID0",
           count: ""
       },
+      items: [1,2,3,4,5,6,7,8,9],
+      nextNum: 10,
       date: date.formatDate(Date.now(), 'YYYY-MM-DD'),
       activeButton: 'today',
       yesterdayDate: date.formatDate(date.subtractFromDate(Date.now(), { hours: 24 }), 'YYYY-MM-DD'),
@@ -217,7 +229,11 @@ export default {
         }
       }
       return newCategories
-    }
+    },
+
+
+    //copied from documentation
+    
 
   },
   mounted() {
@@ -442,5 +458,24 @@ export default {
   outline: none !important;
   border: none;
 }
+
+
+//for animation
+.list-complete-item {
+  transition: all .5s;
+  opacity: 1;
+  //display: inline-block;
+  //margin-right: 10px;
+}
+.list-complete-enter, .list-complete-leave-to
+/* .list-complete-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-complete-leave-active {
+  position: absolute;
+}
+
+
 
 </style>
