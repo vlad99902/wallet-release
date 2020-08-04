@@ -92,11 +92,7 @@ export default {
   transform: translateX(-60px);
 }
 
-
 .one-expense-complete-leave-active {
   position: absolute;
-  // opacity: 0;
-  // transform: translateX(-60px);
 }
-
 </style>

@@ -202,22 +202,6 @@ body {
 //   background-color: #E5E5EA;
 // }
 
-//for animation
-.list-complete-item {
-  transition: all 0.5s;
-  opacity: 1;
-  //display: inline-block;
-  //margin-right: 10px;
-}
-.list-complete-enter, .list-complete-leave-to
-/* .list-complete-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateY(30px);
-}
-.list-complete-leave-active {
-  position: absolute;
-}
-
 //////////////
 // iOS switch
 //////////////

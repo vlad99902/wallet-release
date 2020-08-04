@@ -8,7 +8,7 @@
     <div class="recent">Recent</div>
 
     <!-- all of purchases -->
-    <div class="purchase-container demo" v-if="Object.keys(this.expenses).length" id="expense-complete-demo">
+    <div class="purchase-container" v-if="Object.keys(this.expenses).length">
       <transition-group name="expense-complete">
         <div class="img-no-expenses expense-complete-item" v-if="!todayExpenses" key="img">
           No expenses today!
@@ -248,19 +248,12 @@ export default {
 .expense-complete-item {
   transition: all 0.5s;
   opacity: 1;
-  //display: inline-block;
-  //margin-right: 10px;
 }
 .expense-complete-enter, .expense-complete-leave-to 
 /* .list-complete-leave-active below version 2.1.8 */ {
   opacity: 0;
   transform: translateX(-60px);
 }
-
-// .expense-complete-leave-to {
-//   opacity: 0;
-//   transform: translateX(-60px);
-// }
 
 .expense-complete-leave-active {
   position: absolute;
