@@ -10,15 +10,12 @@
     <!-- all of purchases -->
     <div class="purchase-container" v-if="Object.keys(this.expenses).length">
       <transition-group name="expense-complete" key="ing2">
-      <!-- <transition name="slide-fade"> -->
-      <div class="img-no-expenses expense-complete-item" v-if="!todayExpenses" key="img">
-        No expenses today!
-        <br />Press “+” button to add new ones!
-        <img src="../assets/no-expenses-today.svg" />
-      </div>
-      <!-- </transition> -->
+        <div class="img-no-expenses expense-complete-item" v-if="!todayExpenses" key="img">
+          No expenses today!
+          <br />Press “+” button to add new ones!
+          <img src="../assets/no-expenses-today.svg" />
+        </div>
 
-      
         <expenses
           v-for="(months, key) in expenses"
           :key="key"
@@ -252,8 +249,7 @@ export default {
   transition: all 0.5s;
   opacity: 1;
 }
-.expense-complete-enter //.expense-complete-leave-to 
-/* .list-complete-leave-active below version 2.1.8 */ {
+.expense-complete-enter {
   opacity: 0;
   transform: translateX(-60px);
 }
@@ -265,18 +261,5 @@ export default {
 
 .expense-complete-leave-active {
   position: absolute;
-}
-
-
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-// .slide-fade-leave-active {
-//   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-// }
-.slide-fade-enter // .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
 }
 </style>
