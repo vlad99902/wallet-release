@@ -1,5 +1,5 @@
 <template>
-  <div class="purchase">
+  <div class="purchase" @click.stop="showExpenseMore = true">
     <div class="purchase-tag">
       <!-- expense category -->
       <div
@@ -17,7 +17,7 @@
 
     <div class="purchase-sum">${{ expense.cost }}</div>
 
-    <div class="purchase-more row" @click.stop="showExpenseMore = true">
+    <div class="purchase-more row">
       More
       <img src="../assets/more.svg" />
     </div>

@@ -353,7 +353,7 @@ export default {
   }
 }
 
-//secons class for description field
+//second class for description field
 .input-field-desc {
   margin-bottom: 1rem;
   height: auto;

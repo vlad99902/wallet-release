@@ -60,24 +60,26 @@
         <!-- ///////////////////// -->
         <!-- ///////////////////// -->
         <!-- section for editing -->
-        <!-- ///////////////////// -->
-        <!-- ///////////////////// -->
+        <!-- ///////////////////// color: category.categoryStyle.color, background: category.categoryStyle.background-->
+        <!-- ///////////////////// :style="[category.categoryStyle]",-->
         <form @submit.prevent="submitForm">
           <div class="container" v-if="showEditFields">
-            <!-- tag img
-              <div class="header-tag">
-                
-                <div
-                  class="tag-object"
-                  :style="categories[expense.category].categoryStyle">
+
+            <!-- change tag -->
+            <div class="tag-change-container">
+                <button
+                  v-for="(category, key) in this.categories"
+                  :key = "category.name"
+                  type="button"
+                  class="tag-object tag-change-object tag-margin-right"
+                  :style="[key == expense.category ? 'opacity: 1' : '', category.categoryStyle]">
                   <div
                     class="tag-object-round-add"
-                    :style="{background: categories[expense.category].categoryStyle.color}">
-                  </div>
-                  {{ categories[expense.category].name }}
-                </div>
-                
-            </div>-->
+                    :style="{background: category.categoryStyle.color}"
+                  ></div>
+                  {{ category.name }}
+                </button>
+            </div>
 
             <!-- expense name -->
             <input
@@ -121,7 +123,11 @@
               <button class="button-delete" @click="showEditFields = false">cancel</button>
 
               <!-- edit button -->
-              <button class="button-edit" type="submit">confirm</button>
+              <button
+                class="button-edit"
+                type="submit">
+                confirm
+              </button>
 
               <!-- <p>
                   {{ $v.expenseToUpdate.name }}
@@ -146,6 +152,10 @@ export default {
       //data to update
       expenseToUpdate: {},
 
+      expenseToVuelidate: {
+        
+      },
+
       //data to delete info
       dataToDelete: {
         date: "",
@@ -166,13 +176,14 @@ export default {
   //must be imported in umport section
 
   validations: {
-    expenseToUpdate: {
+    expenseToVuelidate: {
       name: { required, maxLength: maxLength(25) },
       cost: { required, minValue: minValue(0) },
       description: { maxLength: maxLength(99) },
+      date: { required }
     },
-    date: { required },
   },
+
   methods: {
     ...mapActions("expenses", ["deleteExpense", "updateExpense"]),
     ...mapActions("settings", ["setShowBlur"]),
@@ -199,6 +210,13 @@ export default {
         updates: this.expenseToUpdate,
       });
     },
+
+    //make copy of expense to vuelidate
+    copyToVuelidate() {
+      Object.assign(this.expenseToVuelidate, this.expense);
+      this.expenseToVuelidate.date = this.date;
+      console.log (this.expenseToVuelidate)
+    }
   },
   filters: {
     fullDate(value) {
@@ -213,6 +231,7 @@ export default {
   },
   mounted() {
     this.setShowBlur();
+    this.copyToVuelidate();
   },
   destroyed() {
     this.setShowBlur();
@@ -247,6 +266,22 @@ export default {
   justify-content: center;
 
   grid-template-columns: 50% 50%;
+}
+
+.tag-change-container {
+  overflow-x: scroll;
+  white-space: nowrap;
+
+  margin-bottom: 1.2rem;
+  // opacity: .5;
+}
+
+.tag-change-object {
+  opacity: .5;
+}
+
+.tag-change-container::-webkit-scrollbar {
+  display: none;
 }
 
 ///////////////////////////
