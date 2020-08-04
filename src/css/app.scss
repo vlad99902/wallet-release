@@ -3,96 +3,104 @@
 /* lato-100 - latin */
 // custom font installation
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 100;
-  src: local('Lato Hairline'), local('Lato-Hairline'),
-       url('./fonts/lato-v16-latin-100.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-100.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Hairline"), local("Lato-Hairline"),
+    url("./fonts/lato-v16-latin-100.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-100.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-300 - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 300;
-  src: local('Lato Light'), local('Lato-Light'),
-       url('./fonts/lato-v16-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Light"), local("Lato-Light"),
+    url("./fonts/lato-v16-latin-300.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-300.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-300italic - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: italic;
   font-weight: 300;
-  src: local('Lato Light Italic'), local('Lato-LightItalic'),
-       url('./fonts/lato-v16-latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Light Italic"), local("Lato-LightItalic"),
+    url("./fonts/lato-v16-latin-300italic.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-300italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-100italic - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: italic;
   font-weight: 100;
-  src: local('Lato Hairline Italic'), local('Lato-HairlineItalic'),
-       url('./fonts/lato-v16-latin-100italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-100italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Hairline Italic"), local("Lato-HairlineItalic"),
+    url("./fonts/lato-v16-latin-100italic.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-100italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-regular - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'),
-       url('./fonts/lato-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Regular"), local("Lato-Regular"),
+    url("./fonts/lato-v16-latin-regular.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-italic - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: italic;
   font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'),
-       url('./fonts/lato-v16-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Italic"), local("Lato-Italic"),
+    url("./fonts/lato-v16-latin-italic.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-700 - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'),
-       url('./fonts/lato-v16-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Bold"), local("Lato-Bold"),
+    url("./fonts/lato-v16-latin-700.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-700italic - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: italic;
   font-weight: 700;
-  src: local('Lato Bold Italic'), local('Lato-BoldItalic'),
-       url('./fonts/lato-v16-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Bold Italic"), local("Lato-BoldItalic"),
+    url("./fonts/lato-v16-latin-700italic.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-700italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-900 - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: 900;
-  src: local('Lato Black'), local('Lato-Black'),
-       url('./fonts/lato-v16-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Black"), local("Lato-Black"),
+    url("./fonts/lato-v16-latin-900.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* lato-900italic - latin */
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: italic;
   font-weight: 900;
-  src: local('Lato Black Italic'), local('Lato-BlackItalic'),
-       url('./fonts/lato-v16-latin-900italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('./fonts/lato-v16-latin-900italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local("Lato Black Italic"), local("Lato-BlackItalic"),
+    url("./fonts/lato-v16-latin-900italic.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./fonts/lato-v16-latin-900italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-
-
 
 body {
   padding: 0;
@@ -100,26 +108,21 @@ body {
   margin: 0;
   height: 100vh;
   width: 100vw;
-  
-  font-family: 'Lato';
+
+  font-family: "Lato";
   font-weight: 300;
   font-size: 16px;
 
   background: $for-background;
 
-  
-
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-
 }
-
-
 
 .heading {
   font-size: 3rem;
@@ -131,13 +134,13 @@ body {
 //////////////////////
 .line {
   display: flex;
-  padding: .75rem 2rem;
+  padding: 0.75rem 2rem;
   font-weight: 400;
   font-size: 1rem;
   cursor: pointer;
 }
 .line:active {
-  background-color: #E5E5EA;
+  background-color: #e5e5ea;
 }
 
 .dark .line:active {
@@ -145,13 +148,13 @@ body {
 }
 
 .settings-small {
-  font-size: .875rem;
+  font-size: 0.875rem;
   margin: 0.75rem 2rem;
 }
 
 .settings-strong {
   display: flex;
-  padding: .75rem 2rem;
+  padding: 0.75rem 2rem;
   font-weight: 700;
   font-size: 1.2rem;
 }
@@ -164,7 +167,7 @@ body {
 .settings-header {
   font-size: 1.1rem;
   font-weight: 700;
-  
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -172,7 +175,6 @@ body {
 
   margin-bottom: 1rem;
   padding: 0 2rem;
-  
 }
 
 .back-btn-pseudo {
@@ -187,16 +189,34 @@ body {
   margin-right: auto;
 }
 
-.purchase:active, .bordered-btn:active, .card-3:active, .card-2:active, .card-1:active {
+.purchase:active,
+.bordered-btn:active,
+.card-3:active,
+.card-2:active,
+.card-1:active {
   transform: matrix(0.98, 0, 0, 0.98, 0, 0);
 }
-
 
 //activate this for desktop
 // .line:hover {
 //   background-color: #E5E5EA;
 // }
 
+//for animation
+.list-complete-item {
+  transition: all 0.5s;
+  opacity: 1;
+  //display: inline-block;
+  //margin-right: 10px;
+}
+.list-complete-enter, .list-complete-leave-to
+/* .list-complete-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-complete-leave-active {
+  position: absolute;
+}
 
 //////////////
 // iOS switch
@@ -240,7 +260,6 @@ body {
   background-color: $for-white-dark;
 }
 
-
 .form-switch i::after {
   content: "";
   position: absolute;
@@ -259,12 +278,22 @@ body {
   transform: translate3d(2px, 2px, 0);
 }
 
-.form-switch:active input:checked + i::after { transform: translate3d(16px, 2px, 0); }
+.form-switch:active input:checked + i::after {
+  transform: translate3d(16px, 2px, 0);
+}
 
-.form-switch input { display: none; }
+.form-switch input {
+  display: none;
+}
 
-.form-switch input:checked + i { background-color: #4BD763; }
+.form-switch input:checked + i {
+  background-color: #4bd763;
+}
 
-.form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
+.form-switch input:checked + i::before {
+  transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+}
 
-.form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }
+.form-switch input:checked + i::after {
+  transform: translate3d(22px, 2px, 0);
+}

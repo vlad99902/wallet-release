@@ -10,13 +10,16 @@
       <div class="total">TOTAL: ${{ months.total | niceTotal }}</div>
     </div>
 
-    <one-expense
-      v-for="(expense, key) in orderedExpenses"
-      :key="key"
-      :id="key"
-      :date="id"
-      :expense="expense"
-    ></one-expense>
+    <transition-group name="one-expense-complete">
+      <one-expense
+        v-for="(expense, key) in orderedExpenses"
+        :key="key"
+        :id="key"
+        :date="id"
+        :expense="expense"
+        class="one-expense-complete-item"
+      ></one-expense>
+    </transition-group>
   </div>
 </template>
 
@@ -72,5 +75,28 @@ export default {
 <style lang="scss">
 .month-container {
   padding-bottom: 0.4rem;
+  display: flex;
+  flex-direction: column;
 }
+
+//for animation
+.one-expense-complete-item {
+  transition: all 0.5s;
+  opacity: 1;
+  display: inline-block;
+  //margin-right: 10px;
+}
+.one-expense-complete-enter, .one-expense-complete-leave-to 
+/* .list-complete-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+
+.one-expense-complete-leave-active {
+  position: absolute;
+  // opacity: 0;
+  // transform: translateX(-60px);
+}
+
 </style>
