@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     ...mapActions("expenses", ["deleteExpense"]),
-    ...mapActions("settings", ["setShowBlur"]),
 
     promtToDeleteExpense() {
       //save data about expense to delete in object to push it

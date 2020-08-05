@@ -1,8 +1,8 @@
 <template>
-  <q-card class="more-modal" :class="showConfirmDelete ? 'hide-on-delete' : ''">
+  <q-card class="more-modal" :class="showConfirmDelete || showExpenseEdit ? 'hide-on-delete' : ''">
     <div>
       <q-card-section>
-        <div class="container" v-if="showEditFields == false">
+        <div class="container">
           <!-- header -->
           <div class="header-container">
             <!-- expense name -->
@@ -10,10 +10,15 @@
 
             <!-- tag img -->
             <div class="header-tag">
-              <div class="tag-object" :style="categories[expense.category].categoryStyle">
+              <div
+                class="tag-object"
+                :style="categories[expense.category].categoryStyle"
+              >
                 <div
                   class="tag-object-round-add"
-                  :style="{background: categories[expense.category].categoryStyle.color}"
+                  :style="{
+                    background: categories[expense.category].categoryStyle.color
+                  }"
                 ></div>
                 {{ categories[expense.category].name }}
               </div>
@@ -34,17 +39,24 @@
             <button
               v-if="deleteWithoutConfirm"
               class="button-delete"
-              @click.stop="showConfirmDelete = true"
-            >delete</button>
+              @click="showConfirmDelete = true">
+              delete
+            </button>
 
             <button
               v-if="deleteWithoutConfirm == false"
               class="button-delete"
-              @click.stop="promtToDeleteExpense()"
-            >delete</button>
+              @click="promtToDeleteExpense()"
+            >
+              delete
+            </button>
 
             <!-- edit button -->
-            <button class="button-edit" @click="showEditFields = true">edit</button>
+            <button
+              class="button-edit"
+              @click="showExpenseEdit = true">
+              edit
+            </button>
           </div>
 
           <q-dialog v-model="showConfirmDelete">
@@ -55,86 +67,17 @@
               :date="date"
             />
           </q-dialog>
+
+          <q-dialog v-model="showExpenseEdit">
+            <expense-edit
+              @close="showExpenseEdit = false"
+              :expense="expense"
+              :id="id"
+              :date="date"
+            />
+          </q-dialog>
+
         </div>
-
-        <!-- ///////////////////// -->
-        <!-- ///////////////////// -->
-        <!-- section for editing -->
-        <!-- ///////////////////// color: category.categoryStyle.color, background: category.categoryStyle.background-->
-        <!-- ///////////////////// :style="[category.categoryStyle]",-->
-        <form @submit.prevent="submitForm">
-          <div class="container" v-if="showEditFields">
-
-            <!-- change tag -->
-            <div class="tag-change-container">
-                <button
-                  v-for="(category, key) in this.categories"
-                  :key = "category.name"
-                  type="button"
-                  class="tag-object tag-change-object tag-margin-right"
-                  :style="[key == expense.category ? 'opacity: 1' : '', category.categoryStyle]">
-                  <div
-                    class="tag-object-round-add"
-                    :style="{background: category.categoryStyle.color}"
-                  ></div>
-                  {{ category.name }}
-                </button>
-            </div>
-
-            <!-- expense name -->
-            <input
-              class="input-field input-field-small"
-              @input="expenseToUpdate.name = $event.target.value"
-              type="text"
-              placeholder="Name"
-              :value="[[ expense.name ]]"
-            />
-
-            <!-- expense cost -->
-            <input
-              class="input-field input-field-small"
-              @input="expenseToUpdate.cost = $event.target.value"
-              type="text"
-              placeholder="0.0"
-              :value="[[ expense.cost ]]"
-            />
-
-            <!-- expense date -->
-            <input
-              class="input-field input-field-small"
-              @input="expenseToUpdate.date = $event.target.value"
-              type="text"
-              placeholder="date"
-              :value="[[ date ]]"
-            />
-
-            <!-- expense description -->
-            <textarea
-              class="input-field input-field-desc"
-              @input="expenseToUpdate.description = $event.target.value"
-              type="text"
-              placeholder="Description"
-              :value="[[ expense.description ]]"
-            />
-
-            <!-- buttons  -->
-            <div class="buttons-container">
-              <!-- delete cancel -->
-              <button class="button-delete" @click="showEditFields = false">cancel</button>
-
-              <!-- edit button -->
-              <button
-                class="button-edit"
-                type="submit">
-                confirm
-              </button>
-
-              <!-- <p>
-                  {{ $v.expenseToUpdate.name }}
-              </p>-->
-            </div>
-          </div>
-        </form>
       </q-card-section>
     </div>
   </q-card>
@@ -143,23 +86,15 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { date } from "quasar";
-import { required, maxLength, minValue } from "vuelidate/lib/validators";
 
 export default {
   props: ["expense", "id", "date"],
   data() {
     return {
-      //data to update
-      expenseToUpdate: {},
-
-      expenseToVuelidate: {
-        
-      },
-
       //data to delete info
       dataToDelete: {
         date: "",
-        id: "",
+        id: ""
       },
 
       showConfirmDelete: false,
@@ -169,23 +104,12 @@ export default {
       deleteWithoutConfirm: true,
 
       //to show input edit input fields
-      showEditFields: false,
+      showExpenseEdit: false
     };
-  },
-  //validations parameters
-  //must be imported in umport section
-
-  validations: {
-    expenseToVuelidate: {
-      name: { required, maxLength: maxLength(25) },
-      cost: { required, minValue: minValue(0) },
-      description: { maxLength: maxLength(99) },
-      date: { required }
-    },
   },
 
   methods: {
-    ...mapActions("expenses", ["deleteExpense", "updateExpense"]),
+    ...mapActions("expenses", ["deleteExpense"]),
     ...mapActions("settings", ["setShowBlur"]),
 
     promtToDeleteExpense() {
@@ -196,46 +120,25 @@ export default {
       this.deleteExpense(this.dataToDelete);
     },
 
-    //submiting form for edit expense
-    submitForm() {
-      this.submitExpense();
-      this.$emit("close");
-    },
-
-    //submit expense data
-    submitExpense() {
-      this.updateExpense({
-        id: this.id,
-        date: this.date,
-        updates: this.expenseToUpdate,
-      });
-    },
-
-    //make copy of expense to vuelidate
-    copyToVuelidate() {
-      Object.assign(this.expenseToVuelidate, this.expense);
-      this.expenseToVuelidate.date = this.date;
-      console.log (this.expenseToVuelidate)
-    }
   },
   filters: {
     fullDate(value) {
       return date.formatDate(value, "YYYY.MM.DD");
-    },
+    }
   },
   computed: {
-    ...mapGetters("categories", ["categories"]),
+    ...mapGetters("categories", ["categories"])
   },
   components: {
     "confirm-delete": require("components/modals/ConfirmDelete.vue").default,
+    "expense-edit": require("components/modals/ExpenseEdit.vue").default
   },
   mounted() {
     this.setShowBlur();
-    this.copyToVuelidate();
   },
   destroyed() {
     this.setShowBlur();
-  },
+  }
 };
 </script>
 
@@ -277,7 +180,7 @@ export default {
 }
 
 .tag-change-object {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .tag-change-container::-webkit-scrollbar {

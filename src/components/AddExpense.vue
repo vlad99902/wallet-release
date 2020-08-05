@@ -79,7 +79,7 @@
                 <button
                   v-for="(category, key) in noSelectedCategory()"
                   v-on:click="setCategory(key)"
-                  :key="category.name"
+                  :key="key"
                   type="button"
                   class="tag-object tag-margin-right list-complete-item"
                   :style="category.categoryStyle"
