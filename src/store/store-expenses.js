@@ -405,11 +405,53 @@ const state = {
       }
     },
     '2020-08-03': {
-      total: '84',
+      total: '56',
       counter: '1',
       currentOrder: 1,
       purchases: {
         'ID41': {
+          name: 'Bus x3',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+      }
+    },
+    '2020-08-04': {
+      total: '811',
+      counter: '3',
+      currentOrder: 3,
+      purchases: {
+        'ID42': {
+          name: 'Bus x2',
+          description: '',
+          cost: '56',
+          category: 'ID5',
+          count: '1'
+        },
+        'ID43': {
+          name: 'Hookah',
+          description: '',
+          cost: '600',
+          category: 'ID4',
+          count: '2'
+        },
+        'ID44': {
+          name: 'Burgers',
+          description: 'Made burgers at home with brother',
+          cost: '155',
+          category: 'ID1',
+          count: '3'
+        },
+      }
+    },
+    '2020-08-05': {
+      total: '84',
+      counter: '1',
+      currentOrder: 1,
+      purchases: {
+        'ID45': {
           name: 'Bus x3',
           description: '',
           cost: '84',

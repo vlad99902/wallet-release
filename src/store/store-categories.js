@@ -2,57 +2,92 @@ import Vue from 'vue'
 
 const state = {
     categories: {
-        //ID0 USED onlu for OTHER category
+        //ID0 USED only for OTHER category
         'ID0': {
             name: 'Other',
             categoryStyle: {
-                background: '#A6A5AA',
-                color: '#212121'
+                background: '#5C6670',
+                color: '#FFFFFF'
             }
         },
         //id 'NO_BUDGED' used to check purchases without a budget
         'NO_BUDGET': {
             name: 'Out of budget',
             categoryStyle: {
-                background: '#A6A5AA',
-                color: '#393645'
+                background: '#D8A69D',
+                color: '#FFFFFF'
             }
         },
         'ID1': {
             name: 'Foodstuff',
             categoryStyle: {
-                background: '#C6F5D9',
+                background: '#C9FFDE',
                 color: '#15C759'
             }
         },
         'ID2': {
             name: 'Alcohol',
             categoryStyle: {
-                background: '#FFEBCF',
+                background: '#FFE4BE',
                 color: '#FE9400'
             }
         },
         'ID3': {
             name: 'Bad Habits',
             categoryStyle: {
-                background: '#BADBff',
-                color: '#007AFF'
+                background: '#FFCC01',
+                color: '#FFFFFF'
             }
         },
         'ID4': {
             name: 'Eating Out',
             categoryStyle: {
-                background: '#FFC9C4',
+                background: '#FFDAD7',
                 color: '#FE3D2E'
             }
         },
         'ID5': {
             name: 'Transport',
             categoryStyle: {
-                background: '#B6D6F0',
+                background: '#D6EDFF',
                 color: '#50ABF2'
             }
-        }
+        },
+        'ID6': {
+            name: 'NOT_USED',
+            categoryStyle: {
+                background: '#459EFF',
+                color: '#FFFFFF'
+            }
+        },
+        'ID7': {
+            name: 'NOT_USED',
+            categoryStyle: {
+                background: '#D2D1FF',
+                color: '#5756D5'
+            }
+        },
+        'ID8': {
+            name: 'NOT_USED',
+            categoryStyle: {
+                background: '#EB4269',
+                color: '#FFFFFF'
+            }
+        },
+        'ID9': {
+            name: 'NOT_USED',
+            categoryStyle: {
+                background: '#F4D8FF',
+                color: '#BF77DB'
+            }
+        },
+        'ID10': {
+            name: 'NOT_USED',
+            categoryStyle: {
+                background: '#FFF1DC',
+                color: '#9D8561'
+            }
+        },
     }
 }
 
