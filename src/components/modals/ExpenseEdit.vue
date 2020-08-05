@@ -3,6 +3,7 @@
     <q-card-section>
       <form @submit.prevent="submitForm">
         <div class="container">
+
           <!-- change tag -->
           <div class="tag-change-container">
             <button
@@ -26,37 +27,43 @@
           <!-- expense name -->
           <input
             class="input-field input-field-small"
-            @input="expenseToUpdate.name = $event.target.value"
+            v-model="expenseToUpdate.name"
+            @blur="$v.expenseToUpdate.name.$touch"
+            :class="{'invalid' : $v.expenseToUpdate.name.$error}"
             type="text"
             placeholder="Name"
-            :value="[[expense.name]]"
           />
 
           <!-- expense cost -->
-          <input
+          <currency-input
+            currency="USD"
+            locale="en-US"
             class="input-field input-field-small"
-            @input="expenseToUpdate.cost = $event.target.value"
-            type="text"
-            placeholder="0.0"
-            :value="[[expense.cost]]"
+            v-model="expenseToUpdate.cost"
+            @blur="$v.expenseToUpdate.cost.$touch"
+            :class="{'invalid' : $v.expenseToUpdate.cost.$error}"
+            placeholder="$$$"
           />
 
-          <!-- expense date -->
+          <!-- expense date :value="[[expenseToUpdate.cost]]"-->
           <input
             class="input-field input-field-small"
-            @input="expenseToUpdate.date = $event.target.value"
-            type="text"
+            v-model="expenseToUpdate.date"
+            @blur="$v.expenseToUpdate.date.$touch"
+            :class="{'invalid' : $v.expenseToUpdate.date.$error}"
+            type="date"
             placeholder="date"
-            :value="[[date]]"
           />
 
           <!-- expense description -->
           <textarea
             class="input-field input-field-desc"
-            @input="expenseToUpdate.description = $event.target.value"
+            v-model="expenseToUpdate.description"
+            @blur="$v.expenseToUpdate.description.$touch"
+            :class="{'invalid' : $v.expenseToUpdate.description.$error}"
             type="text"
             placeholder="Description"
-            :value="[[expense.description]]"
+            autogrow
           />
 
           <!-- buttons  -->
@@ -64,18 +71,22 @@
             <!-- delete cancel -->
             <button
               class="button-delete"
+              type="button"
               @click="$emit('close')">
               cancel
             </button>
 
             <!-- edit button -->
-            <button class="button-edit" type="submit">
+            <button
+              class="button-edit"
+              type="submit"
+              :disabled="$v.expenseToUpdate.name.$invalid
+              || $v.expenseToUpdate.date.$invalid
+              || $v.expenseToUpdate.description.$invalid
+              || $v.expenseToUpdate.cost.$invalid">
               confirm
             </button>
 
-            <!-- <p>
-                  {{ $v.expenseToUpdate.name }}
-              </p>-->
           </div>
         </div>
       </form>
@@ -93,16 +104,21 @@ export default {
   data() {
     return {
       //data to update
-      expenseToUpdate: {},
+     // expenseToUpdate: {},
 
-      expenseToVuelidate: {}
+      expenseToUpdate: {
+        name: '',
+        cost: 0,
+        description: '',
+        date: ''
+      }
     };
   },
   //validations parameters
   //must be imported in umport section
 
   validations: {
-    expenseToVuelidate: {
+    expenseToUpdate: {
       name: { required, maxLength: maxLength(25) },
       cost: { required, minValue: minValue(0) },
       description: { maxLength: maxLength(99) },
@@ -119,15 +135,37 @@ export default {
 
     //submit expense data
     submitExpense() {
+      //delete part that was not updated
+      for(let i in this.expenseToUpdate){
+        if(this.expenseToUpdate[i] == this.expense[i]){
+          delete this.expenseToUpdate[i]
+        }
+      }
+      //check updated date or not
+      if(this.expenseToUpdate.date == this.date){
+        delete this.expenseToUpdate.date
+      }
+
+      // console.log('\nTHIS FUCKEN OBJECT\n', this.expenseToUpdate)
       this.updateExpense({
         id: this.id,
         date: this.date,
         updates: this.expenseToUpdate
       });
+    },
+
+    //for vuelidate
+    copyExpenseObject() {
+      Object.assign(this.expenseToUpdate, this.expense);
+      this.expenseToUpdate.date = this.date;
+      this.expenseToUpdate.cost = parseFloat(this.expense.cost)
     }
   },
   computed: {
     ...mapGetters("categories", ["categories"])
+  },
+  mounted(){
+    this.copyExpenseObject();
   }
 };
 </script>
