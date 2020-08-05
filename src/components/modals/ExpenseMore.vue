@@ -171,21 +171,6 @@ export default {
   grid-template-columns: 50% 50%;
 }
 
-.tag-change-container {
-  overflow-x: scroll;
-  white-space: nowrap;
-
-  margin-bottom: 1.2rem;
-  // opacity: .5;
-}
-
-.tag-change-object {
-  opacity: 0.5;
-}
-
-.tag-change-container::-webkit-scrollbar {
-  display: none;
-}
 
 ///////////////////////////
 //HEADER ELEMENTS WITH INPUT FIELDS
@@ -196,6 +181,11 @@ export default {
   padding-left: 0.6rem;
   height: 4vh;
   border-radius: 12px;
+}
+
+.input-field-small-description {
+  border-radius: 12px;
+  padding-left: 0.6rem;
 }
 
 ///////////////////////////

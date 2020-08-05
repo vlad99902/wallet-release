@@ -4,25 +4,42 @@
       <form @submit.prevent="submitForm">
         <div class="container">
 
-          <!-- change tag -->
-          <div class="tag-change-container">
-            <button
-              v-for="(category, key) in this.categories"
-              :key="key"
-              type="button"
-              class="tag-object tag-change-object tag-margin-right"
-              :style="[
-                key == expense.category ? 'opacity: 1' : '',
-                category.categoryStyle
-              ]"
-            >
+          <!-- <div class="tag-container tag-edit-container">
+
+            <div class="tag-selected-edit">
               <div
-                class="tag-object-round-add"
-                :style="{ background: category.categoryStyle.color }"
-              ></div>
-              {{ category.name }}
-            </button>
-          </div>
+                class="tag-object"
+                :style="categories[expenseToUpdate.category].categoryStyle"
+                v-on:click="cancelSetCategory()"
+              >
+                <div
+                  class="tag-object-round-add"
+                  :style="{background: categories[expenseToUpdate.category].categoryStyle.color}"
+                ></div>
+                {{ categories[expenseToUpdate.category].name }}
+              </div>
+            </div>
+
+            <div class="tag-all-container all-tag-edit-container">
+              <button
+                v-for="(category, key) in this.categories"
+                :key="key"
+                type="button"
+                class="tag-object tag-margin-right list-complete-item"
+                :style="category.categoryStyle"
+              >
+                <div
+                  class="tag-object-round-add"
+                  :style="{background: category.categoryStyle.color}"
+                ></div>
+                {{ category.name }}
+              </button>
+            </div>
+
+          </div> -->
+              
+
+          <!-- </div> -->
 
           <!-- expense name -->
           <input
@@ -57,7 +74,7 @@
 
           <!-- expense description -->
           <textarea
-            class="input-field input-field-desc"
+            class="input-field input-field-desc input-field-small-description"
             v-model="expenseToUpdate.description"
             @blur="$v.expenseToUpdate.description.$touch"
             :class="{'invalid' : $v.expenseToUpdate.description.$error}"
@@ -110,7 +127,8 @@ export default {
         name: '',
         cost: 0,
         description: '',
-        date: ''
+        date: '',
+        category: ''
       }
     };
   },
@@ -170,4 +188,20 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+.tag-edit-container{
+  margin-bottom: 1vh;
+}
+
+.all-tag-edit-container{
+  border: none;
+  
+}
+
+.tag-selected-edit{
+  float: left;
+  display: block;
+}
+
+</style>
