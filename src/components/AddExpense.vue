@@ -369,9 +369,7 @@ export default {
   outline: none !important;
 }
 
-.invalid {
-  border: 1px solid $field-invalid-border;
-}
+
 
 ::-webkit-calendar-picker-indicator {
   background: url("../assets/calendar.svg") no-repeat;

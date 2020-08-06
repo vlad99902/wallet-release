@@ -397,3 +397,7 @@ body {
 .tag-margin-right {
   margin-right: 0.8rem;
 }
+
+.invalid {
+  border: 1px solid $field-invalid-border;
+}

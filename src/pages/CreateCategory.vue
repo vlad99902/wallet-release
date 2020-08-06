@@ -27,6 +27,7 @@
           @blur="$v.nameToSubmit.$touch"
           placeholder="Category name"
           class="input-budget select-all"
+          :class="{'invalid' : $v.nameToSubmit.$error}"
           v-select-all
         />
       </div>
@@ -50,9 +51,9 @@
 
       <div
         class="settings-strong small-m-t"
-        v-if="colorToSubmit !== '' && nameToSubmit !== '' "
+        v-if="colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error "
       >Your category will look like this:</div>
-      <div class="constructed-tag-comtainer" v-if="colorToSubmit !== '' && nameToSubmit !== '' ">
+      <div class="constructed-tag-comtainer" v-if="colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error ">
         <button
           type="button"
           class="tag-object tag-margin-right"
@@ -73,7 +74,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 //validatin fields
-import { required } from "vuelidate/lib/validators";
+import { required, maxLength } from "vuelidate/lib/validators";
 
 //directives
 import { autofocus } from "src/directives/directive-autofocus";
@@ -93,7 +94,7 @@ export default {
   },
 
   validations: {
-    nameToSubmit: { required },
+    nameToSubmit: { required, maxLength: maxLength(25) },
     colorToSubmit: { required },
   },
 
