@@ -4,42 +4,28 @@
       <form @submit.prevent="submitForm">
         <div class="container">
 
-          <!-- <div class="tag-container tag-edit-container">
-
-            <div class="tag-selected-edit">
-              <div
-                class="tag-object"
-                :style="categories[expenseToUpdate.category].categoryStyle"
-                v-on:click="cancelSetCategory()"
-              >
-                <div
-                  class="tag-object-round-add"
-                  :style="{background: categories[expenseToUpdate.category].categoryStyle.color}"
-                ></div>
-                {{ categories[expenseToUpdate.category].name }}
-              </div>
-            </div>
-
-            <div class="tag-all-container all-tag-edit-container">
+          
+          <div class="tag-container tag-container-edit">
+            <div class="tag-all-container tag-all-container-edit">
               <button
-                v-for="(category, key) in this.categories"
-                :key="key"
-                type="button"
-                class="tag-object tag-margin-right list-complete-item"
-                :style="category.categoryStyle"
-              >
+                  class="tag-object-container tag-edit tag-margin-right"
+                  v-for="(category, key) in categories"
+                  v-on:click="setCategory(key)"
+                  :class="expenseToUpdate.category === key ? 'opacity-100' : ''"
+                  :key="key"
+                  type="button"
+                  :style="category.categoryStyle">
                 <div
                   class="tag-object-round-add"
                   :style="{background: category.categoryStyle.color}"
                 ></div>
-                {{ category.name }}
+                <div class="tag-object">
+                  {{ category.name }}
+                </div>
               </button>
             </div>
-
-          </div> -->
-              
-
-          <!-- </div> -->
+          </div>
+            
 
           <!-- expense name -->
           <input
@@ -172,6 +158,11 @@ export default {
       });
     },
 
+    //set category
+    setCategory(key) {
+      this.expenseToUpdate.category = key;
+    },
+
     //for vuelidate
     copyExpenseObject() {
       Object.assign(this.expenseToUpdate, this.expense);
@@ -190,17 +181,25 @@ export default {
 
 <style lang="scss">
 
-.tag-edit-container{
+.tag-container-edit{
+  
   margin-bottom: 1vh;
+  width: 100%;
+  height: auto;
 }
 
-.all-tag-edit-container{
+.tag-all-container-edit{
   border: none;
+  padding-top: 0;
+  width: 100%
 }
 
-.tag-selected-edit{
-  float: left;
-  display: block;
+.tag-edit{
+  opacity: 0.5;
+}
+
+.opacity-100{
+  opacity: 1;
 }
 
 </style>
