@@ -53,7 +53,10 @@
         class="settings-strong small-m-t"
         v-if="colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error "
       >Your category will look like this:</div>
-      <div class="constructed-tag-comtainer" v-if="colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error ">
+      <div
+        class="constructed-tag-comtainer"
+        v-if="colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error "
+      >
         <button
           type="button"
           class="tag-object tag-margin-right"
@@ -102,7 +105,19 @@ export default {
     ...mapGetters("categories", ["colors"]),
   },
   methods: {
-    submitForm() {},
+    ...mapActions("categories", ["createCategory"]),
+    submitForm() {
+      let payload = {
+        category: {
+          name: this.nameToSubmit,
+          colorID: this.colorToSubmit,
+          categoryStyle: {},
+        },
+        id: 0
+      };
+      this.createCategory(payload);
+      this.$router.replace("/settings/categories");
+    },
     handleColor(key) {
       if (key === this.colorToSubmit) this.colorToSubmit = "";
       else this.colorToSubmit = key;

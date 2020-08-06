@@ -1,4 +1,5 @@
 import Vue from "vue";
+import { uid } from "quasar";
 
 const state = {
   categories: {
@@ -100,7 +101,7 @@ const state = {
         color: "#9D8561"
       }
     }
-	},
+  },
   colors: {
     ID12: {
       colorName: "Shuttle Gray",
@@ -186,16 +187,25 @@ const state = {
         color: "#9D8561"
       }
     }
-	},
-	
+  }
 };
 
-const mutations = {};
+const mutations = {
+  createCategory(state, payload) {
+    Vue.set(state.categories, payload.id, payload.category);
+  }
+};
 
 const actions = {
-	createCategory({ commit }, payload) {
-
-	}
+  createCategory({ commit }, payload) {
+    Object.assign(
+      payload.category.categoryStyle,
+      state.colors[payload.category.colorID].categoryStyle
+    );
+    delete payload.category.colorID;
+		payload.id = uid()
+    commit("createCategory", payload);
+  }
 };
 
 const getters = {
@@ -203,8 +213,8 @@ const getters = {
     return state.categories;
   },
   colors: state => {
-    return state.categories;
-  },
+    return state.colors;
+  }
 };
 
 export default {
