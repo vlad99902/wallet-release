@@ -73,17 +73,13 @@ export default {};
 <style lang="scss">
 .categories-container {
   margin: 0.75rem 2rem;
-  //height: 300px;
   background-color: $for-white;
   border-radius: 12px;
-
-  //grid-gap: 0.1rem;
 }
 
 .category-line {
   display: grid;
   grid-template-columns: 15% 55% 30%;
-  //padding: 0.75rem 0;
 }
 
 .category-line:first-child {
@@ -112,8 +108,6 @@ export default {};
 
   padding: 0 0 0.75rem 0;
 }
-
-
 
 .category-tag {
   justify-self: left;
