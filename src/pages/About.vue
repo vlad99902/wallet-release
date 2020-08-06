@@ -33,24 +33,4 @@ export default {};
 </script>
 
 <style lang="scss">
-.settings-header {
-  font-size: 1.1rem;
-  font-weight: 700;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  margin-bottom: 1rem;
-  padding: 0 2rem;
-}
-
-.back-btn-pseudo {
-  margin-left: auto;
-  visibility: hidden;
-}
-.back-btn {
-  margin-right: auto;
-}
 </style>

@@ -28,7 +28,7 @@
       <img src="../assets/next.svg" width="15px" alt />
     </div>
 
-    <div class="line">
+    <div class="line" @click="$router.replace('/settings/categories')">
       Categories
       <q-space></q-space>
       <img src="../assets/next.svg" width="15px" alt />

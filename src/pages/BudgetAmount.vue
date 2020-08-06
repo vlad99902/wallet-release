@@ -17,7 +17,7 @@
           :disabled="$v.budgetToSubmit.$invalid"
         >Done</button>
       </div>
-      
+
       <div
         class="settings-small"
       >Enter amount of money you're planning to spend during selected period.</div>
@@ -81,20 +81,6 @@ export default {
 </script>
 
 <style lang="scss">
-.control-button {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #5d8bcc;
-
-  border: none;
-  padding: 0;
-  outline: none !important;
-}
-
-.dark .control-button {
-  color: $for-white;
-}
-
 .not-active {
   color: #b8d2f1;
 }

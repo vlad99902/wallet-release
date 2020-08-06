@@ -4,11 +4,11 @@
       <!-- expense category -->
       <div
         class="tag-object-round-big"
-        :style="{background: categories[expense.category].categoryStyle.background}"
+        :style="{ background: categories[expense.category].categoryStyle.background }"
       >
         <div
           class="tag-object-round"
-          :style="{background: categories[expense.category].categoryStyle.color}"
+          :style="{ background: categories[expense.category].categoryStyle.color }"
         ></div>
       </div>
     </div>

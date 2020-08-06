@@ -15,6 +15,7 @@ const routes = [
       { path: '/settings/budget/budget-amount', component: () => import('pages/BudgetAmount.vue') },
       { path: '/settings/dark-mode', component: () => import('pages/DarkMode.vue') },
       { path: '/settings/language-and-currency', component: () => import('pages/LanguageAndCurrency.vue') },
+      { path: '/settings/categories', component: () => import('pages/Categories.vue') },
     ]
   },
 

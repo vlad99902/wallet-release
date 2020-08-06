@@ -281,3 +281,22 @@ body {
 .form-switch input:checked + i::after {
   transform: translate3d(22px, 2px, 0);
 }
+
+
+//////////////////////////////////////////////////
+//top control buttons at the top of settings page
+/////////////////////////////////////////////////
+
+.control-button {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #5d8bcc;
+
+  border: none;
+  padding: 0;
+  outline: none !important;
+}
+
+.dark .control-button {
+  color: $for-white;
+}
