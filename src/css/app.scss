@@ -300,3 +300,100 @@ body {
 .dark .control-button {
   color: $for-white;
 }
+
+
+///////////////////
+//input settings
+//////////////////
+
+.input-budget-container {
+  box-sizing: border-box;
+  display: flex;
+  padding: 0rem 2rem;
+}
+
+.input-budget {
+  background: $for-white;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 4px;
+
+  width: 100vw;
+  height: 2.7rem;
+  padding: 0.6rem 0.875rem;
+
+  font-size: 1rem;
+  font-weight: 500;
+  color: $primary;
+
+  &::placeholder {
+    color: $secondary;
+    font-weight: 500;
+  }
+}
+
+.dark .input-budget {
+  background: $for-white-dark;
+  color: $primary-dark;
+}
+
+.input-budget:focus {
+  outline: none !important;
+}
+
+////////////////////////////
+//tags (categories) style (in recent)
+////////////////////////////
+
+.tag-object-round {
+  border-radius: 50%;
+
+  width: 10px;
+  height: 10px;
+}
+
+.tag-object-round-big {
+  border-radius: 50%;
+
+  width: 20px;
+  height: 20px;
+
+  padding: 5px;
+
+  display: inline-block;
+}
+
+//////////////////////////////
+//tag object style more and add
+////////////////////////////
+
+.tag-object {
+  padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+  border-radius: 100px;
+
+  font-size: 1.7vh;
+
+  //font-size: 0.8rem;
+  font-weight: 400;
+
+  display: inline-block;
+
+  border: none;
+  outline: none !important;
+}
+
+.tag-object-round-add {
+  border-radius: 50%;
+  background: #fff;
+
+  width: 9px;
+  height: 9px;
+
+  display: inline-block;
+
+  margin-right: 0.3rem;
+}
+
+.tag-margin-right {
+  margin-right: 0.8rem;
+}

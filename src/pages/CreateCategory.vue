@@ -12,25 +12,49 @@
 
         <button
           class="back-btn-2 control-button"
-          :class="$v.budgetToSubmit.$invalid ? 'not-active' : ''"
+          :class="$v.nameToSubmit.$invalid ? 'not-active' : ''"
           type="submit"
-          :disabled="$v.budgetToSubmit.$invalid"
+          :disabled="$v.nameToSubmit.$invalid"
         >Done</button>
       </div>
 
-      <div
-        class="settings-small"
-      >Enter your new category name.</div>
+      <div class="settings-small">Enter your new category name.</div>
 
       <div class="input-budget-container">
         <input
           v-autofocus
           v-model="nameToSubmit"
-          @blur="$v.budgetToSubmit.$touch"
+          @blur="$v.nameToSubmit.$touch"
           placeholder="Category name"
           class="input-budget select-all"
           v-select-all
         />
+      </div>
+
+      <div class="settings-strong small-m-t">Choose color for your tag</div>
+
+      <div class="color-container">
+        <button
+          type="button"
+          class="tag-object tag-margin-right"
+          style="background: #D8A69D; color: #FFFFFF"
+        >
+          <div class="tag-object-round-add" style="background: #FFFFFF"></div>Alcohol
+        </button>
+        <button
+          type="button"
+          class="tag-object tag-margin-right"
+          style="background: #D8A69D; color: #FFFFFF"
+        >
+          <div class="tag-object-round-add" style="background: #FFFFFF"></div>Alcohol
+        </button>
+        <button
+          type="button"
+          class="tag-object tag-margin-right"
+          style="background: #D8A69D; color: #FFFFFF"
+        >
+          <div class="tag-object-round-add" style="background: #FFFFFF"></div>Alcohol
+        </button>
       </div>
     </form>
   </q-page>
@@ -54,28 +78,19 @@ export default {
   data() {
     return {
       doneActive: false,
-      budgetToSubmit: 0,
-      nameToSubmit: ''
+      nameToSubmit: "",
     };
   },
 
   validations: {
-    budgetToSubmit: { required },
+    nameToSubmit: { required },
   },
 
-  computed: {
-    ...mapGetters("expenses", ["overallBudget"]),
-  },
+  computed: {},
   methods: {
-    ...mapActions("expenses", ["setBudget"]),
-    submitForm() {
-      this.setBudget(this.budgetToSubmit);
-      this.$router.replace("/settings/categories");
-    },
+    submitForm() {},
   },
-  mounted() {
-    this.budgetToSubmit = this.overallBudget;
-  },
+  mounted() {},
 };
 </script>
 
@@ -88,39 +103,14 @@ export default {
   color: $secondary;
 }
 
-.input-budget-container {
-  box-sizing: border-box;
-  display: flex;
-  //width: 100vw;
-  padding: 0rem 2rem;
+.small-m-t {
+  margin-top: 0.75rem;
 }
 
-.input-budget {
-  background: $for-white;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0);
-  border-radius: 4px;
-
-  width: 100vw;
-  height: 2.7rem;
-  padding: 0.6rem 0.875rem;
-
-  font-size: 1rem;
-  font-weight: 500;
-  color: $primary;
-
-  &::placeholder {
-    color: $secondary;
-    font-weight: 500;
-  }
-}
-
-.dark .input-budget {
-  background: $for-white-dark;
-  color: $primary-dark;
-}
-
-.input-budget:focus {
-  outline: none !important;
+.color-container {
+  margin: 0.75rem 2rem;
+  background-color: $for-white;
+  border-radius: 12px;
+  height: 300px;
 }
 </style>

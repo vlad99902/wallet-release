@@ -287,9 +287,7 @@ export default {
   display: none;
 }
 
-.tag-margin-right {
-  margin-right: 0.8rem;
-}
+
 
 ///////////////////////////
 //CONTAINERS AND OTHER

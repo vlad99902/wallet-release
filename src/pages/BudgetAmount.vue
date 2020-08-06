@@ -88,40 +88,4 @@ export default {
 .dark .not-active {
   color: $secondary;
 }
-
-.input-budget-container {
-  box-sizing: border-box;
-  display: flex;
-  //width: 100vw;
-  padding: 0rem 2rem;
-}
-
-.input-budget {
-  background: $for-white;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0);
-  border-radius: 4px;
-
-  width: 100vw;
-  height: 2.7rem;
-  padding: 0.6rem 0.875rem;
-
-  font-size: 1rem;
-  font-weight: 500;
-  color: $primary;
-
-  &::placeholder {
-    color: $secondary;
-    font-weight: 500;
-  }
-}
-
-.dark .input-budget {
-  background: $for-white-dark;
-  color: $primary-dark;
-}
-
-.input-budget:focus {
-  outline: none !important;
-}
 </style>
