@@ -12,9 +12,9 @@
 
         <button
           class="back-btn-2 control-button"
-          :class="$v.nameToSubmit.$invalid ? 'not-active' : ''"
+          :class="$v.nameToSubmit.$invalid || $v.colorToSubmit.$invalid ? 'not-active' : ''"
           type="submit"
-          :disabled="$v.nameToSubmit.$invalid"
+          :disabled="$v.nameToSubmit.$invalid || $v.colorToSubmit.$invalid"
         >Done</button>
       </div>
 
@@ -35,28 +35,20 @@
 
       <div class="color-container">
         <button
+          v-for="(category, key) in categories"
+          :key="key"
+          @click="handleColor(key)"
+          :class="colorToSubmit === key ? 'chosen-color' : 'unchosen-color'"
           type="button"
           class="tag-object tag-margin-right"
-          style="background: #D8A69D; color: #FFFFFF"
+          :style="category.categoryStyle"
         >
-          <div class="tag-object-round-add" style="background: #FFFFFF"></div>Alcohol
-        </button>
-        <button
-          type="button"
-          class="tag-object tag-margin-right"
-          style="background: #D8A69D; color: #FFFFFF"
-        >
-          <div class="tag-object-round-add" style="background: #FFFFFF"></div>Alcohol
-        </button>
-        <button
-          type="button"
-          class="tag-object tag-margin-right"
-          style="background: #D8A69D; color: #FFFFFF"
-        >
-          <div class="tag-object-round-add" style="background: #FFFFFF"></div>Alcohol
+          <div class="tag-object-round-add" :style="{ background: category.categoryStyle.color }"></div>
+          {{ category.colorName }}
         </button>
       </div>
     </form>
+    <pre> {{ colorToSubmit }} </pre>
   </q-page>
 </template>
 
@@ -79,16 +71,24 @@ export default {
     return {
       doneActive: false,
       nameToSubmit: "",
+      colorToSubmit: "",
     };
   },
 
   validations: {
     nameToSubmit: { required },
+    colorToSubmit: { required },
   },
 
-  computed: {},
+  computed: {
+    ...mapGetters("categories", ["categories"]),
+  },
   methods: {
     submitForm() {},
+    handleColor(key) {
+      if (key === this.colorToSubmit) this.colorToSubmit = ''
+      else this.colorToSubmit = key;
+    },
   },
   mounted() {},
 };
@@ -111,6 +111,15 @@ export default {
   margin: 0.75rem 2rem;
   background-color: $for-white;
   border-radius: 12px;
-  height: 300px;
+  padding: 0 1rem 1rem 1rem;
+
+  button {
+    margin-top: 1rem;
+    opacity: 0.25;
+  }
+}
+
+.chosen-color {
+  opacity: 1 !important;
 }
 </style>
