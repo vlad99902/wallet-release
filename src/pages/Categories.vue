@@ -8,7 +8,7 @@
       <button class="back-btn-2 control-button">Edit</button>
     </div>
 
-    <div class="line">
+    <div class="line" @click="$router.replace('categories/create-category')">
       Create new category
       <q-space></q-space>
       <img src="../assets/next.svg" alt />

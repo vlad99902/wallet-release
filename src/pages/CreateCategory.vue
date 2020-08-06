@@ -1,0 +1,126 @@
+<template>
+  <q-page>
+    <form @submit.prevent="submitForm" novalidate>
+      <div class="settings-header">
+        <button
+          class="back-btn control-button"
+          type="button"
+          @click="$router.replace('/settings/categories')"
+        >Cancel</button>
+
+        <div class="settings-header-title">Create category</div>
+
+        <button
+          class="back-btn-2 control-button"
+          :class="$v.budgetToSubmit.$invalid ? 'not-active' : ''"
+          type="submit"
+          :disabled="$v.budgetToSubmit.$invalid"
+        >Done</button>
+      </div>
+
+      <div
+        class="settings-small"
+      >Enter your new category name.</div>
+
+      <div class="input-budget-container">
+        <input
+          v-autofocus
+          v-model="nameToSubmit"
+          @blur="$v.budgetToSubmit.$touch"
+          placeholder="Category name"
+          class="input-budget select-all"
+          v-select-all
+        />
+      </div>
+    </form>
+  </q-page>
+</template>
+
+<script>
+import { mapGetters, mapActions } from "vuex";
+
+//validatin fields
+import { required } from "vuelidate/lib/validators";
+
+//directives
+import { autofocus } from "src/directives/directive-autofocus";
+import { selectAll } from "src/directives/directive-select-all";
+
+export default {
+  directives: {
+    autofocus,
+    selectAll,
+  },
+  data() {
+    return {
+      doneActive: false,
+      budgetToSubmit: 0,
+      nameToSubmit: ''
+    };
+  },
+
+  validations: {
+    budgetToSubmit: { required },
+  },
+
+  computed: {
+    ...mapGetters("expenses", ["overallBudget"]),
+  },
+  methods: {
+    ...mapActions("expenses", ["setBudget"]),
+    submitForm() {
+      this.setBudget(this.budgetToSubmit);
+      this.$router.replace("/settings/categories");
+    },
+  },
+  mounted() {
+    this.budgetToSubmit = this.overallBudget;
+  },
+};
+</script>
+
+<style lang="scss">
+.not-active {
+  color: #b8d2f1;
+}
+
+.dark .not-active {
+  color: $secondary;
+}
+
+.input-budget-container {
+  box-sizing: border-box;
+  display: flex;
+  //width: 100vw;
+  padding: 0rem 2rem;
+}
+
+.input-budget {
+  background: $for-white;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 4px;
+
+  width: 100vw;
+  height: 2.7rem;
+  padding: 0.6rem 0.875rem;
+
+  font-size: 1rem;
+  font-weight: 500;
+  color: $primary;
+
+  &::placeholder {
+    color: $secondary;
+    font-weight: 500;
+  }
+}
+
+.dark .input-budget {
+  background: $for-white-dark;
+  color: $primary-dark;
+}
+
+.input-budget:focus {
+  outline: none !important;
+}
+</style>

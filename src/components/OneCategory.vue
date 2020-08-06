@@ -1,5 +1,5 @@
 <template>
-  <div class="category-line">
+  <div class="category-line" v-if="category.name !== 'NOT_USED'">
     <div class="category-tag">
       <div class="tag-object-round-big" :style="{ background: category.categoryStyle.background }">
         <div class="tag-object-round" :style="{ background: category.categoryStyle.color }"></div>
