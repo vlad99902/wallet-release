@@ -447,9 +447,9 @@ const state = {
       }
     },
     '2020-08-05': {
-      total: '84',
-      counter: '1',
-      currentOrder: 1,
+      total: '124',
+      counter: '2',
+      currentOrder: 2,
       purchases: {
         'ID45': {
           name: 'Bus x3',
@@ -458,6 +458,28 @@ const state = {
           category: 'ID5',
           count: '1'
         },
+        'ID46': {
+          name: 'Lays',
+          description: '',
+          cost: '40',
+          category: 'ID4',
+          count: '2'
+        },
+      }
+    },
+    '2020-08-06': {
+      total: '121.5',
+      counter: '1',
+      currentOrder: 1,
+      purchases: {
+        'ID47': {
+          name: 'Max + Okrug',
+          description: 'Vologosha, Lays etc.',
+          cost: '121.5',
+          category: 'ID4',
+          count: '1'
+        },
+        
       }
     },
   },
