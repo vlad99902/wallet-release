@@ -5,7 +5,8 @@
 
       <div class="settings-header-title">Categories</div>
 
-      <button class="back-btn-2 control-button">Edit</button>
+      <!-- not visible image, made for proper layout -->
+      <img src="../assets/back.svg" class="back-btn-pseudo" alt />
     </div>
 
     <div class="line" @click="$router.replace('categories/create-category')">

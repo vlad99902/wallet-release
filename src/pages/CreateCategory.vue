@@ -113,7 +113,7 @@ export default {
           colorID: this.colorToSubmit,
           categoryStyle: {},
         },
-        id: 0
+        id: 0,
       };
       this.createCategory(payload);
       this.$router.replace("/settings/categories");
