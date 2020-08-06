@@ -60,35 +60,38 @@
           <div class="tag-container">
             <!-- selected category -->
             <div class="tag-selected-container">
-              <div
-                class="tag-object"
-                :style="categories[expenseToSubmit.category].categoryStyle"
-                v-on:click="cancelSetCategory()"
-              >
+              <button class="tag-object-container"
+                  type="button"
+                  :style="categories[expenseToSubmit.category].categoryStyle"
+                  v-on:click="cancelSetCategory()">
                 <div
                   class="tag-object-round-add"
                   :style="{background: categories[expenseToSubmit.category].categoryStyle.color}"
                 ></div>
-                {{ categories[expenseToSubmit.category].name }}
-              </div>
+                <div class="tag-object">
+                  {{ categories[expenseToSubmit.category].name }}
+                </div>
+              </button>
+              
             </div>
 
             <!-- all categoryes show -->
             <div class="tag-all-container demo" id="list-complete-demo">
               <transition-group name="list-complete">
                 <button
-                  v-for="(category, key) in noSelectedCategory()"
-                  v-on:click="setCategory(key)"
-                  :key="key"
-                  type="button"
-                  class="tag-object tag-margin-right list-complete-item"
-                  :style="category.categoryStyle"
-                >
+                    class="tag-object-container  list-complete-item  tag-margin-right"
+                    v-for="(category, key) in noSelectedCategory()"
+                    v-on:click="setCategory(key)"
+                    :key="key"
+                    type="button"
+                    :style="category.categoryStyle">
                   <div
                     class="tag-object-round-add"
                     :style="{background: category.categoryStyle.color}"
                   ></div>
-                  {{ category.name }}
+                  <div class="tag-object">
+                    {{ category.name }}
+                  </div>
                 </button>
               </transition-group>
             </div>

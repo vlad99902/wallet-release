@@ -196,7 +196,6 @@ export default {
 
 .all-tag-edit-container{
   border: none;
-  
 }
 
 .tag-selected-edit{

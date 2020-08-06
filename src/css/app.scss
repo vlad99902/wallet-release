@@ -366,20 +366,24 @@ body {
 //////////////////////////////
 //tag object style more and add
 ////////////////////////////
+.tag-object-container {
+  display: inline-flex;
+  
+  flex-direction: row;
+  
+  align-items: center;
+  justify-content: center;
 
-.tag-object {
-  padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 100px;
-
-  font-size: 1.7vh;
-
-  //font-size: 0.8rem;
-  font-weight: 400;
-
-  display: inline-block;
 
   border: none;
   outline: none !important;
+}
+
+.tag-object {
+  font-size: 1.7vh;
+  font-weight: 400;
 }
 
 .tag-object-round-add {
@@ -389,10 +393,38 @@ body {
   width: 9px;
   height: 9px;
 
-  display: inline-block;
-
-  margin-right: 0.3rem;
+  margin-right: 0.5rem;
 }
+
+// .tag-object {
+//   padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+//   border-radius: 100px;
+
+//   font-size: 1.7vh;
+
+//   //font-size: 0.8rem;
+//   font-weight: 400;
+
+//   display: inline-block;
+
+//   border: none;
+//   outline: none !important;
+// }
+
+
+
+// .tag-object-round-add {
+
+//   border-radius: 50%;
+//   background: #fff;
+
+//   width: 9px;
+//   height: 9px;
+
+//   display: inline-block;
+
+//   margin-right: 0.3rem;
+// }
 
 .tag-margin-right {
   margin-right: 0.8rem;

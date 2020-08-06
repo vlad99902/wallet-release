@@ -36,16 +36,17 @@
 
       <div class="color-container">
         <button
+          class="tag-object-container tag-margin-right"
           v-for="(color, key) in colors"
           :key="key"
           @click="handleColor(key)"
           :class="colorToSubmit === key ? 'chosen-color' : ''"
           type="button"
-          class="tag-object tag-margin-right"
-          :style="color.categoryStyle"
-        >
+          :style="color.categoryStyle">
           <div class="tag-object-round-add" :style="{ background: color.categoryStyle.color }"></div>
-          {{ color.colorName }}
+          <div class="tag-object">
+            {{ color.colorName }}
+          </div>
         </button>
       </div>
 
@@ -57,17 +58,18 @@
         class="constructed-tag-comtainer"
         v-if="colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error "
       >
-        <button
-          type="button"
-          class="tag-object tag-margin-right"
-          :style="colors[colorToSubmit].categoryStyle"
-        >
+
+        <div
+          class="tag-object-container"
+          :style="colors[colorToSubmit].categoryStyle">
           <div
             class="tag-object-round-add"
-            :style="{ background: colors[colorToSubmit].categoryStyle.color }"
-          ></div>
-          {{ nameToSubmit }}
-        </button>
+            :style="{ background: colors[colorToSubmit].categoryStyle.color }">
+          </div>
+          <div class="tag-object">
+            {{ nameToSubmit }}
+          </div>
+        </div>
       </div>
     </form>
   </q-page>

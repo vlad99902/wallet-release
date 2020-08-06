@@ -10,19 +10,21 @@
 
             <!-- tag img -->
             <div class="header-tag">
-              <div
-                class="tag-object"
-                :style="categories[expense.category].categoryStyle"
-              >
+              <div class="tag-object-container"
+                  :style="categories[expense.category].categoryStyle">
                 <div
                   class="tag-object-round-add"
                   :style="{
                     background: categories[expense.category].categoryStyle.color
                   }"
                 ></div>
-                {{ categories[expense.category].name }}
+                <div
+                  class="tag-object"
+                >
+                  {{ categories[expense.category].name }}
+                </div>
               </div>
-            </div>
+            </div> 
 
             <!-- expense cost -->
             <div class="header-cost">${{ expense.cost }}</div>
@@ -156,7 +158,7 @@ export default {
 
 .header-container {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: auto auto;
   justify-items: center;
   align-items: center;
 
