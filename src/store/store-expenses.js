@@ -510,8 +510,11 @@ const mutations = {
       if (payload.updates.cost) {
         //delete from total old cost
         let newTotal = parseFloat(state.expenses[payload.date].total) - parseFloat(state.expenses[payload.date].purchases[payload.id].cost);
+        //no budget gategory check
+        if (payload.updates.category !== 'NO_BUDGET'){
+          newTotal += parseFloat(payload.updates.cost);
+        }
         //new total
-        newTotal += parseFloat(payload.updates.cost);
         Vue.set(state.expenses[payload.date], 'total', newTotal);
       }
       //update data (!!!!!!!!)

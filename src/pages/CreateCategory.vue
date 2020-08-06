@@ -6,16 +6,24 @@
           class="back-btn control-button"
           type="button"
           @click="$router.replace('/settings/categories')"
-        >Cancel</button>
+        >
+          Cancel
+        </button>
 
         <div class="settings-header-title">Create category</div>
 
         <button
           class="back-btn-2 control-button"
-          :class="$v.nameToSubmit.$invalid || $v.colorToSubmit.$invalid ? 'not-active' : ''"
+          :class="
+            $v.nameToSubmit.$invalid || $v.colorToSubmit.$invalid
+              ? 'not-active'
+              : ''
+          "
           type="submit"
           :disabled="$v.nameToSubmit.$invalid || $v.colorToSubmit.$invalid"
-        >Done</button>
+        >
+          Done
+        </button>
       </div>
 
       <div class="settings-small">Enter your new category name.</div>
@@ -27,7 +35,7 @@
           @blur="$v.nameToSubmit.$touch"
           placeholder="Category name"
           class="input-budget select-all"
-          :class="{'invalid' : $v.nameToSubmit.$error}"
+          :class="{ invalid: $v.nameToSubmit.$error }"
           v-select-all
         />
       </div>
@@ -42,8 +50,12 @@
           @click="handleColor(key)"
           :class="colorToSubmit === key ? 'chosen-color' : ''"
           type="button"
-          :style="color.categoryStyle">
-          <div class="tag-object-round-add" :style="{ background: color.categoryStyle.color }"></div>
+          :style="color.categoryStyle"
+        >
+          <div
+            class="tag-object-round-add"
+            :style="{ background: color.categoryStyle.color }"
+          ></div>
           <div class="tag-object">
             {{ color.colorName }}
           </div>
@@ -52,20 +64,26 @@
 
       <div
         class="settings-strong small-m-t"
-        v-if="colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error "
-      >Your category will look like this:</div>
+        v-if="
+          colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error
+        "
+      >
+        Your category will look like this:
+      </div>
       <div
         class="constructed-tag-comtainer"
-        v-if="colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error "
+        v-if="
+          colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error
+        "
       >
-
         <div
           class="tag-object-container"
-          :style="colors[colorToSubmit].categoryStyle">
+          :style="colors[colorToSubmit].categoryStyle"
+        >
           <div
             class="tag-object-round-add"
-            :style="{ background: colors[colorToSubmit].categoryStyle.color }">
-          </div>
+            :style="{ background: colors[colorToSubmit].categoryStyle.color }"
+          ></div>
           <div class="tag-object">
             {{ nameToSubmit }}
           </div>
@@ -88,23 +106,23 @@ import { selectAll } from "src/directives/directive-select-all";
 export default {
   directives: {
     autofocus,
-    selectAll,
+    selectAll
   },
   data() {
     return {
       doneActive: false,
       nameToSubmit: "",
-      colorToSubmit: "",
+      colorToSubmit: ""
     };
   },
 
   validations: {
     nameToSubmit: { required, maxLength: maxLength(25) },
-    colorToSubmit: { required },
+    colorToSubmit: { required }
   },
 
   computed: {
-    ...mapGetters("categories", ["colors"]),
+    ...mapGetters("categories", ["colors"])
   },
   methods: {
     ...mapActions("categories", ["createCategory"]),
@@ -113,9 +131,9 @@ export default {
         category: {
           name: this.nameToSubmit,
           colorID: this.colorToSubmit,
-          categoryStyle: {},
+          categoryStyle: {}
         },
-        id: 0,
+        id: 0
       };
       this.createCategory(payload);
       this.$router.replace("/settings/categories");
@@ -123,9 +141,9 @@ export default {
     handleColor(key) {
       if (key === this.colorToSubmit) this.colorToSubmit = "";
       else this.colorToSubmit = key;
-    },
+    }
   },
-  mounted() {},
+  mounted() {}
 };
 </script>
 

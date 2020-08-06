@@ -3,21 +3,20 @@
     <q-card-section>
       <form @submit.prevent="submitForm">
         <div class="container">
-
-          
           <div class="tag-container tag-container-edit">
             <div class="tag-all-container tag-all-container-edit">
               <button
-                  class="tag-object-container tag-edit tag-margin-right"
-                  v-for="(category, key) in categories"
-                  v-on:click="setCategory(key)"
-                  :class="expenseToUpdate.category === key ? 'opacity-100' : ''"
-                  :key="key"
-                  type="button"
-                  :style="category.categoryStyle">
+                class="tag-object-container tag-edit tag-margin-right"
+                v-for="(category, key) in categories"
+                v-on:click="setCategory(key)"
+                :class="expenseToUpdate.category === key ? 'opacity-100' : ''"
+                :key="key"
+                type="button"
+                :style="category.categoryStyle"
+              >
                 <div
                   class="tag-object-round-add"
-                  :style="{background: category.categoryStyle.color}"
+                  :style="{ background: category.categoryStyle.color }"
                 ></div>
                 <div class="tag-object">
                   {{ category.name }}
@@ -25,14 +24,13 @@
               </button>
             </div>
           </div>
-            
 
           <!-- expense name -->
           <input
             class="input-field input-field-small"
             v-model="expenseToUpdate.name"
             @blur="$v.expenseToUpdate.name.$touch"
-            :class="{'invalid' : $v.expenseToUpdate.name.$error}"
+            :class="{ invalid: $v.expenseToUpdate.name.$error }"
             type="text"
             placeholder="Name"
           />
@@ -44,7 +42,7 @@
             class="input-field input-field-small"
             v-model="expenseToUpdate.cost"
             @blur="$v.expenseToUpdate.cost.$touch"
-            :class="{'invalid' : $v.expenseToUpdate.cost.$error}"
+            :class="{ invalid: $v.expenseToUpdate.cost.$error }"
             placeholder="$$$"
           />
 
@@ -53,7 +51,7 @@
             class="input-field input-field-small"
             v-model="expenseToUpdate.date"
             @blur="$v.expenseToUpdate.date.$touch"
-            :class="{'invalid' : $v.expenseToUpdate.date.$error}"
+            :class="{ invalid: $v.expenseToUpdate.date.$error }"
             type="date"
             placeholder="date"
           />
@@ -63,7 +61,7 @@
             class="input-field input-field-desc input-field-small-description"
             v-model="expenseToUpdate.description"
             @blur="$v.expenseToUpdate.description.$touch"
-            :class="{'invalid' : $v.expenseToUpdate.description.$error}"
+            :class="{ invalid: $v.expenseToUpdate.description.$error }"
             type="text"
             placeholder="Description"
             autogrow
@@ -72,10 +70,7 @@
           <!-- buttons  -->
           <div class="buttons-container">
             <!-- delete cancel -->
-            <button
-              class="button-delete"
-              type="button"
-              @click="$emit('close')">
+            <button class="button-delete" type="button" @click="$emit('close')">
               cancel
             </button>
 
@@ -83,13 +78,15 @@
             <button
               class="button-edit"
               type="submit"
-              :disabled="$v.expenseToUpdate.name.$invalid
-              || $v.expenseToUpdate.date.$invalid
-              || $v.expenseToUpdate.description.$invalid
-              || $v.expenseToUpdate.cost.$invalid">
+              :disabled="
+                $v.expenseToUpdate.name.$invalid ||
+                  $v.expenseToUpdate.date.$invalid ||
+                  $v.expenseToUpdate.description.$invalid ||
+                  $v.expenseToUpdate.cost.$invalid
+              "
+            >
               confirm
             </button>
-
           </div>
         </div>
       </form>
@@ -107,14 +104,14 @@ export default {
   data() {
     return {
       //data to update
-     // expenseToUpdate: {},
+      // expenseToUpdate: {},
 
       expenseToUpdate: {
-        name: '',
+        name: "",
         cost: 0,
-        description: '',
-        date: '',
-        category: ''
+        description: "",
+        date: "",
+        category: ""
       }
     };
   },
@@ -140,14 +137,14 @@ export default {
     //submit expense data
     submitExpense() {
       //delete part that was not updated
-      for(let i in this.expenseToUpdate){
-        if(this.expenseToUpdate[i] == this.expense[i]){
-          delete this.expenseToUpdate[i]
+      for (let i in this.expenseToUpdate) {
+        if (this.expenseToUpdate[i] == this.expense[i]) {
+          delete this.expenseToUpdate[i];
         }
       }
       //check updated date or not
-      if(this.expenseToUpdate.date == this.date){
-        delete this.expenseToUpdate.date
+      if (this.expenseToUpdate.date == this.date) {
+        delete this.expenseToUpdate.date;
       }
 
       // console.log('\nTHIS FUCKEN OBJECT\n', this.expenseToUpdate)
@@ -167,39 +164,36 @@ export default {
     copyExpenseObject() {
       Object.assign(this.expenseToUpdate, this.expense);
       this.expenseToUpdate.date = this.date;
-      this.expenseToUpdate.cost = parseFloat(this.expense.cost)
+      this.expenseToUpdate.cost = parseFloat(this.expense.cost);
     }
   },
   computed: {
     ...mapGetters("categories", ["categories"])
   },
-  mounted(){
+  mounted() {
     this.copyExpenseObject();
   }
 };
 </script>
 
 <style lang="scss">
-
-.tag-container-edit{
-  
+.tag-container-edit {
   margin-bottom: 1vh;
   width: 100%;
   height: auto;
 }
 
-.tag-all-container-edit{
+.tag-all-container-edit {
   border: none;
   padding-top: 0;
-  width: 100%
+  width: 100%;
 }
 
-.tag-edit{
+.tag-edit {
   opacity: 0.5;
 }
 
-.opacity-100{
+.opacity-100 {
   opacity: 1;
 }
-
 </style>
