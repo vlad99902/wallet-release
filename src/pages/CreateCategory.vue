@@ -47,8 +47,25 @@
           {{ category.colorName }}
         </button>
       </div>
+
+      <div
+        class="settings-strong small-m-t"
+        v-if="colorToSubmit !== '' && nameToSubmit !== '' "
+      >Your category will look like this:</div>
+      <div class="constructed-tag-comtainer" v-if="colorToSubmit !== '' && nameToSubmit !== '' ">
+        <button
+          type="button"
+          class="tag-object tag-margin-right"
+          :style="categories[colorToSubmit].categoryStyle"
+        >
+          <div
+            class="tag-object-round-add"
+            :style="{ background: categories[colorToSubmit].categoryStyle.color }"
+          ></div>
+          {{ nameToSubmit }}
+        </button>
+      </div>
     </form>
-    <pre> {{ colorToSubmit }} </pre>
   </q-page>
 </template>
 
@@ -86,7 +103,7 @@ export default {
   methods: {
     submitForm() {},
     handleColor(key) {
-      if (key === this.colorToSubmit) this.colorToSubmit = ''
+      if (key === this.colorToSubmit) this.colorToSubmit = "";
       else this.colorToSubmit = key;
     },
   },
@@ -121,5 +138,9 @@ export default {
 
 .chosen-color {
   opacity: 1 !important;
+}
+
+.constructed-tag-comtainer {
+  margin-left: 2rem;
 }
 </style>
