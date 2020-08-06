@@ -36,16 +36,16 @@
 
       <div class="color-container">
         <button
-          v-for="(category, key) in categories"
+          v-for="(color, key) in colors"
           :key="key"
           @click="handleColor(key)"
-          :class="colorToSubmit === key ? 'chosen-color' : 'unchosen-color'"
+          :class="colorToSubmit === key ? 'chosen-color' : ''"
           type="button"
           class="tag-object tag-margin-right"
-          :style="category.categoryStyle"
+          :style="color.categoryStyle"
         >
-          <div class="tag-object-round-add" :style="{ background: category.categoryStyle.color }"></div>
-          {{ category.colorName }}
+          <div class="tag-object-round-add" :style="{ background: color.categoryStyle.color }"></div>
+          {{ color.colorName }}
         </button>
       </div>
 
@@ -57,11 +57,11 @@
         <button
           type="button"
           class="tag-object tag-margin-right"
-          :style="categories[colorToSubmit].categoryStyle"
+          :style="colors[colorToSubmit].categoryStyle"
         >
           <div
             class="tag-object-round-add"
-            :style="{ background: categories[colorToSubmit].categoryStyle.color }"
+            :style="{ background: colors[colorToSubmit].categoryStyle.color }"
           ></div>
           {{ nameToSubmit }}
         </button>
@@ -99,7 +99,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters("categories", ["categories"]),
+    ...mapGetters("categories", ["colors"]),
   },
   methods: {
     submitForm() {},
