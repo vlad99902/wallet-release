@@ -109,7 +109,7 @@ export default {
     ...mapGetters("settings", ["editedCategory"]),
   },
   methods: {
-    ...mapActions("categories", ["createCategory"]),
+    ...mapActions("categories", ["updateCategory"]),
     submitForm() {
       let payload = {
         category: {
@@ -117,9 +117,9 @@ export default {
           colorID: this.colorToSubmit,
           categoryStyle: {},
         },
-        id: 0,
+        id: this.editedCategory,
       };
-      this.createCategory(payload);
+      this.updateCategory(payload);
       this.$router.replace("/settings/categories");
     },
     handleColor(key) {

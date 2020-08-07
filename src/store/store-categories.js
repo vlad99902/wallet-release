@@ -153,7 +153,10 @@ const state = {
 const mutations = {
   createCategory(state, payload) {
     Vue.set(state.categories, payload.id, payload.category);
-  }
+  },
+  updateCategory(state, payload) {
+    Vue.set(state.categories, payload.id, payload.category);
+  },
 };
 
 const actions = {
@@ -164,7 +167,14 @@ const actions = {
     );
     payload.id = uid();
     commit("createCategory", payload);
-  }
+  },
+  updateCategory({ commit }, payload) {
+    Object.assign(
+      payload.category.categoryStyle,
+      state.colors[payload.category.colorID].categoryStyle
+    );
+    commit("updateCategory", payload);
+  },
 };
 
 const getters = {
