@@ -582,6 +582,11 @@ const mutations = {
     }
     //if date changed (!!!!!!)
     else {
+      //if tag NOBUDGET
+      if (payload.updates.category == 'NO_BUDGET'){
+        let newTotal = parseFloat(state.expenses[payload.date].total) - parseFloat(state.expenses[payload.date].purchases[payload.id].cost);
+        Vue.set(state.expenses[payload.date], 'total', newTotal);
+      }
       Object.assign(state.expenses[payload.date].purchases[payload.id], payload.updates);
       //save update object
       let expenseToAdd = {
