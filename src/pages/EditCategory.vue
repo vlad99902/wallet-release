@@ -128,8 +128,8 @@ export default {
     },
   },
   mounted() {
-    console.log("this.editedCategory: ", this.editedCategory);
-    this.nameToSubmit = this.categories[this.editedCategory].name
+    this.nameToSubmit = this.categories[this.editedCategory].name;
+    this.colorToSubmit = this.categories[this.editedCategory].colorID;
   },
 };
 </script>

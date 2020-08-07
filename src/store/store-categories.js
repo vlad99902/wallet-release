@@ -162,7 +162,6 @@ const actions = {
       payload.category.categoryStyle,
       state.colors[payload.category.colorID].categoryStyle
     );
-    delete payload.category.colorID;
     payload.id = uid();
     commit("createCategory", payload);
   }
