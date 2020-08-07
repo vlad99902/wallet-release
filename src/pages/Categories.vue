@@ -16,7 +16,12 @@
     </div>
 
     <div class="categories-container">
-      <one-category v-for="(category, key) in categories" :key="key" :id="key" :category="category" />
+      <one-category
+        v-for="(category, key) in categories"
+        :key="key"
+        :id="key"
+        :category="category"
+      />
     </div>
   </q-page>
 </template>
@@ -39,6 +44,10 @@ export default {
   background-color: $for-white;
   border-radius: 12px;
   margin-bottom: 6rem;
+}
+
+.dark .categories-container {
+  background-color: $for-white-dark;
 }
 
 .category-line {
@@ -71,6 +80,10 @@ export default {
   border-bottom: 1px solid #dbdbdb;
 
   padding: 0 0 0.75rem 0;
+}
+
+.dark .category-bottom-line {
+  border-bottom: 1px solid $secondary-dark;
 }
 
 .category-tag {

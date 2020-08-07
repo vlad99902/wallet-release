@@ -159,6 +159,14 @@ export default {
   }
 }
 
+.dark .color-container {
+  background-color: $for-white-dark;
+
+  button {
+    opacity: 0.35;
+  }
+}
+
 .chosen-color {
   opacity: 1 !important;
 }
