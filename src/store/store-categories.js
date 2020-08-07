@@ -6,6 +6,7 @@ const state = {
     //ID0 USED only for OTHER category
     ID0: {
       name: "Other",
+      colorID: 'ID12',
       categoryStyle: {
         background: "#5C6670",
         color: "#FFFFFF"
@@ -14,6 +15,7 @@ const state = {
     //id 'NO_BUDGED' used to check purchases without a budget
     NO_BUDGET: {
       name: "Out of budget",
+      colorID: 'ID11',
       categoryStyle: {
         background: "#D8A69D",
         color: "#FFFFFF"
@@ -21,6 +23,7 @@ const state = {
     },
     ID1: {
       name: "Foodstuff",
+      colorID: 'ID1',
       categoryStyle: {
         background: "#C9FFDE",
         color: "#15C759"
@@ -28,6 +31,7 @@ const state = {
     },
     ID2: {
       name: "Alcohol",
+      colorID: 'ID2',
       categoryStyle: {
         background: "#FFE4BE",
         color: "#FE9400"
@@ -35,6 +39,7 @@ const state = {
     },
     ID3: {
       name: "Bad Habits",
+      colorID: 'ID3',
       categoryStyle: {
         background: "#FFCC01",
         color: "#FFFFFF"
@@ -42,6 +47,7 @@ const state = {
     },
     ID4: {
       name: "Eating Out",
+      colorID: 'ID4',
       categoryStyle: {
         background: "#FFDAD7",
         color: "#FE3D2E"
@@ -49,6 +55,7 @@ const state = {
     },
     ID5: {
       name: "Transport",
+      colorID: 'ID5',
       categoryStyle: {
         background: "#D6EDFF",
         color: "#50ABF2"
