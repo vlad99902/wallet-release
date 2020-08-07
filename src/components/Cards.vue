@@ -82,9 +82,9 @@ export default {
   data() {
     return {
       tweenedNumber: 0,
-    }
+    };
   },
-  
+
   computed: {
     ...mapGetters("settings", ["settings"]),
     ...mapGetters("expenses", [
@@ -97,16 +97,16 @@ export default {
       "progress",
     ]),
     //for animation
-    
+
     animatedNumber: function () {
       return this.tweenedNumber.toFixed(0);
     },
   },
 
   watch: {
-    availableBudget: function(newValue) {
+    availableBudget: function (newValue) {
       gsap.to(this.$data, { duration: 0.5, tweenedNumber: newValue });
-    }
+    },
   },
 
   methods: {
