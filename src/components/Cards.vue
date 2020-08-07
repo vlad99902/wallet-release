@@ -20,7 +20,7 @@
           <q-linear-progress size="7px" class="bar" color="secondary" :value="progress" />
         </span>
 
-        <!-- budget analitycs -->
+        <!-- budget analytics -->
         <div class="spent-limit row">
           Spent: ${{ spentBudget }}
           <q-space></q-space>Daily limit:
@@ -47,7 +47,7 @@
         <div class="week-analitycs row">
           <div v-if="spentLastWeek === null">
             <!-- No expenses were tracked during the last week -->
-            Here will be comparison with your last week spendings once you have them!
+            Here will be comparison with your last week expenses once you have them!
           </div>
           <div v-else-if="spentLastWeek !== 0">
             You’re spending
