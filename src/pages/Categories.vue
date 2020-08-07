@@ -16,7 +16,7 @@
     </div>
 
     <div class="categories-container">
-      <one-category v-for="(category, key) in categories" :key="key" :category="category" />
+      <one-category v-for="(category, key) in categories" :key="key" :id="key" :category="category" />
     </div>
   </q-page>
 </template>

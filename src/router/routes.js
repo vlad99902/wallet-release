@@ -17,6 +17,7 @@ const routes = [
       { path: '/settings/language-and-currency', component: () => import('pages/LanguageAndCurrency.vue') },
       { path: '/settings/categories', component: () => import('pages/Categories.vue') },
       { path: '/settings/categories/create-category', component: () => import('pages/CreateCategory.vue') },
+      { path: '/settings/categories/edit-category', component: () => import('pages/EditCategory.vue') },
     ]
   },
 

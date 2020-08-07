@@ -1,5 +1,7 @@
 {
   
   "vetur.experimental.templateInterpolationService": true,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true
 }

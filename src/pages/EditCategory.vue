@@ -8,7 +8,7 @@
           @click="$router.replace('/settings/categories')"
         >Cancel</button>
 
-        <div class="settings-header-title">Create category</div>
+        <div class="settings-header-title">Edit category</div>
 
         <button
           class="back-btn-2 control-button"
@@ -19,7 +19,7 @@
           "
           type="submit"
           :disabled="$v.nameToSubmit.$invalid || $v.colorToSubmit.$invalid"
-        >Done</button>
+        >Save</button>
       </div>
 
       <div class="settings-small">Enter your new category name.</div>
@@ -105,7 +105,8 @@ export default {
   },
 
   computed: {
-    ...mapGetters("categories", ["colors"]),
+    ...mapGetters("categories", ["colors", "categories"]),
+    ...mapGetters("settings", ["editedCategory"]),
   },
   methods: {
     ...mapActions("categories", ["createCategory"]),
@@ -125,6 +126,10 @@ export default {
       if (key === this.colorToSubmit) this.colorToSubmit = "";
       else this.colorToSubmit = key;
     },
+  },
+  mounted() {
+    console.log("this.editedCategory: ", this.editedCategory);
+    this.nameToSubmit = this.categories[this.editedCategory].name
   },
 };
 </script>
