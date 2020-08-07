@@ -6,9 +6,7 @@
           class="back-btn control-button"
           type="button"
           @click="$router.replace('/settings/categories')"
-        >
-          Cancel
-        </button>
+        >Cancel</button>
 
         <div class="settings-header-title">Create category</div>
 
@@ -21,9 +19,7 @@
           "
           type="submit"
           :disabled="$v.nameToSubmit.$invalid || $v.colorToSubmit.$invalid"
-        >
-          Done
-        </button>
+        >Done</button>
       </div>
 
       <div class="settings-small">Enter your new category name.</div>
@@ -52,43 +48,30 @@
           type="button"
           :style="color.categoryStyle"
         >
-          <div
-            class="tag-object-round-add"
-            :style="{ background: color.categoryStyle.color }"
-          ></div>
-          <div class="tag-object">
-            {{ color.colorName }}
-          </div>
+          <div class="tag-object-round-add" :style="{ background: color.categoryStyle.color }"></div>
+          <div class="tag-object">{{ color.colorName }}</div>
         </button>
       </div>
 
-      <div
-        class="settings-strong small-m-t"
-        v-if="
-          colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error
-        "
-      >
-        Your category will look like this:
-      </div>
-      <div
-        class="constructed-tag-comtainer"
-        v-if="
-          colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error
-        "
-      >
+      <transition name="slide-fade">
         <div
-          class="tag-object-container"
-          :style="colors[colorToSubmit].categoryStyle"
+          class="animation-container"
+          v-if="
+          colorToSubmit !== '' && nameToSubmit !== '' && !$v.nameToSubmit.$error
+        "
         >
-          <div
-            class="tag-object-round-add"
-            :style="{ background: colors[colorToSubmit].categoryStyle.color }"
-          ></div>
-          <div class="tag-object">
-            {{ nameToSubmit }}
+          <div class="settings-strong small-m-t">Your category will look like this:</div>
+          <div class="constructed-tag-comtainer">
+            <div class="tag-object-container" :style="colors[colorToSubmit].categoryStyle">
+              <div
+                class="tag-object-round-add"
+                :style="{ background: colors[colorToSubmit].categoryStyle.color }"
+              ></div>
+              <div class="tag-object">{{ nameToSubmit }}</div>
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
     </form>
   </q-page>
 </template>
@@ -106,23 +89,23 @@ import { selectAll } from "src/directives/directive-select-all";
 export default {
   directives: {
     autofocus,
-    selectAll
+    selectAll,
   },
   data() {
     return {
       doneActive: false,
       nameToSubmit: "",
-      colorToSubmit: ""
+      colorToSubmit: "",
     };
   },
 
   validations: {
     nameToSubmit: { required, maxLength: maxLength(25) },
-    colorToSubmit: { required }
+    colorToSubmit: { required },
   },
 
   computed: {
-    ...mapGetters("categories", ["colors"])
+    ...mapGetters("categories", ["colors"]),
   },
   methods: {
     ...mapActions("categories", ["createCategory"]),
@@ -131,9 +114,9 @@ export default {
         category: {
           name: this.nameToSubmit,
           colorID: this.colorToSubmit,
-          categoryStyle: {}
+          categoryStyle: {},
         },
-        id: 0
+        id: 0,
       };
       this.createCategory(payload);
       this.$router.replace("/settings/categories");
@@ -141,9 +124,9 @@ export default {
     handleColor(key) {
       if (key === this.colorToSubmit) this.colorToSubmit = "";
       else this.colorToSubmit = key;
-    }
+    },
   },
-  mounted() {}
+  mounted() {},
 };
 </script>
 
@@ -178,5 +161,16 @@ export default {
 
 .constructed-tag-comtainer {
   margin-left: 2rem;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(-60px);
+  opacity: 0;
 }
 </style>
