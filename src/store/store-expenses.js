@@ -468,9 +468,9 @@ const state = {
       }
     },
     '2020-08-06': {
-      total: '121.5',
-      counter: '1',
-      currentOrder: 1,
+      total: '642.5',
+      counter: '5',
+      currentOrder: 5,
       purchases: {
         'ID47': {
           name: 'Max + Okrug',
@@ -479,7 +479,48 @@ const state = {
           category: 'ID4',
           count: '1'
         },
-        
+        'ID48': {
+          name: 'Beer & Sausages',
+          description: 'Chilling with friends',
+          cost: '223',
+          category: 'ID4',
+          count: '2'
+        },
+        'ID49': {
+          name: 'Hookah',
+          description: 'Chilling with friends',
+          cost: '53',
+          category: 'ID4',
+          count: '3'
+        },
+        'ID50': {
+          name: 'Cigarettes',
+          description: '',
+          cost: '145',
+          category: 'ID3',
+          count: '4'
+        },
+        'ID51': {
+          name: 'Gas',
+          description: '',
+          cost: '100',
+          category: 'ID5',
+          count: '5'
+        },
+      }
+    },
+    '2020-08-07': {
+      total: '84',
+      counter: '1',
+      currentOrder: 1,
+      purchases: {
+        'ID52': {
+          name: 'Bus x3',
+          description: '',
+          cost: '84',
+          category: 'ID5',
+          count: '1'
+        },
       }
     },
   },
