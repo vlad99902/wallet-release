@@ -13,7 +13,7 @@
         <span
           class="avaliable-money"
           :class="{ 'more-spent' : availableBudget < 0 }"
-        >${{ availableBudget }}</span>
+        >${{ animatedNumber }}</span>
 
         <!-- progress bar -->
         <span class="bar">
@@ -76,8 +76,15 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import { date } from "quasar";
+import { gsap } from "gsap";
 
 export default {
+  data() {
+    return {
+      tweenedNumber: 0,
+    }
+  },
+  
   computed: {
     ...mapGetters("settings", ["settings"]),
     ...mapGetters("expenses", [
@@ -89,7 +96,19 @@ export default {
       "dailyLimit",
       "progress",
     ]),
+    //for animation
+    
+    animatedNumber: function () {
+      return this.tweenedNumber.toFixed(0);
+    },
   },
+
+  watch: {
+    availableBudget: function(newValue) {
+      gsap.to(this.$data, { duration: 0.5, tweenedNumber: newValue });
+    }
+  },
+
   methods: {
     ...mapActions("expenses", ["calcSpentThisWeek", "calcSpentBudget"]),
   },

@@ -525,7 +525,7 @@ const state = {
     },
   },
   analytics: {
-    overallBudget: 1500,
+    overallBudget: 2000,
     availableBudget: '',
     spentBudget: '',
     period: 7,
