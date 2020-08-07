@@ -10,7 +10,10 @@
           <br />
         </span>
 
-        <span class="avaliable-money">${{ availableBudget }}</span>
+        <span
+          class="avaliable-money"
+          :class="{ 'more-spent' : availableBudget < 0 }"
+        >${{ availableBudget }}</span>
 
         <!-- progress bar -->
         <span class="bar">
@@ -20,8 +23,9 @@
         <!-- budget analitycs -->
         <div class="spent-limit row">
           Spent: ${{ spentBudget }}
-          <q-space></q-space>
-          Daily limit: ${{ dailyLimit }}
+          <q-space></q-space>Daily limit:
+          <span v-if="availableBudget > 0">${{ dailyLimit }}</span>
+          <span v-else>&nbsp $0</span>
         </div>
       </div>
     </div>
