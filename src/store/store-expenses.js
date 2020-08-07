@@ -506,17 +506,27 @@ const mutations = {
 
     //if date did not changed
     if (newDate == payload.date || !newDate) {
-      //if cost was changed
-      if (payload.updates.cost) {
-        //delete from total old cost
+      //if category was changed to NO_BUDGET
+      if (state.expenses[payload.date].category !== 'NO_BUDGET' && payload.updates.category == 'NO_BUDGET'){
         let newTotal = parseFloat(state.expenses[payload.date].total) - parseFloat(state.expenses[payload.date].purchases[payload.id].cost);
-        //no budget gategory check
-        if (payload.updates.category !== 'NO_BUDGET'){
-          newTotal += parseFloat(payload.updates.cost);
-        }
-        //new total
         Vue.set(state.expenses[payload.date], 'total', newTotal);
       }
+      else if (state.expenses[payload.date].category == 'NO_BUDGET' && payload.updates.category !== 'NO_BUDGET'){
+        let newTotal = parseFloat(state.expenses[payload.date].total) + parseFloat(state.expenses[payload.date].purchases[payload.id].cost);
+        Vue.set(state.expenses[payload.date], 'total', newTotal);
+      }
+      //if cost was changed
+      //
+      if (payload.updates.cost && state.expenses[payload.date].category !== 'NO_BUDGET') {
+        //delete from total old cost
+        let newTotal = parseFloat(state.expenses[payload.date].total) - parseFloat(state.expenses[payload.date].purchases[payload.id].cost);
+         //new total
+        newTotal += parseFloat(payload.updates.cost);
+        Vue.set(state.expenses[payload.date], 'total', newTotal);
+      }
+      else if (payload.updates.cost && state.expenses[payload.date].category === 'NO_BUDGET'){
+        
+      } 
       //update data (!!!!!!!!)
       Object.assign(state.expenses[payload.date].purchases[payload.id], payload.updates)
     }
