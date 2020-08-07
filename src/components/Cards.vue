@@ -99,7 +99,7 @@ export default {
     //for animation
 
     animatedNumber: function () {
-      //return this.tweenedNumber.toFixed(0);
+      return this.tweenedNumber.toFixed(0);
     },
   },
 
