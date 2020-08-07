@@ -120,6 +120,7 @@ export default {
   mounted() {
     this.calcSpentThisWeek();
     this.calcSpentBudget();
+    this.tweenedNumber = this.availableBudget;
   },
 };
 </script>
