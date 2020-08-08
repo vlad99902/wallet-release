@@ -558,22 +558,23 @@ const mutations = {
         }
         //else if changed from nobudget to something
         else if (state.expenses[payload.date].purchases[payload.id].category == 'NO_BUDGET'){
-          newTotal = parseFloat(state.expenses[payload.date].total) + parseFloat(state.expenses[payload.date].purchases[payload.id].cost);
-          //if cost was changed too
-          if(payload.updates.cost){
-            newTotal += parseFloat(payload.updates.cost);
+          if (!payload.updates.cost && parseInt(payload.updates.cost) !== 0) {
+            newTotal = parseFloat(state.expenses[payload.date].total) + parseFloat(state.expenses[payload.date].purchases[payload.id].cost);
+            Vue.set(state.expenses[payload.date], 'total', newTotal);
           }
-          Vue.set(state.expenses[payload.date], 'total', newTotal);
         }
       }
 
-      //if cost was changed
-      if (payload.updates.cost){
-        if (payload.updates.category !== 'NO_BUDGET' && state.expenses[payload.date].purchases[payload.id].category !== 'NO_BUDGET') {
+      //if cost was changed (payload.updates.category !== 'NO_BUDGET' && state.expenses[payload.date].purchases[payload.id].category !== 'NO_BUDGET')||state.expenses[payload.date].purchases[payload.id].category == 'NO_BUDGET'
+      if ((payload.updates.cost || parseInt(payload.updates.cost) == 0)){
+        if ((payload.updates.category !== 'NO_BUDGET' && state.expenses[payload.date].purchases[payload.id].category !== 'NO_BUDGET')) {
           //delete from total old cost
           let newTotal = parseFloat(state.expenses[payload.date].total) - parseFloat(state.expenses[payload.date].purchases[payload.id].cost);
-           //new total
           newTotal += parseFloat(payload.updates.cost);
+          Vue.set(state.expenses[payload.date], 'total', newTotal);
+        }
+        else if (state.expenses[payload.date].purchases[payload.id].category == 'NO_BUDGET' && payload.updates.category){
+          let newTotal = parseFloat(state.expenses[payload.date].total) + parseFloat(payload.updates.cost);
           Vue.set(state.expenses[payload.date], 'total', newTotal);
         }
       }

@@ -147,12 +147,13 @@ export default {
         delete this.expenseToUpdate.date;
       }
 
-      // console.log('\nTHIS FUCKEN OBJECT\n', this.expenseToUpdate)
       this.updateExpense({
         id: this.id,
         date: this.date,
         updates: this.expenseToUpdate
       });
+
+      console.log('\nTHIS FUCKEN OBJECT\n', this.expenseToUpdate)
     },
 
     //set category
