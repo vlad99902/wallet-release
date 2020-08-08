@@ -30,7 +30,7 @@
             class="input-field input-field-small"
             v-model="expenseToUpdate.name"
             @blur="$v.expenseToUpdate.name.$touch"
-            :class="{ invalid: $v.expenseToUpdate.name.$error }"
+            :class="{ 'invalid': $v.expenseToUpdate.name.$error }"
             type="text"
             placeholder="Name"
           />
@@ -42,7 +42,7 @@
             class="input-field input-field-small"
             v-model="expenseToUpdate.cost"
             @blur="$v.expenseToUpdate.cost.$touch"
-            :class="{ invalid: $v.expenseToUpdate.cost.$error }"
+            :class="{ 'invalid': $v.expenseToUpdate.cost.$error }"
             placeholder="$$$"
           />
 
@@ -51,7 +51,7 @@
             class="input-field input-field-small"
             v-model="expenseToUpdate.date"
             @blur="$v.expenseToUpdate.date.$touch"
-            :class="{ invalid: $v.expenseToUpdate.date.$error }"
+            :class="{ 'invalid': $v.expenseToUpdate.date.$error }"
             type="date"
             placeholder="date"
           />
@@ -61,7 +61,7 @@
             class="input-field input-field-desc input-field-small-description"
             v-model="expenseToUpdate.description"
             @blur="$v.expenseToUpdate.description.$touch"
-            :class="{ invalid: $v.expenseToUpdate.description.$error }"
+            :class="{ 'invalid': $v.expenseToUpdate.description.$error }"
             type="text"
             placeholder="Description"
             autogrow
