@@ -152,8 +152,6 @@ export default {
         date: this.date,
         updates: this.expenseToUpdate
       });
-
-      console.log('\nTHIS FUCKEN OBJECT\n', this.expenseToUpdate)
     },
 
     //set category
