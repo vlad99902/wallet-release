@@ -73,6 +73,7 @@ export default {
 
 .purchase {
   display: grid;
+  position: relative;
   grid-template-columns: 10% 60% 30%;
 
   grid-gap: 0.1rem;

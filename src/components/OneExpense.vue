@@ -2,7 +2,10 @@
   <div class="purchase" @click.stop="showExpenseMore = true">
     <div class="purchase-tag">
       <!-- expense category -->
-      <div
+      <div class="expense-tag-left"
+        :style="{ background: categories[expense.category].categoryStyle.background }">
+      </div>
+      <!-- <div
         class="tag-object-round-big"
         :style="{ background: categories[expense.category].categoryStyle.background }"
       >
@@ -10,7 +13,7 @@
           class="tag-object-round"
           :style="{ background: categories[expense.category].categoryStyle.color }"
         ></div>
-      </div>
+      </div> -->
     </div>
 
     <div class="purchase-name">{{ expense.name }}</div>
@@ -48,4 +51,15 @@ export default {
 </script>
 
 <style>
+/* for new expense show in the left side of expense block */
+.expense-tag-left {
+  position: absolute;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  left: 0rem;
+  top: 0;
+  bottom: 0;
+  
+  width: 1.5rem;
+}
 </style>
